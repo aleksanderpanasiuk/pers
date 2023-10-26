@@ -19,6 +19,12 @@
     <Filter Include="Resource Files\Textures">
       <UniqueIdentifier>{089f21ab-3c46-4c4b-8a9a-08be42024a89}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Objects">
+      <UniqueIdentifier>{4616b3ff-817e-40c1-a023-0e38cdb6cd79}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Objects">
+      <UniqueIdentifier>{5145dd00-2502-4f32-83d5-62a3c437cbd6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\glad.c">
@@ -87,6 +93,12 @@
     </ClInclude>
     <ClInclude Include="src\VBO.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Objects\Object.h">
+      <Filter>Header Files\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Objects\Cube.h">
+      <Filter>Header Files\Objects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

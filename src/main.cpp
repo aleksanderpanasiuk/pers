@@ -1,4 +1,6 @@
 #include "Mesh.h"
+#include "Objects/Object.h"
+#include "Objects/Cube.h"
 
 const unsigned int width = 1280;
 const unsigned int height = 720;
