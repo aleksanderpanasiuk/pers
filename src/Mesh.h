@@ -17,8 +17,9 @@ public:
 
 	VAO VAO;
 
-	Mesh(std::vector <Vertex>& vertices, std::vector <GLuint>& indices, std::vector <Texture>& textures);
+	Mesh(std::vector <Vertex>& vertices, std::vector <GLuint>& indices);
 
-	void Draw(Shader& shader, Camera& camera);
+	void setTextures(std::vector <Texture>& textures);
+	void Draw(std::unique_ptr <Shader>& shader, Camera& camera);
 };
 #endif

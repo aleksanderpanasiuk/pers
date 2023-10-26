@@ -24,6 +24,7 @@
     <ClCompile Include="src\glad.c" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Mesh.cpp" />
+    <ClCompile Include="src\Objects\Cube.cpp" />
     <ClCompile Include="src\shaderClass.cpp" />
     <ClCompile Include="src\stb.cpp" />
     <ClCompile Include="src\Texture.cpp" />
@@ -48,6 +49,7 @@
     <ClInclude Include="src\VBO.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="Resources\Textures\gold.png" />
     <Image Include="Resources\Textures\grid.png" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

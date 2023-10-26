@@ -57,6 +57,9 @@
     <ClCompile Include="src\VBO.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Objects\Cube.cpp">
+      <Filter>Source Files\Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Shaders\default.frag">
@@ -103,6 +106,9 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\Textures\grid.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="Resources\Textures\gold.png">
       <Filter>Resource Files\Textures</Filter>
     </Image>
   </ItemGroup>

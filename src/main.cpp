@@ -1,6 +1,7 @@
 #include "Mesh.h"
-#include "Objects/Object.h"
 #include "Objects/Cube.h"
+
+#include <memory>
 
 const unsigned int width = 1280;
 const unsigned int height = 720;
@@ -8,14 +9,14 @@ const unsigned int height = 720;
 // Vertices coordinates
 Vertex floorVertices[] =
 { //               COORDINATES           /            COLORS          /           NORMALS         /       TEXTURE COORDINATES    //
-	Vertex{glm::vec3(-1.0f, 0.0f,  1.0f), glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec2(0.0f, 0.0f)},
-	Vertex{glm::vec3(-1.0f, 0.0f, -1.0f), glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec2(0.0f, 1.0f)},
-	Vertex{glm::vec3( 1.0f, 0.0f, -1.0f), glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec2(1.0f, 1.0f)},
-	Vertex{glm::vec3( 1.0f, 0.0f,  1.0f), glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec2(1.0f, 0.0f)}
+	Vertex{glm::vec3(-1.0f, 0.0f,  1.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec2(0.0f, 0.0f)},
+	Vertex{glm::vec3(-1.0f, 0.0f, -1.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec2(0.0f, 1.0f)},
+	Vertex{glm::vec3( 1.0f, 0.0f, -1.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec2(1.0f, 1.0f)},
+	Vertex{glm::vec3( 1.0f, 0.0f,  1.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec2(1.0f, 0.0f)}
 };
 
 // Indices for vertices order
-GLuint indices[] =
+GLuint floorIndices[] =
 {
 	0, 1, 2,
 	0, 2, 3
@@ -76,21 +77,29 @@ int main()
 		Texture("Resources/Textures/grid.png", "diffuse", 0, GL_RGBA, GL_UNSIGNED_BYTE)
 	};
 
+	std::vector <Cube> cubes =
+	{
+		Cube(glm::vec3(0.0f, 0.0f, 0.0f), 0.1f),
+		Cube(glm::vec3(0.5f, 0.0f, 0.0f), 0.1f),
+		Cube(glm::vec3(1.0f, 0.0f, 0.0f), 0.1f),
+		Cube(glm::vec3(1.5f, 0.0f, 0.0f), 0.1f),
+		Cube(glm::vec3(2.0f, 0.0f, 0.0f), 0.1f)
+	};
+
 
 	// floor setup
-	Shader shaderProgram("Resources/Shaders/default.vert", "Resources/Shaders/default.frag");
+	std::unique_ptr <Shader> shaderProgram(new Shader("Resources/Shaders/default.vert", "Resources/Shaders/default.frag"));
 	std::vector <Vertex> verts(floorVertices, floorVertices + sizeof(floorVertices) / sizeof(Vertex));
-	std::vector <GLuint> ind(indices, indices + sizeof(indices) / sizeof(GLuint));
+	std::vector <GLuint> ind(floorIndices, floorIndices + sizeof(floorIndices) / sizeof(GLuint));
 
-	Mesh floor(verts, ind, textures);
-
+	Mesh floor(verts, ind);
+	floor.setTextures(textures);
 
 	// Shader for light cube
-	Shader lightShader("Resources/Shaders/light.vert", "Resources/Shaders/light.frag");
+	std::unique_ptr <Shader> lightShader(new Shader("Resources/Shaders/light.vert", "Resources/Shaders/light.frag"));
 	std::vector <Vertex> lightVerts(lightVertices, lightVertices + sizeof(lightVertices) / sizeof(Vertex));
 	std::vector <GLuint> lightInd(lightIndices, lightIndices + sizeof(lightIndices) / sizeof(GLuint));
-	Mesh light(lightVerts, lightInd, textures);
-
+	Mesh light(lightVerts, lightInd);
 
 	glm::vec4 lightColor = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
 	glm::vec3 lightPos = glm::vec3(0.5f, 0.5f, 0.5f);
@@ -102,15 +111,14 @@ int main()
 	objectModel = glm::translate(objectModel, objectPos);
 
 
-	lightShader.Activate();
-	glUniformMatrix4fv(glGetUniformLocation(lightShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(lightModel));
-	glUniform4f(glGetUniformLocation(lightShader.ID, "lightColor"), lightColor.x, lightColor.y, lightColor.z, lightColor.w);
-	shaderProgram.Activate();
-	glUniformMatrix4fv(glGetUniformLocation(shaderProgram.ID, "model"), 1, GL_FALSE, glm::value_ptr(objectModel));
-	glUniform4f(glGetUniformLocation(shaderProgram.ID, "lightColor"), lightColor.x, lightColor.y, lightColor.z, lightColor.w);
-	glUniform3f(glGetUniformLocation(shaderProgram.ID, "lightPos"), lightPos.x, lightPos.y, lightPos.z);
+	lightShader -> Activate();
+	glUniformMatrix4fv(glGetUniformLocation(lightShader -> ID, "model"), 1, GL_FALSE, glm::value_ptr(lightModel));
+	glUniform4f(glGetUniformLocation(lightShader -> ID, "lightColor"), lightColor.x, lightColor.y, lightColor.z, lightColor.w);
+	shaderProgram -> Activate();
+	glUniformMatrix4fv(glGetUniformLocation(shaderProgram -> ID, "model"), 1, GL_FALSE, glm::value_ptr(objectModel));
+	glUniform4f(glGetUniformLocation(shaderProgram -> ID, "lightColor"), lightColor.x, lightColor.y, lightColor.z, lightColor.w);
+	glUniform3f(glGetUniformLocation(shaderProgram -> ID, "lightPos"), lightPos.x, lightPos.y, lightPos.z);
 	
-
 	glEnable(GL_DEPTH_TEST);
 
 	// Creates camera object
@@ -132,6 +140,12 @@ int main()
 
 		// Draws different meshes
 		floor.Draw(shaderProgram, camera);
+
+		for (Cube cube : cubes)
+		{
+			cube.Draw(shaderProgram, camera);
+		}
+
 		light.Draw(lightShader, camera);
 
 
@@ -148,9 +162,8 @@ int main()
 
 	}
 
-
-	shaderProgram.Delete();
-	lightShader.Delete();
+	shaderProgram -> Delete();
+	lightShader -> Delete();
 	
 	glfwDestroyWindow(window);
 	glfwTerminate();

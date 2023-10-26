@@ -33,5 +33,7 @@ vec4 direcLight()
 
 void main()
 {
-	FragColor = direcLight();
+	FragColor = direcLight() * vec4(color, 1.0f);
+
+	// FragColor = vec4(color, 1.0f);
 }
