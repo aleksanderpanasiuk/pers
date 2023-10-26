@@ -2,9 +2,6 @@
 
 Texture::Texture(const char* image, const char* texType, GLuint slot, GLenum format, GLenum pixelType)
 {
-	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
 	// Assigns the type of the texture ot the texture object
 	type = texType;
 
