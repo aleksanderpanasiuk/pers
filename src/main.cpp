@@ -51,17 +51,6 @@ int main()
 		Texture("Resources/Textures/grid.png", "diffuse", 0, GL_RGBA, GL_UNSIGNED_BYTE)
 	};
 
-
-	// floor setup
-	std::vector <Vertex> verts(floorVertices, floorVertices + sizeof(floorVertices) / sizeof(Vertex));
-	std::vector <GLuint> ind(floorIndices, floorIndices + sizeof(floorIndices) / sizeof(GLuint));
-
-	Shader textureShader("Resources/Shaders/texture.vert", "Resources/Shaders/texture.frag");
-
-	Mesh floor;
-	floor.setData(verts, ind);
-	floor.setTextures(textures);
-
 	// light init and setup
 	Light light(glm::vec3(0.0f, 3.0f, 0.0f));
 	glm::vec4 lightColor = light.getColor();
@@ -75,6 +64,15 @@ int main()
 
 	light.setShader(lightShader);
 
+	// floor setup
+	std::vector <Vertex> verts(floorVertices, floorVertices + sizeof(floorVertices) / sizeof(Vertex));
+	std::vector <GLuint> ind(floorIndices, floorIndices + sizeof(floorIndices) / sizeof(GLuint));
+
+	Shader textureShader("Resources/Shaders/texture.vert", "Resources/Shaders/texture.frag");
+
+	Mesh floor;
+	floor.setData(verts, ind);
+	floor.setTextures(textures);
 
 	glm::vec3 objectPos = glm::vec3(0.0f, 0.0f, 0.0f);
 	glm::mat4 objectModel = glm::mat4(1.0f);
