@@ -1,6 +1,6 @@
 #include "Mesh.h"
 
-Mesh::Mesh(std::vector <Vertex>& vertices, std::vector <GLuint>& indices)
+void Mesh::setData(std::vector <Vertex>& vertices, std::vector <GLuint>& indices)
 {
 	Mesh::vertices = vertices;
 	Mesh::indices = indices;
@@ -24,7 +24,7 @@ void Mesh::setTextures(std::vector <Texture>& textures)
 	Mesh::textures = textures;
 }
 
-void Mesh::Draw(std::unique_ptr <Shader>& shader, Camera& camera)
+void Mesh::Draw(std::unique_ptr <Shader>& shader, Camera& camera, glm::vec3 Position)
 {
 	// Bind shader to be able to access uniforms
 	shader -> Activate();
@@ -56,6 +56,12 @@ void Mesh::Draw(std::unique_ptr <Shader>& shader, Camera& camera)
 	// Take care of the camera Matrix
 	glUniform3f(glGetUniformLocation(shader -> ID, "camPos"), camera.Position.x, camera.Position.y, camera.Position.z);
 	camera.Matrix(*shader, "camMatrix");
+
+	glm::mat4 objectModel = glm::mat4(1.0f);
+	objectModel = glm::translate(objectModel, Position);
+
+	glUniformMatrix4fv(glGetUniformLocation(shader->ID, "model"), 1, GL_FALSE, glm::value_ptr(objectModel));
+
 
 	// Draw the actual mesh
 	glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);

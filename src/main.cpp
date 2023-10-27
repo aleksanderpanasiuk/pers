@@ -77,14 +77,15 @@ int main()
 		Texture("Resources/Textures/grid.png", "diffuse", 0, GL_RGBA, GL_UNSIGNED_BYTE)
 	};
 
-	std::vector <Cube> cubes =
+	std::vector <Cube> cubes;
+
+	for (int i = 0; i < 5; i++)
 	{
-		Cube(glm::vec3(0.0f, 0.0f, 0.0f), 0.3f),
-		Cube(glm::vec3(0.5f, 0.0f, 0.0f), 0.3f),
-		Cube(glm::vec3(1.0f, 0.0f, 0.0f), 0.3f),
-		Cube(glm::vec3(1.5f, 0.0f, 0.0f), 0.3f),
-		Cube(glm::vec3(2.0f, 0.0f, 0.0f), 0.3f)
-	};
+		for (int j = 0; j < 5; j++)
+		{
+			cubes.push_back(Cube(glm::vec3(0.5f*i, 0.0f, 0.5f*j), 0.5f));
+		}
+	}
 
 
 	// floor setup
@@ -92,14 +93,18 @@ int main()
 	std::vector <Vertex> verts(floorVertices, floorVertices + sizeof(floorVertices) / sizeof(Vertex));
 	std::vector <GLuint> ind(floorIndices, floorIndices + sizeof(floorIndices) / sizeof(GLuint));
 
-	Mesh floor(verts, ind);
+	std::unique_ptr <Shader> textureShader(new Shader("Resources/Shaders/texture.vert", "Resources/Shaders/texture.frag"));
+
+	Mesh floor;
+	floor.setData(verts, ind);
 	floor.setTextures(textures);
 
 	// Shader for light cube
 	std::unique_ptr <Shader> lightShader(new Shader("Resources/Shaders/light.vert", "Resources/Shaders/light.frag"));
 	std::vector <Vertex> lightVerts(lightVertices, lightVertices + sizeof(lightVertices) / sizeof(Vertex));
 	std::vector <GLuint> lightInd(lightIndices, lightIndices + sizeof(lightIndices) / sizeof(GLuint));
-	Mesh light(lightVerts, lightInd);
+	Mesh light;
+	light.setData(lightVerts, lightInd);
 
 	glm::vec4 lightColor = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
 	glm::vec3 lightPos = glm::vec3(0.5f, 0.5f, 0.5f);
@@ -118,6 +123,11 @@ int main()
 	glUniformMatrix4fv(glGetUniformLocation(shaderProgram -> ID, "model"), 1, GL_FALSE, glm::value_ptr(objectModel));
 	glUniform4f(glGetUniformLocation(shaderProgram -> ID, "lightColor"), lightColor.x, lightColor.y, lightColor.z, lightColor.w);
 	glUniform3f(glGetUniformLocation(shaderProgram -> ID, "lightPos"), lightPos.x, lightPos.y, lightPos.z);
+	textureShader->Activate();
+	glUniformMatrix4fv(glGetUniformLocation(textureShader->ID, "model"), 1, GL_FALSE, glm::value_ptr(objectModel));
+	glUniform4f(glGetUniformLocation(textureShader->ID, "lightColor"), lightColor.x, lightColor.y, lightColor.z, lightColor.w);
+	glUniform3f(glGetUniformLocation(textureShader->ID, "lightPos"), lightPos.x, lightPos.y, lightPos.z);
+
 	
 	glEnable(GL_DEPTH_TEST);
 
@@ -139,14 +149,15 @@ int main()
 
 
 		// Draws different meshes
-		floor.Draw(shaderProgram, camera);
+		floor.Draw(textureShader, camera, objectPos);
 
-		for (Cube cube : cubes)
+		for (Cube& cube : cubes)
 		{
 			cube.Draw(shaderProgram, camera);
+			cube.Move(glm::vec3(0.005f, 0.0f, 0.0f));
 		}
 
-		light.Draw(lightShader, camera);
+		light.Draw(lightShader, camera, lightPos);
 
 
 		// Swap the back buffer with the front buffer
@@ -162,6 +173,7 @@ int main()
 
 	}
 
+	textureShader -> Delete();
 	shaderProgram -> Delete();
 	lightShader -> Delete();
 	

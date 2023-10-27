@@ -36,13 +36,14 @@
     <None Include="Resources\Shaders\default.vert" />
     <None Include="Resources\Shaders\light.frag" />
     <None Include="Resources\Shaders\light.vert" />
+    <None Include="Resources\Shaders\texture.frag" />
+    <None Include="Resources\Shaders\texture.vert" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Camera.h" />
     <ClInclude Include="src\EBO.h" />
     <ClInclude Include="src\Mesh.h" />
     <ClInclude Include="src\Objects\Cube.h" />
-    <ClInclude Include="src\Objects\Object.h" />
     <ClInclude Include="src\shaderClass.h" />
     <ClInclude Include="src\Texture.h" />
     <ClInclude Include="src\VAO.h" />

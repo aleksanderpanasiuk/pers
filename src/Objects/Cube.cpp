@@ -6,15 +6,15 @@ Cube::Cube(glm::vec3 Position, float sideLength)
 	Cube::sideLength = sideLength;
 
 	recalculateVertices();
+
+	mesh.setData(Vertices, Indices);
 }
 
 void Cube::Draw(std::unique_ptr <Shader>& shader, Camera& camera)
 {
 	recalculateVertices();
 
-	Mesh mesh(Vertices, Indices);
-
-	mesh.Draw(shader, camera);
+	mesh.Draw(shader, camera, Position);
 }
 
 void Cube::recalculateVertices()
@@ -62,4 +62,14 @@ void Cube::recalculateVertices()
 		Vertex{verticesPosition[5],    cubeColor, glm::vec3(1.0f, 0.0f, 0.0f), glm::vec2(0.0f, 0.0f)},
 		Vertex{verticesPosition[6],    cubeColor, glm::vec3(1.0f, 0.0f, 0.0f), glm::vec2(0.0f, 0.0f)}
 	};
+}
+
+void Cube::Move(glm::vec3 poistionChange)
+{
+	Position = Position + poistionChange;
+}
+
+void Cube::changePosition(glm::vec3 newPoistion)
+{
+	Position = newPoistion;
 }

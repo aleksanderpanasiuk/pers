@@ -74,6 +74,12 @@
     <None Include="Resources\Shaders\light.vert">
       <Filter>Resource Files\Shaders</Filter>
     </None>
+    <None Include="Resources\Shaders\texture.frag">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="Resources\Shaders\texture.vert">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Camera.h">
@@ -96,9 +102,6 @@
     </ClInclude>
     <ClInclude Include="src\VBO.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Objects\Object.h">
-      <Filter>Header Files\Objects</Filter>
     </ClInclude>
     <ClInclude Include="src\Objects\Cube.h">
       <Filter>Header Files\Objects</Filter>
