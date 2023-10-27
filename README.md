@@ -1,2 +1,2 @@
-# pers - Physics Engine for Robotics Simulations
+# PERS - Physics Engine for Robotics Simulations
 wip
