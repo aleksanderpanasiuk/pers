@@ -5,7 +5,7 @@
 
 #include "VAO.h"
 #include "EBO.h"
-#include "Camera.h"
+#include "Objects/Camera.h"
 #include "Texture.h"
 
 class Mesh

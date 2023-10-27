@@ -5,7 +5,6 @@
 
 #include "../VBO.h"
 #include "../shaderClass.h"
-#include "../Camera.h"
 #include "../Mesh.h"
 
 class Cube

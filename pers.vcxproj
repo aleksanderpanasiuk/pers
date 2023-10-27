@@ -19,11 +19,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Camera.cpp" />
     <ClCompile Include="src\EBO.cpp" />
     <ClCompile Include="src\glad.c" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Mesh.cpp" />
+    <ClCompile Include="src\Objects\Camera.cpp" />
     <ClCompile Include="src\Objects\Cube.cpp" />
     <ClCompile Include="src\Objects\Light.cpp" />
     <ClCompile Include="src\shaderClass.cpp" />
@@ -41,9 +41,9 @@
     <None Include="Resources\Shaders\texture.vert" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Camera.h" />
     <ClInclude Include="src\EBO.h" />
     <ClInclude Include="src\Mesh.h" />
+    <ClInclude Include="src\Objects\Camera.h" />
     <ClInclude Include="src\Objects\Cube.h" />
     <ClInclude Include="src\Objects\Light.h" />
     <ClInclude Include="src\shaderClass.h" />

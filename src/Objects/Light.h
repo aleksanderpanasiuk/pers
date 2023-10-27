@@ -6,8 +6,12 @@
 class Light
 {
 public:
-	Light(Shader&shader, glm::vec3 Position);
+	Light(glm::vec3 Position);
+	void setShader(Shader& shader);
 	void Draw(Camera& camera);
+	glm::vec3 getPosition();
+	glm::vec4 getColor();
+	glm::mat4 getModel();
 
 private:
 	Mesh mesh;

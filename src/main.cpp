@@ -1,3 +1,4 @@
+#include "Objects/Camera.h"
 #include "Mesh.h"
 #include "Objects/Cube.h"
 #include "Objects/Light.h"
@@ -61,25 +62,23 @@ int main()
 	floor.setData(verts, ind);
 	floor.setTextures(textures);
 
-	// Shader for light cube
-	Shader lightShader("Resources/Shaders/light.vert", "Resources/Shaders/light.frag");
-	Mesh light;
-	light.setData(lightVerts, lightInd);
-
-	glm::vec3 lightPos = glm::vec3(0.5f, 0.5f, 0.5f);
-	
+	// light init and setup
+	Light light(glm::vec3(0.0f, 3.0f, 0.0f));
+	glm::vec4 lightColor = light.getColor();
+	glm::mat4 lightModel = light.getModel();
+	glm::vec3 lightPos = light.getPosition();
 	lightModel = glm::translate(lightModel, lightPos);
-
-	glm::vec3 objectPos = glm::vec3(0.0f, 0.0f, 0.0f);
-	glm::mat4 objectModel = glm::mat4(1.0f);
-	objectModel = glm::translate(objectModel, objectPos);
-
+	Shader lightShader("Resources/Shaders/light.vert", "Resources/Shaders/light.frag");
 	lightShader.Activate();
 	glUniformMatrix4fv(glGetUniformLocation(lightShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(lightModel));
 	glUniform4f(glGetUniformLocation(lightShader.ID, "lightColor"), lightColor.x, lightColor.y, lightColor.z, lightColor.w);
 
-	// ! light
+	light.setShader(lightShader);
 
+
+	glm::vec3 objectPos = glm::vec3(0.0f, 0.0f, 0.0f);
+	glm::mat4 objectModel = glm::mat4(1.0f);
+	objectModel = glm::translate(objectModel, objectPos);
 
 	textureShader.Activate();
 	glUniformMatrix4fv(glGetUniformLocation(textureShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(objectModel));
@@ -123,7 +122,7 @@ int main()
 
 
 		// Draws different meshes
-		floor.Draw(textureShader, camera, objectPos);
+		// floor.Draw(textureShader, camera, objectPos);
 
 		for (Cube& cube : cubes)
 		{
@@ -131,7 +130,7 @@ int main()
 			cube.Move(glm::vec3(0.005f, 0.0f, 0.0f));
 		}
 
-		light.Draw(lightShader, camera, lightPos);
+		light.Draw(camera);
 
 
 		// Swap the back buffer with the front buffer
