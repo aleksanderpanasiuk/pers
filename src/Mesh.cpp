@@ -24,7 +24,7 @@ void Mesh::setTextures(std::vector <Texture>& textures)
 	Mesh::textures = textures;
 }
 
-void Mesh::Draw(Shader& shader, Camera& camera, glm::vec3 Position)
+void Mesh::Draw(Shader& shader, Camera& camera, glm::vec3 Position, glm::mat4 Model)
 {
 	// Bind shader to be able to access uniforms
 	shader.Activate();
@@ -57,8 +57,7 @@ void Mesh::Draw(Shader& shader, Camera& camera, glm::vec3 Position)
 	glUniform3f(glGetUniformLocation(shader.ID, "camPos"), camera.Position.x, camera.Position.y, camera.Position.z);
 	camera.Matrix(shader, "camMatrix");
 
-	glm::mat4 objectModel = glm::mat4(1.0f);
-	objectModel = glm::translate(objectModel, Position);
+	glm::mat4 objectModel = glm::translate(Model, Position);
 
 	glUniformMatrix4fv(glGetUniformLocation(shader.ID, "model"), 1, GL_FALSE, glm::value_ptr(objectModel));
 

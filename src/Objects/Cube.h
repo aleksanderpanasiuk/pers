@@ -22,7 +22,8 @@ private:
 
 	glm::vec3 Position;
 	float sideLength;
-	glm::vec3 cubeColor = glm::vec3(0.5f, 0.2f, 0.2f);
+	glm::vec3 Color = glm::vec3(0.5f, 0.2f, 0.2f);
+	glm::mat4 Model = glm::mat4(1.0f);
 
 	std::vector <glm::vec3> verticesPosition;
 	std::vector <Vertex> Vertices;

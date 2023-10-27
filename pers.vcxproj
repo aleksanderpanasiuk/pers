@@ -25,6 +25,7 @@
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Mesh.cpp" />
     <ClCompile Include="src\Objects\Cube.cpp" />
+    <ClCompile Include="src\Objects\Light.cpp" />
     <ClCompile Include="src\shaderClass.cpp" />
     <ClCompile Include="src\stb.cpp" />
     <ClCompile Include="src\Texture.cpp" />

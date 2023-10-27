@@ -23,34 +23,6 @@ GLuint floorIndices[] =
 	0, 2, 3
 };
 
-Vertex lightVertices[] =
-{ //     COORDINATES     //
-	Vertex{glm::vec3(-0.1f, -0.1f,  0.1f)},
-	Vertex{glm::vec3(-0.1f, -0.1f, -0.1f)},
-	Vertex{glm::vec3(0.1f, -0.1f, -0.1f)},
-	Vertex{glm::vec3(0.1f, -0.1f,  0.1f)},
-	Vertex{glm::vec3(-0.1f,  0.1f,  0.1f)},
-	Vertex{glm::vec3(-0.1f,  0.1f, -0.1f)},
-	Vertex{glm::vec3(0.1f,  0.1f, -0.1f)},
-	Vertex{glm::vec3(0.1f,  0.1f,  0.1f)}
-};
-
-GLuint lightIndices[] =
-{
-	0, 1, 2,
-	0, 2, 3,
-	0, 4, 7,
-	0, 7, 3,
-	3, 7, 6,
-	3, 6, 2,
-	2, 6, 5,
-	2, 5, 1,
-	1, 5, 4,
-	1, 4, 0,
-	4, 5, 6,
-	4, 6, 7
-};
-
 
 int main()
 {
@@ -91,14 +63,11 @@ int main()
 
 	// Shader for light cube
 	Shader lightShader("Resources/Shaders/light.vert", "Resources/Shaders/light.frag");
-	std::vector <Vertex> lightVerts(lightVertices, lightVertices + sizeof(lightVertices) / sizeof(Vertex));
-	std::vector <GLuint> lightInd(lightIndices, lightIndices + sizeof(lightIndices) / sizeof(GLuint));
 	Mesh light;
 	light.setData(lightVerts, lightInd);
 
-	glm::vec4 lightColor = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
 	glm::vec3 lightPos = glm::vec3(0.5f, 0.5f, 0.5f);
-	glm::mat4 lightModel = glm::mat4(1.0f);
+	
 	lightModel = glm::translate(lightModel, lightPos);
 
 	glm::vec3 objectPos = glm::vec3(0.0f, 0.0f, 0.0f);
