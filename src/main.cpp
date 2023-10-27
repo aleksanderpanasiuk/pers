@@ -71,8 +71,7 @@ int main()
 	lightModel = glm::translate(lightModel, lightPos);
 	Shader lightShader("Resources/Shaders/light.vert", "Resources/Shaders/light.frag");
 	lightShader.Activate();
-	glUniformMatrix4fv(glGetUniformLocation(lightShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(lightModel));
-	glUniform4f(glGetUniformLocation(lightShader.ID, "lightColor"), lightColor.x, lightColor.y, lightColor.z, lightColor.w);
+	lightShader.setLight(lightColor, lightPos);
 
 	light.setShader(lightShader);
 
@@ -83,9 +82,7 @@ int main()
 
 	textureShader.Activate();
 	glUniformMatrix4fv(glGetUniformLocation(textureShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(objectModel));
-	glUniform4f(glGetUniformLocation(textureShader.ID, "lightColor"), lightColor.x, lightColor.y, lightColor.z, lightColor.w);
-	glUniform3f(glGetUniformLocation(textureShader.ID, "lightPos"), lightPos.x, lightPos.y, lightPos.z);
-
+	textureShader.setLight(lightColor, lightPos);
 	
 	glEnable(GL_DEPTH_TEST);
 
@@ -93,8 +90,7 @@ int main()
 	Shader shaderProgram("Resources/Shaders/default.vert", "Resources/Shaders/default.frag");
 
 	shaderProgram.Activate();
-	glUniform4f(glGetUniformLocation(shaderProgram.ID, "lightColor"), lightColor.x, lightColor.y, lightColor.z, lightColor.w);
-	glUniform3f(glGetUniformLocation(shaderProgram.ID, "lightPos"), lightPos.x, lightPos.y, lightPos.z);
+	shaderProgram.setLight(lightColor, lightPos);
 
 	std::vector <Cube> cubes;
 

@@ -72,6 +72,12 @@ void Shader::Delete()
 	glDeleteProgram(ID);
 }
 
+void Shader::setLight(glm::vec4 lightColor, glm::vec3 lightPos)
+{
+	glUniform4f(glGetUniformLocation(ID, "lightColor"), lightColor.x, lightColor.y, lightColor.z, lightColor.w);
+	glUniform3f(glGetUniformLocation(ID, "lightPos"), lightPos.x, lightPos.y, lightPos.z);
+}
+
 void Shader::compileErrors(unsigned int shader, const char* type)
 {
 	GLint hasCompiled;
