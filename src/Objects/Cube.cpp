@@ -21,14 +21,14 @@ void Cube::Draw(Camera& camera)
 void Cube::recalculateVertices()
 {
 	verticesPosition = {
-		glm::vec3(Position[0] - (sideLength / 2), Position[1] - (sideLength / 2), Position[2] - (sideLength / 2)),
-		glm::vec3(Position[0] + (sideLength / 2), Position[1] - (sideLength / 2), Position[2] - (sideLength / 2)),
-		glm::vec3(Position[0] + (sideLength / 2), Position[1] + (sideLength / 2), Position[2] - (sideLength / 2)),
-		glm::vec3(Position[0] - (sideLength / 2), Position[1] + (sideLength / 2), Position[2] - (sideLength / 2)),
-		glm::vec3(Position[0] - (sideLength / 2), Position[1] - (sideLength / 2), Position[2] + (sideLength / 2)),
-		glm::vec3(Position[0] + (sideLength / 2), Position[1] - (sideLength / 2), Position[2] + (sideLength / 2)),
-		glm::vec3(Position[0] + (sideLength / 2), Position[1] + (sideLength / 2), Position[2] + (sideLength / 2)),
-		glm::vec3(Position[0] - (sideLength / 2), Position[1] + (sideLength / 2), Position[2] + (sideLength / 2))
+		glm::vec3(Position.x - (sideLength / 2), Position.y - (sideLength / 2), Position.z - (sideLength / 2)),
+		glm::vec3(Position.x + (sideLength / 2), Position.y - (sideLength / 2), Position.z - (sideLength / 2)),
+		glm::vec3(Position.x + (sideLength / 2), Position.y + (sideLength / 2), Position.z - (sideLength / 2)),
+		glm::vec3(Position.x - (sideLength / 2), Position.y + (sideLength / 2), Position.z - (sideLength / 2)),
+		glm::vec3(Position.x - (sideLength / 2), Position.y - (sideLength / 2), Position.z + (sideLength / 2)),
+		glm::vec3(Position.x + (sideLength / 2), Position.y - (sideLength / 2), Position.z + (sideLength / 2)),
+		glm::vec3(Position.x + (sideLength / 2), Position.y + (sideLength / 2), Position.z + (sideLength / 2)),
+		glm::vec3(Position.x - (sideLength / 2), Position.y + (sideLength / 2), Position.z + (sideLength / 2))
 	};
 
 	Vertices =

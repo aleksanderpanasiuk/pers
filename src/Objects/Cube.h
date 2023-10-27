@@ -4,8 +4,9 @@
 #include <vector>	
 
 #include "../VBO.h"
-#include "../shaderClass.h"
+#include "../Shader.h"
 #include "../Mesh.h"
+#include "Light.h"
 
 class Cube
 {

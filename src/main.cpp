@@ -67,6 +67,7 @@ int main()
 	glm::vec4 lightColor = light.getColor();
 	glm::mat4 lightModel = light.getModel();
 	glm::vec3 lightPos = light.getPosition();
+
 	lightModel = glm::translate(lightModel, lightPos);
 	Shader lightShader("Resources/Shaders/light.vert", "Resources/Shaders/light.frag");
 	lightShader.Activate();
@@ -90,6 +91,7 @@ int main()
 
 	// cubes init and setup
 	Shader shaderProgram("Resources/Shaders/default.vert", "Resources/Shaders/default.frag");
+
 	shaderProgram.Activate();
 	glUniform4f(glGetUniformLocation(shaderProgram.ID, "lightColor"), lightColor.x, lightColor.y, lightColor.z, lightColor.w);
 	glUniform3f(glGetUniformLocation(shaderProgram.ID, "lightPos"), lightPos.x, lightPos.y, lightPos.z);
