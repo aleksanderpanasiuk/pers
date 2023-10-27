@@ -11,15 +11,15 @@
 class Cube
 {
 public:
-	Cube(glm::vec3 Position, float sideLength);
-	void Draw(std::unique_ptr <Shader>& shader, Camera& camera);
+	Cube(Shader& shader, glm::vec3 Position, float sideLength);
+	void Draw(Camera& camera);
 	void changePosition(glm::vec3 newPosition);
 	void Move(glm::vec3 positionChange);
-	void changeSideLength(float sideLength);
-	void Rotate();
 
 private:
 	Mesh mesh;
+	Shader *shader;
+
 	glm::vec3 Position;
 	float sideLength;
 	glm::vec3 cubeColor = glm::vec3(0.5f, 0.2f, 0.2f);

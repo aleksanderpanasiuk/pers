@@ -24,10 +24,10 @@ void Mesh::setTextures(std::vector <Texture>& textures)
 	Mesh::textures = textures;
 }
 
-void Mesh::Draw(std::unique_ptr <Shader>& shader, Camera& camera, glm::vec3 Position)
+void Mesh::Draw(Shader& shader, Camera& camera, glm::vec3 Position)
 {
 	// Bind shader to be able to access uniforms
-	shader -> Activate();
+	shader.Activate();
 	VAO.Bind();
 
 	// Keep track of how many of each type of textures we have
@@ -48,19 +48,19 @@ void Mesh::Draw(std::unique_ptr <Shader>& shader, Camera& camera, glm::vec3 Posi
 			{
 				num = std::to_string(numSpecular++);
 			}
-			textures[i].texUnit(*shader, (type + num).c_str(), i);
+			textures[i].texUnit(shader, (type + num).c_str(), i);
 			textures[i].Bind();
 		}
 	}
 
 	// Take care of the camera Matrix
-	glUniform3f(glGetUniformLocation(shader -> ID, "camPos"), camera.Position.x, camera.Position.y, camera.Position.z);
-	camera.Matrix(*shader, "camMatrix");
+	glUniform3f(glGetUniformLocation(shader.ID, "camPos"), camera.Position.x, camera.Position.y, camera.Position.z);
+	camera.Matrix(shader, "camMatrix");
 
 	glm::mat4 objectModel = glm::mat4(1.0f);
 	objectModel = glm::translate(objectModel, Position);
 
-	glUniformMatrix4fv(glGetUniformLocation(shader->ID, "model"), 1, GL_FALSE, glm::value_ptr(objectModel));
+	glUniformMatrix4fv(glGetUniformLocation(shader.ID, "model"), 1, GL_FALSE, glm::value_ptr(objectModel));
 
 
 	// Draw the actual mesh

@@ -44,6 +44,7 @@
     <ClInclude Include="src\EBO.h" />
     <ClInclude Include="src\Mesh.h" />
     <ClInclude Include="src\Objects\Cube.h" />
+    <ClInclude Include="src\Objects\Light.h" />
     <ClInclude Include="src\shaderClass.h" />
     <ClInclude Include="src\Texture.h" />
     <ClInclude Include="src\VAO.h" />

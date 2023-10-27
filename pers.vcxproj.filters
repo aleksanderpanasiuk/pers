@@ -106,6 +106,9 @@
     <ClInclude Include="src\Objects\Cube.h">
       <Filter>Header Files\Objects</Filter>
     </ClInclude>
+    <ClInclude Include="src\Objects\Light.h">
+      <Filter>Header Files\Objects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\Textures\grid.png">

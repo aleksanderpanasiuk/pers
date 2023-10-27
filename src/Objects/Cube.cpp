@@ -1,7 +1,8 @@
 #include "Cube.h"
 
-Cube::Cube(glm::vec3 Position, float sideLength)
+Cube::Cube(Shader& shader, glm::vec3 Position, float sideLength)
 {
+	Cube::shader = &shader;
 	Cube::Position = Position;
 	Cube::sideLength = sideLength;
 
@@ -10,11 +11,11 @@ Cube::Cube(glm::vec3 Position, float sideLength)
 	mesh.setData(Vertices, Indices);
 }
 
-void Cube::Draw(std::unique_ptr <Shader>& shader, Camera& camera)
+void Cube::Draw(Camera& camera)
 {
 	recalculateVertices();
 
-	mesh.Draw(shader, camera, Position);
+	mesh.Draw(*shader, camera, Position);
 }
 
 void Cube::recalculateVertices()
