@@ -18,7 +18,7 @@ public:
 
 private:
 	Mesh mesh;
-	Shader *shader;
+	Shader* shader;
 
 	glm::vec3 Position;
 	float sideLength;
