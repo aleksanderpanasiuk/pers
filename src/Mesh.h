@@ -21,5 +21,8 @@ public:
 
 	void setTextures(std::vector <Texture>& textures);
 	void Draw(Shader& shader, Camera& camera, glm::vec3 Position, glm::vec3 Orientation, glm::vec3 Scale);
+
+private:
+	void bindTextures(Shader& shader);
 };
 #endif
