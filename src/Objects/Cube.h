@@ -1,34 +1,15 @@
 #ifndef CUBE_CLASS_H
 #define CUBE_CLASS_H
 
-#include <vector>	
+#include "Object.h"
 
-#include "../VBO.h"
-#include "../Shader.h"
-#include "../Mesh.h"
-#include "Light.h"
-
-class Cube
+class Cube : public Object
 {
 public:
 	Cube(Shader& shader, glm::vec3 Position, float sideLength);
 	
-	void Draw(Camera& camera);
-	void changePosition(glm::vec3 newPosition);
-	void Move(glm::vec3 positionChange);
-	void Rotate(glm::vec3 rotationChange);
-
-	bool isVisible = true;
-	
 
 private:
-	Mesh mesh;
-	Shader* shader;
-
-	glm::vec3 Position = glm::vec3(0.0f, 0.0f, 0.0f);
-	glm::vec3 Orientation = glm::vec3(45.0f, 0.0f, 0.0f);
-	glm::vec3 Scale = glm::vec3(1.0f, 1.0f, 1.0f);
-	
 	float sideLength = 1.0f;
 	glm::vec3 Color = glm::vec3(0.5f, 0.2f, 0.2f);
 
@@ -97,8 +78,6 @@ private:
 		20, 21, 23, // right
 		20, 22, 23
 	};
-
-	void recalculateVertices();
 };
 
 #endif

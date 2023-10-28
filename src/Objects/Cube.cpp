@@ -1,33 +1,10 @@
 #include "Cube.h"
 
-Cube::Cube(Shader& shader, glm::vec3 Position, float sideLength)
+Cube::Cube(Shader& shader, glm::vec3 Position, float sideLength) :
+	Object(shader)
 {
-	Cube::shader = &shader;
-	Cube::Position = Position;
+	changePosition(Position);
 	Cube::sideLength = sideLength;
 
 	mesh.setData(Vertices, Indices);
-}
-
-void Cube::Draw(Camera& camera)
-{
-	if (isVisible)
-	{
-		mesh.Draw(*shader, camera, Position, Orientation, Scale);
-	}
-}
-
-void Cube::Move(glm::vec3 poistionChange)
-{
-	Position = Position + poistionChange;
-}
-
-void Cube::changePosition(glm::vec3 newPosition)
-{
-	Position = newPosition;
-}
-
-void Cube::Rotate(glm::vec3 rotationChange)
-{
-	Orientation += rotationChange;
 }

@@ -52,17 +52,18 @@ int main()
 	};
 
 	// light init and setup
-	Light light(glm::vec3(0.0f, 3.0f, 0.0f));
+	Shader lightShader("Resources/Shaders/light.vert", "Resources/Shaders/light.frag");
+	lightShader.Activate();
+
+	Light light(lightShader, glm::vec3(0.0f, 3.0f, 0.0f));
 	glm::vec4 lightColor = light.getColor();
 	glm::mat4 lightModel = light.getModel();
 	glm::vec3 lightPos = light.getPosition();
 
 	lightModel = glm::translate(lightModel, lightPos);
-	Shader lightShader("Resources/Shaders/light.vert", "Resources/Shaders/light.frag");
-	lightShader.Activate();
 	lightShader.setLight(lightColor, lightPos);
 
-	light.setShader(lightShader);
+	// light.setShader(lightShader);
 
 	// floor setup
 	std::vector <Vertex> verts(floorVertices, floorVertices + sizeof(floorVertices) / sizeof(Vertex));
