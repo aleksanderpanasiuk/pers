@@ -57,19 +57,18 @@ void Mesh::Draw(Shader& shader, Camera& camera, glm::vec3 Position, glm::vec3 Or
 	glUniform3f(glGetUniformLocation(shader.ID, "camPos"), camera.Position.x, camera.Position.y, camera.Position.z);
 	camera.Matrix(shader, "camMatrix");
 
-	// rotation and scaling
 
-	glm::mat4 Rotate = glm::rotate(glm::mat4(1.0f), glm::radians(Orientation.x), glm::vec3(1.0f, 0.0f, 0.0f));
-	// Model = glm::rotate(Model, glm::radians(Orientation.y), glm::vec3(0.0f, 1.0f, 0.0f));
-	// Model = glm::rotate(Model, glm::radians(Orientation.z), glm::vec3(0.0f, 0.0f, 1.0f));
+	// creating transofrm model
+	// Model = Translate * Rotate * Scale;
+	Model = glm::translate(Model, Position);
 
-	glm::mat4 Translate = glm::translate(glm::mat4(1.0f), Position);
-	glm::mat4 Scale = glm::scale(glm::mat4(1.0f), glm::vec3(1, 1, 1));
-
-	Model = Translate * Rotate * Scale;
+	Model = glm::rotate(Model, glm::radians(Orientation.x), glm::vec3(1.0f, 0.0f, 0.0f));
+	Model = glm::rotate(Model, glm::radians(Orientation.y), glm::vec3(0.0f, 1.0f, 0.0f));
+	Model = glm::rotate(Model, glm::radians(Orientation.z), glm::vec3(0.0f, 0.0f, 1.0f));
+	
+	Model = glm::scale(Model, glm::vec3(1, 1, 1));
 
 	glUniform3fv(glGetUniformLocation(shader.ID, "Position"), 1, glm::value_ptr(Position));
-
 	glUniformMatrix4fv(glGetUniformLocation(shader.ID, "model"), 1, GL_FALSE, glm::value_ptr(Model));
 
 
