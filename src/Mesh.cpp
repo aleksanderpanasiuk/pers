@@ -62,13 +62,14 @@ void Mesh::Draw(Shader& shader, Camera& camera, glm::vec3 Position, glm::vec3 Or
 	// Model = Translate * Rotate * Scale;
 	glm::mat4 Model = glm::translate(glm::mat4(1.0f), Position);
 
-	Model = glm::rotate(Model, glm::radians(Orientation.x), glm::vec3(1.0f, 0.0f, 0.0f));
-	Model = glm::rotate(Model, glm::radians(Orientation.y), glm::vec3(0.0f, 1.0f, 0.0f));
-	Model = glm::rotate(Model, glm::radians(Orientation.z), glm::vec3(0.0f, 0.0f, 1.0f));
+	glm::mat4 Rotation = glm::rotate(glm::mat4(1.0f), glm::radians(Orientation.x), glm::vec3(1.0f, 0.0f, 0.0f));
+	Rotation = glm::rotate(Rotation, glm::radians(Orientation.y), glm::vec3(0.0f, 1.0f, 0.0f));
+	Rotation = glm::rotate(Rotation, glm::radians(Orientation.z), glm::vec3(0.0f, 0.0f, 1.0f));
 	
-	Model = glm::scale(Model, Scale);
+	Model = glm::scale(Model, Scale) * Rotation;
 
 	glUniformMatrix4fv(glGetUniformLocation(shader.ID, "model"), 1, GL_FALSE, glm::value_ptr(Model));
+	glUniformMatrix4fv(glGetUniformLocation(shader.ID, "rotation"), 1, GL_FALSE, glm::value_ptr(Rotation));
 
 
 	// Draw the actual mesh

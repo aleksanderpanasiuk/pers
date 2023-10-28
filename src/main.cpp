@@ -124,7 +124,7 @@ int main()
 		{
 			cube.Draw(camera);
 			cube.Move(glm::vec3(0.005f, 0.0f, 0.0f));
-			cube.Rotate(glm::vec3(0.0f, 0.5f, 0.0f));
+			cube.Rotate(glm::vec3(0.0f, 0.0f, -0.5f));
 		}
 
 		light.Draw(camera);
