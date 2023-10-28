@@ -6,11 +6,6 @@ Light::Light(Shader& shader, glm::vec3 Position, glm::vec3 Color) :
 
 }
 
-glm::vec4 Light::getColor()
-{
-	return glm::vec4(Light::Color, 1.0f);
-}
-
 glm::mat4 Light::getModel()
 {
 	return Light::Model;

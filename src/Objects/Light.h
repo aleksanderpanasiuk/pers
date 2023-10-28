@@ -8,7 +8,6 @@ class Light : public Cube
 public:
 	Light(Shader& shader, glm::vec3 Position, glm::vec3 Color);
 
-	glm::vec4 getColor();
 	glm::mat4 getModel();
 
 

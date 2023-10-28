@@ -18,16 +18,16 @@ protected:
 
 	std::vector <GLuint> Indices =
 	{
-		0, 1, 2, // bottom
+		0, 1, 2, // front
 		0, 2, 3,
 
-		4, 5, 6, // top
+		4, 5, 6, // back
 		4, 6, 7,
 
-		8, 9, 11, // front
+		8, 9, 11, // bottom
 		8, 11, 10,
 
-		13, 12, 14, // back
+		13, 12, 14, // top
 		13, 14, 15,
 
 		16, 17, 19, // left
