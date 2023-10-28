@@ -52,7 +52,7 @@ int main()
 	};
 
 	// light init and setup
-	Light light(glm::vec3(0.0f, 1.0f, 0.0f));
+	Light light(glm::vec3(0.0f, 3.0f, 0.0f));
 	glm::vec4 lightColor = light.getColor();
 	glm::mat4 lightModel = light.getModel();
 	glm::vec3 lightPos = light.getPosition();
@@ -124,7 +124,7 @@ int main()
 		{
 			cube.Draw(camera);
 			cube.Move(glm::vec3(0.005f, 0.0f, 0.0f));
-			// cube.Orientation.x += 0.1f;
+			cube.Rotate(glm::vec3(0.0f, 0.5f, 0.0f));
 		}
 
 		light.Draw(camera);

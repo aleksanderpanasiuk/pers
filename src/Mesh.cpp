@@ -24,7 +24,7 @@ void Mesh::setTextures(std::vector <Texture>& textures)
 	Mesh::textures = textures;
 }
 
-void Mesh::Draw(Shader& shader, Camera& camera, glm::vec3 Position, glm::vec3 Orientation, glm::mat4 Model)
+void Mesh::Draw(Shader& shader, Camera& camera, glm::vec3 Position, glm::vec3 Orientation, glm::vec3 Scale)
 {
 	// Bind shader to be able to access uniforms
 	shader.Activate();
@@ -60,15 +60,14 @@ void Mesh::Draw(Shader& shader, Camera& camera, glm::vec3 Position, glm::vec3 Or
 
 	// creating transofrm model
 	// Model = Translate * Rotate * Scale;
-	Model = glm::translate(Model, Position);
+	glm::mat4 Model = glm::translate(glm::mat4(1.0f), Position);
 
 	Model = glm::rotate(Model, glm::radians(Orientation.x), glm::vec3(1.0f, 0.0f, 0.0f));
 	Model = glm::rotate(Model, glm::radians(Orientation.y), glm::vec3(0.0f, 1.0f, 0.0f));
 	Model = glm::rotate(Model, glm::radians(Orientation.z), glm::vec3(0.0f, 0.0f, 1.0f));
 	
-	Model = glm::scale(Model, glm::vec3(1, 1, 1));
+	Model = glm::scale(Model, Scale);
 
-	glUniform3fv(glGetUniformLocation(shader.ID, "Position"), 1, glm::value_ptr(Position));
 	glUniformMatrix4fv(glGetUniformLocation(shader.ID, "model"), 1, GL_FALSE, glm::value_ptr(Model));
 
 

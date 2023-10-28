@@ -16,10 +16,13 @@ public:
 private:
 	Mesh mesh;
 	Shader* shader;
-
-	glm::vec3 Position;
-	glm::vec4 Color = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
 	glm::mat4 Model = glm::mat4(1.0f);
+
+	glm::vec3 Position = glm::vec3(0.0f, 0.0f, 0.0f);
+	glm::vec3 Orientation = glm::vec3(0.0f, 0.0f, 0.0f);
+	glm::vec3 Scale = glm::vec3(1.0f, 1.0f, 1.0f);
+
+	glm::vec4 Color = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
 
 	std::vector <Vertex> Vertices =
 	{ //     COORDINATES     //
