@@ -1,11 +1,9 @@
 #include "Light.h"
 
 Light::Light(Shader& shader, glm::vec3 Position) :
-	Object(shader)
+	Cube(shader, Position, 0.1f)
 {
-	Light::Position = Position;
 
-	mesh.setData(Vertices, Indices);
 }
 
 glm::vec4 Light::getColor()
