@@ -52,7 +52,7 @@ int main()
 	};
 
 	// light init and setup
-	Light light(glm::vec3(0.0f, 3.0f, 0.0f));
+	Light light(glm::vec3(0.0f, 1.0f, 0.0f));
 	glm::vec4 lightColor = light.getColor();
 	glm::mat4 lightModel = light.getModel();
 	glm::vec3 lightPos = light.getPosition();
@@ -96,7 +96,7 @@ int main()
 	{
 		for (int j = 0; j < 5; j++)
 		{
-			cubes.push_back(Cube(shaderProgram, glm::vec3(0.5f * i, 0.0f, 0.5f * j), 0.5f));
+			cubes.push_back(Cube(shaderProgram, glm::vec3(2.0f * i, 0.0f, 2.0f * j), 1.0f));
 		}
 	}
 
@@ -124,6 +124,7 @@ int main()
 		{
 			cube.Draw(camera);
 			cube.Move(glm::vec3(0.005f, 0.0f, 0.0f));
+			// cube.Orientation.x += 0.1f;
 		}
 
 		light.Draw(camera);

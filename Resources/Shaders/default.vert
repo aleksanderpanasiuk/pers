@@ -12,13 +12,13 @@ out vec3 color;
 
 uniform mat4 camMatrix;
 uniform mat4 model;
+uniform vec3 Position;
 
 
 void main()
 {
-	crntPos = vec3(model * vec4(aPos, 1.0f));
 	Normal = aNormal;
 	color = aColor;
 	
-	gl_Position = camMatrix * vec4(crntPos, 1.0);
+	gl_Position = camMatrix * model * vec4(aPos-Position, 1.0);
 }

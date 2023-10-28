@@ -15,16 +15,18 @@ public:
 	void Draw(Camera& camera);
 	void changePosition(glm::vec3 newPosition);
 	void Move(glm::vec3 positionChange);
+	bool isVisible = true;
+	glm::vec3 Orientation = glm::vec3(45.0f, 0.0f, 0.0f);
 
 private:
 	Mesh mesh;
 	Shader* shader;
 
 	glm::vec3 Position;
+	
 	float sideLength;
 	glm::vec3 Color = glm::vec3(0.5f, 0.2f, 0.2f);
 	glm::mat4 Model = glm::mat4(1.0f);
-
 	std::vector <glm::vec3> verticesPosition;
 	std::vector <Vertex> Vertices;
 

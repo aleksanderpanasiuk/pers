@@ -13,9 +13,12 @@ Cube::Cube(Shader& shader, glm::vec3 Position, float sideLength)
 
 void Cube::Draw(Camera& camera)
 {
+	if (not isVisible)
+		return;
+
 	recalculateVertices();
 
-	mesh.Draw(*shader, camera, Position, Model);
+	mesh.Draw(*shader, camera, Position, Orientation, Model);
 }
 
 void Cube::recalculateVertices()
