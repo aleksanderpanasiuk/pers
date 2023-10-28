@@ -11,10 +11,10 @@ Cube::Cube(Shader& shader, glm::vec3 Position, float sideLength)
 
 void Cube::Draw(Camera& camera)
 {
-	if (not isVisible)
-		return;
-
-	mesh.Draw(*shader, camera, Position, Orientation, Scale);
+	if (isVisible)
+	{
+		mesh.Draw(*shader, camera, Position, Orientation, Scale);
+	}
 }
 
 void Cube::Move(glm::vec3 poistionChange)
