@@ -1,11 +1,11 @@
 #include "Rectangle.h"
 
-Rectangle::Rectangle(Shader& shader, glm::vec3 Position, glm::vec3 Size) :
+Rectangle::Rectangle(Shader& shader, glm::vec3 Position, glm::vec3 Size, glm::vec3 Color) :
 	Object(shader)
 {
+	changeColor(Color);
 	changePosition(Position);
 	Rectangle::Size = Size;
-	Rectangle::Color = glm::vec3(0.2f, 0.2f, 0.5f);
 
 	verticesPosition = {
 		glm::vec3(-(Size.x / 2),  -(Size.y / 2),   -(Size.z / 2)),

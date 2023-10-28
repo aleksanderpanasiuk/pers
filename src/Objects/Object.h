@@ -9,6 +9,7 @@ public:
 	Object(Shader& shader);
 
 	void Draw(Camera& camera);
+	void changeColor(glm::vec3 newColor);
 
 	void changePosition(glm::vec3 newPosition);
 	void Move(glm::vec3 positionChange);
@@ -22,6 +23,8 @@ public:
 protected:
 	Mesh mesh;
 	Shader* shader;
+
+	glm::vec3 Color;
 
 	glm::vec3 Position = glm::vec3(0.0f, 0.0f, 0.0f);
 	glm::vec3 Orientation = glm::vec3(0.0f, 0.0f, 0.0f);

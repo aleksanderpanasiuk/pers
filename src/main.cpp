@@ -1,5 +1,6 @@
 #include "Objects/Camera.h"
 #include "Mesh.h"
+#include "Objects/Rectangle.h"
 #include "Objects/Cube.h"
 #include "Objects/Light.h"
 
@@ -54,14 +55,15 @@ int main()
 	// light init and setup
 	Shader lightShader("Resources/Shaders/light.vert", "Resources/Shaders/light.frag");
 	lightShader.Activate();
+	glm::vec3 lightColor = glm::vec3(1.0f, 1.0f, 1.0f);
+	glm::vec3 lightPos = glm::vec3(0.0f, 3.0f, 0.0f);
 
-	Light light(lightShader, glm::vec3(0.0f, 3.0f, 0.0f));
-	glm::vec4 lightColor = light.getColor();
+	Light light(lightShader, lightPos, lightColor);
 	glm::mat4 lightModel = light.getModel();
-	glm::vec3 lightPos = light.getPosition();
+	
 
 	lightModel = glm::translate(lightModel, lightPos);
-	lightShader.setLight(lightColor, lightPos);
+	lightShader.setLight(glm::vec4(lightColor, 1.0f), lightPos);
 
 	// light.setShader(lightShader);
 
@@ -81,15 +83,16 @@ int main()
 
 	textureShader.Activate();
 	glUniformMatrix4fv(glGetUniformLocation(textureShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(objectModel));
-	textureShader.setLight(lightColor, lightPos);
+	textureShader.setLight(glm::vec4(lightColor, 1.0f), lightPos);
 	
 	glEnable(GL_DEPTH_TEST);
 
-	// cubes init and setup
+	// rectangles and cubes init and setup
 	Shader shaderProgram("Resources/Shaders/default.vert", "Resources/Shaders/default.frag");
 
 	shaderProgram.Activate();
-	shaderProgram.setLight(lightColor, lightPos);
+	shaderProgram.setLight(glm::vec4(lightColor, 1.0f), lightPos);
+	glm::vec3 cubeColor = glm::vec3(0.5f, 0.2f, 0.2f);
 
 	std::vector <Cube> cubes;
 
@@ -97,7 +100,19 @@ int main()
 	{
 		for (int j = 0; j < 5; j++)
 		{
-			cubes.push_back(Cube(shaderProgram, glm::vec3(2.0f * i, 0.0f, 2.0f * j), 1.0f));
+			cubes.push_back(Cube(shaderProgram, glm::vec3(2.0f * i, 0.0f, 2.0f * j), 1.0f, cubeColor));
+		}
+	}
+
+	std::vector <Rectangle> rectangles;
+	glm::vec3 rectColor = glm::vec3(0.2f, 0.2f, 0.5f);
+	glm::vec3 rectSize = glm::vec3(1.0f, 1.0f, 2.0f);
+
+	for (int i = 0; i < 5; i++)
+	{
+		for (int j = 1; j <= 5; j++)
+		{
+			rectangles.push_back(Rectangle(shaderProgram, glm::vec3(2.0f * i, 0.0f, -3.0f * j), rectSize, rectColor));
 		}
 	}
 
@@ -126,6 +141,13 @@ int main()
 			cube.Draw(camera);
 			cube.Move(glm::vec3(0.005f, 0.0f, 0.0f));
 			cube.Rotate(glm::vec3(0.0f, 0.0f, -0.5f));
+		}
+
+		for (Rectangle& rect : rectangles)
+		{
+			rect.Draw(camera);
+			rect.Move(glm::vec3(0.005f, 0.0f, 0.0f));
+			rect.Rotate(glm::vec3(0.0f, 0.0f, -0.5f));
 		}
 
 		light.Draw(camera);

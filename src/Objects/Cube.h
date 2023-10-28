@@ -6,7 +6,7 @@
 class Cube : public Rectangle
 {
 public:
-	Cube(Shader& shader, glm::vec3 Position, float sideLength);
+	Cube(Shader& shader, glm::vec3 Position, float sideLength, glm::vec3 Color);
 	
 
 protected:

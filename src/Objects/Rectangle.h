@@ -6,7 +6,7 @@
 class Rectangle : public Object
 {
 public:
-	Rectangle(Shader& shader, glm::vec3 Position, glm::vec3 Size);
+	Rectangle(Shader& shader, glm::vec3 Position, glm::vec3 Size, glm::vec3 Color);
 
 protected:
 	glm::vec3 Size;

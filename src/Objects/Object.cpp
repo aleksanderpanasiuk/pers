@@ -13,6 +13,11 @@ void Object::Draw(Camera& camera)
 	}
 }
 
+void Object::changeColor(glm::vec3 Color)
+{
+	Object::Color = Color;
+}
+
 void Object::Move(glm::vec3 poistionChange)
 {
 	Position = Position + poistionChange;
@@ -37,3 +42,5 @@ glm::vec3 Object::getPosition()
 {
 	return Object::Position;
 }
+
+
