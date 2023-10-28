@@ -1,16 +1,17 @@
-#ifndef CUBE_CLASS_H
-#define CUBE_CLASS_H
+#ifndef RECTANGLE_CLASS_H
+#define RECTANGLE_CLASS_H
 
-#include "Rectangle.h"
+#include "Object.h"
 
-class Cube : public Rectangle
+class Rectangle : public Object
 {
 public:
-	Cube(Shader& shader, glm::vec3 Position, float sideLength);
-	
+	Rectangle(Shader& shader, glm::vec3 Position, glm::vec3 Size);
 
 protected:
-	float sideLength;
+	glm::vec3 Size;
+	glm::vec3 Color;
+
 
 	std::vector <glm::vec3> verticesPosition;
 	std::vector <Vertex> Vertices;
@@ -37,4 +38,4 @@ protected:
 	};
 };
 
-#endif
+#endif // !RECTANGLE_CLASS_H
