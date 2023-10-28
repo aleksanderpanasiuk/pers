@@ -7,11 +7,15 @@ class Light
 {
 public:
 	Light(glm::vec3 Position);
+
 	void setShader(Shader& shader);
 	void Draw(Camera& camera);
+
 	glm::vec3 getPosition();
 	glm::vec4 getColor();
 	glm::mat4 getModel();
+
+	bool isVisible = true;
 
 private:
 	Mesh mesh;

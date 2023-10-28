@@ -14,7 +14,10 @@ void Light::setShader(Shader& shader)
 
 void Light::Draw(Camera& camera)
 {
-	mesh.Draw(*shader, camera, Position, Orientation, Scale);
+	if (isVisible)
+	{
+		mesh.Draw(*shader, camera, Position, Orientation, Scale);
+	}
 }
 
 glm::vec3 Light::getPosition()
