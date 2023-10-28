@@ -1,5 +1,9 @@
-#include "Objects/Camera.h"
+#include "imgui.h"
+#include "imgui_impl_glfw.h"
+#include "imgui_impl_opengl3.h"
+
 #include "Mesh.h"
+#include "Objects/Camera.h"
 #include "Objects/Rectangle.h"
 #include "Objects/Cube.h"
 #include "Objects/Light.h"
@@ -119,6 +123,13 @@ int main()
 	// Creates camera object
 	Camera camera(width, height, glm::vec3(0.0f, 0.0f, 2.0f));
 
+	IMGUI_CHECKVERSION();
+	ImGui::CreateContext();
+	ImGuiIO& io = ImGui::GetIO(); (void)io;
+	ImGui::StyleColorsDark();
+	ImGui_ImplGlfw_InitForOpenGL(window, true);
+	ImGui_ImplOpenGL3_Init("#version 330");
+
 	// main loop
 	while (!glfwWindowShouldClose(window))
 	{
@@ -127,6 +138,10 @@ int main()
 		// Clean the back buffer and depth buffer
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+
+		ImGui_ImplOpenGL3_NewFrame();
+		ImGui_ImplGlfw_NewFrame();
+		ImGui::NewFrame();
 
 		// Handles camera inputs
 		camera.Inputs(window);
@@ -152,6 +167,13 @@ int main()
 
 		light.Draw(camera);
 
+		ImGui::Begin("TEST IMGUI WINDOW");
+		ImGui::Text("hello there");
+		ImGui::End();
+
+		ImGui::Render();
+		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
 
 		// Swap the back buffer with the front buffer
 		glfwSwapBuffers(window);
@@ -165,6 +187,10 @@ int main()
 		}
 
 	}
+
+	ImGui_ImplOpenGL3_Shutdown();
+	ImGui_ImplGlfw_Shutdown();
+	ImGui::DestroyContext();
 
 	textureShader.Delete();
 	shaderProgram.Delete();
