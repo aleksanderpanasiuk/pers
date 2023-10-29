@@ -5,7 +5,7 @@ Rectangle::Rectangle(Shader& shader, glm::vec3 Position, glm::vec3 Size, glm::ve
 {
 	changeColor(Color);
 	changePosition(Position);
-	Rectangle::Size = Size;
+	Rectangle::Size = glm::vec3(std::abs(Size.x), std::abs(Size.y), std::abs(Size.z));
 
 	/*
 		   +----------------------------------+
