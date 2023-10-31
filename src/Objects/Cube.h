@@ -1,9 +1,9 @@
 #ifndef CUBE_CLASS_H
 #define CUBE_CLASS_H
 
-#include "Rectangle.h"
+#include "Cuboid.h"
 
-class Cube : public Rectangle
+class Cube : public Cuboid
 {
 public:
 	Cube(Shader& shader, glm::vec3 Position, float sideLength, glm::vec3 Color);

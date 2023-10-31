@@ -72,7 +72,7 @@
     <ClCompile Include="src\Objects\Object.cpp">
       <Filter>Source Files\Objects</Filter>
     </ClCompile>
-    <ClCompile Include="src\Objects\Rectangle.cpp">
+    <ClCompile Include="src\Objects\Cubiod.cpp">
       <Filter>Source Files\Objects</Filter>
     </ClCompile>
     <ClCompile Include="imgui\imgui.cpp">
@@ -148,7 +148,7 @@
     <ClInclude Include="src\Objects\Object.h">
       <Filter>Header Files\Objects</Filter>
     </ClInclude>
-    <ClInclude Include="src\Objects\Rectangle.h">
+    <ClInclude Include="src\Objects\Cuboid.h">
       <Filter>Header Files\Objects</Filter>
     </ClInclude>
     <ClInclude Include="imgui\imgui_impl_glfw.h">

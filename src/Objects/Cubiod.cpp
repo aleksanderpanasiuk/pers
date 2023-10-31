@@ -1,11 +1,11 @@
-#include "Rectangle.h"
+#include "Cuboid.h"
 
-Rectangle::Rectangle(Shader& shader, glm::vec3 Position, glm::vec3 Size, glm::vec3 Color) :
+Cuboid::Cuboid(Shader& shader, glm::vec3 Position, glm::vec3 Size, glm::vec3 Color) :
 	Object(shader)
 {
 	changeColor(Color);
 	changePosition(Position);
-	Rectangle::Size = glm::vec3(std::abs(Size.x), std::abs(Size.y), std::abs(Size.z));
+	Cuboid::Size = glm::vec3(std::abs(Size.x), std::abs(Size.y), std::abs(Size.z));
 
 	/*
 		   +----------------------------------+

@@ -34,7 +34,7 @@
     <ClCompile Include="src\Objects\Cube.cpp" />
     <ClCompile Include="src\Objects\Light.cpp" />
     <ClCompile Include="src\Objects\Object.cpp" />
-    <ClCompile Include="src\Objects\Rectangle.cpp" />
+    <ClCompile Include="src\Objects\Cubiod.cpp" />
     <ClCompile Include="src\Shader.cpp" />
     <ClCompile Include="src\stb.cpp" />
     <ClCompile Include="src\Texture.cpp" />
@@ -65,7 +65,7 @@
     <ClInclude Include="src\Objects\Cube.h" />
     <ClInclude Include="src\Objects\Light.h" />
     <ClInclude Include="src\Objects\Object.h" />
-    <ClInclude Include="src\Objects\Rectangle.h" />
+    <ClInclude Include="src\Objects\Cuboid.h" />
     <ClInclude Include="src\Shader.h" />
     <ClInclude Include="src\Texture.h" />
     <ClInclude Include="src\VAO.h" />

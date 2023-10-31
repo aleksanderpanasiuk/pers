@@ -1,12 +1,12 @@
-#ifndef RECTANGLE_CLASS_H
-#define RECTANGLE_CLASS_H
+#ifndef CUBOID_CLASS_H
+#define CUBOID_CLASS_H
 
 #include "Object.h"
 
-class Rectangle : public Object
+class Cuboid : public Object
 {
 public:
-	Rectangle(Shader& shader, glm::vec3 Position, glm::vec3 Size, glm::vec3 Color);
+	Cuboid(Shader& shader, glm::vec3 Position, glm::vec3 Size, glm::vec3 Color);
 
 protected:
 	glm::vec3 Size;
@@ -38,4 +38,4 @@ protected:
 	};
 };
 
-#endif // !RECTANGLE_CLASS_H
+#endif // !CUBOID_CLASS_H

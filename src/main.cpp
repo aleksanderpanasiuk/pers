@@ -4,7 +4,7 @@
 
 #include "Mesh.h"
 #include "Objects/Camera.h"
-#include "Objects/Rectangle.h"
+#include "Objects/Cuboid.h"
 #include "Objects/Cube.h"
 #include "Objects/Light.h"
 
@@ -108,7 +108,7 @@ int main()
 		}
 	}
 
-	std::vector <Rectangle> rectangles;
+	std::vector <Cuboid> cuboids;
 	glm::vec3 rectColor = glm::vec3(0.2f, 0.2f, 0.5f);
 	glm::vec3 rectSize = glm::vec3(1.0f, 1.0f, 2.0f);
 
@@ -116,7 +116,7 @@ int main()
 	{
 		for (int j = 1; j <= 5; j++)
 		{
-			rectangles.push_back(Rectangle(shaderProgram, glm::vec3(2.0f * i, 0.0f, -3.0f * j), rectSize, rectColor));
+			cuboids.push_back(Cuboid(shaderProgram, glm::vec3(2.0f * i, 0.0f, -3.0f * j), rectSize, rectColor));
 		}
 	}
 
@@ -158,11 +158,11 @@ int main()
 			cube.Rotate(glm::vec3(0.0f, 0.0f, -0.5f));
 		}
 
-		for (Rectangle& rect : rectangles)
+		for (Cuboid& cuboid : cuboids)
 		{
-			rect.Draw(camera);
-			rect.Move(glm::vec3(0.005f, 0.0f, 0.0f));
-			rect.Rotate(glm::vec3(0.0f, 0.0f, -0.5f));
+			cuboid.Draw(camera);
+			cuboid.Move(glm::vec3(0.005f, 0.0f, 0.0f));
+			cuboid.Rotate(glm::vec3(0.0f, 0.0f, -0.5f));
 		}
 
 		light.Draw(camera);
