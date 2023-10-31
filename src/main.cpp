@@ -130,53 +130,26 @@ int main()
 	ImGui_ImplGlfw_InitForOpenGL(window, true);
 	ImGui_ImplOpenGL3_Init("#version 330");
 
+	// delta time
+	float previousTime = glfwGetTime();
+	float previousTimeFPS = glfwGetTime();
+	float FPS = 60;
+
 	// main loop
 	while (!glfwWindowShouldClose(window))
 	{
-		// background color
-		glClearColor(0.13f, 0.13f, 0.13f, 1.0f);
+		// delta tiem calculations
+		float currentTime = glfwGetTime();
+		float deltaTime = currentTime - previousTime;
+		previousTime = currentTime;
+
 		// Clean the back buffer and depth buffer
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 
-		ImGui_ImplOpenGL3_NewFrame();
-		ImGui_ImplGlfw_NewFrame();
-		ImGui::NewFrame();
-
 		// Handles camera inputs
-		camera.Inputs(window);
+		camera.Inputs(deltaTime, window);
 		camera.updateMatrix(45.0f, 0.1f, 100.0f);
-
-
-		// Draws different meshes
-		// floor.Draw(textureShader, camera, objectPos);
-
-		for (Cube& cube : cubes)
-		{
-			cube.Draw(camera);
-			cube.Move(glm::vec3(0.005f, 0.0f, 0.0f));
-			cube.Rotate(glm::vec3(0.0f, 0.0f, -0.5f));
-		}
-
-		for (Cuboid& cuboid : cuboids)
-		{
-			cuboid.Draw(camera);
-			cuboid.Move(glm::vec3(0.005f, 0.0f, 0.0f));
-			cuboid.Rotate(glm::vec3(0.0f, 0.0f, -0.5f));
-		}
-
-		light.Draw(camera);
-
-		ImGui::Begin("TEST IMGUI WINDOW");
-		ImGui::Text("hello there");
-		ImGui::End();
-
-		ImGui::Render();
-		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-
-
-		// Swap the back buffer with the front buffer
-		glfwSwapBuffers(window);
 
 		glfwPollEvents();
 
@@ -186,6 +159,59 @@ int main()
 			break;
 		}
 
+
+		// Draws different meshes
+		// floor.Draw(textureShader, camera, objectPos);
+
+		for (Cube& cube : cubes)
+		{
+			cube.Move(deltaTime, glm::vec3(1.0f, 0.0f, 0.0f));
+			cube.Rotate(deltaTime, glm::vec3(0.0f, 0.0f, -50.0f));
+		}
+
+		for (Cuboid& cuboid : cuboids)
+		{
+			cuboid.Move(deltaTime, glm::vec3(1.0f, 0.0f, 0.0f));
+			cuboid.Rotate(deltaTime, glm::vec3(0.0f, 0.0f, -50.0f));
+		}
+
+
+		// rendering frame
+		float currentTimeFPS = glfwGetTime();
+
+		if (currentTimeFPS - previousTimeFPS >= 1 / FPS)
+		{
+			previousTimeFPS = currentTimeFPS;
+
+			// background color
+			glClearColor(0.13f, 0.13f, 0.13f, 1.0f);
+			
+			ImGui_ImplOpenGL3_NewFrame();
+			ImGui_ImplGlfw_NewFrame();
+			ImGui::NewFrame();
+
+			for (Cube& cube : cubes)
+			{
+				cube.Draw(camera);
+			}
+
+			for (Cuboid& cuboid : cuboids)
+			{
+				cuboid.Draw(camera);
+			}
+
+			light.Draw(camera);
+
+			ImGui::Begin("TEST IMGUI WINDOW");
+			ImGui::Text(("Delta Time: " + std::to_string(deltaTime)).c_str());
+			ImGui::End();
+			ImGui::Render();
+			ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
+
+			// Swap the back buffer with the front buffer
+			glfwSwapBuffers(window);
+		}
 	}
 
 	ImGui_ImplOpenGL3_Shutdown();

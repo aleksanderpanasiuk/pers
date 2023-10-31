@@ -13,7 +13,7 @@ public:
 
 	void changePosition(glm::vec3 newPosition);
 	void Move(float deltaTime, glm::vec3 positionChange);
-	void Rotate(glm::vec3 rotationChange);
+	void Rotate(float deltaTime, glm::vec3 rotationChange);
 	void Rescale(glm::vec3 newScale);
 
 	glm::vec3 getPosition();

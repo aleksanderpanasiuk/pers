@@ -28,9 +28,9 @@ void Object::changePosition(glm::vec3 newPosition)
 	Position = newPosition;
 }
 
-void Object::Rotate(glm::vec3 rotationChange)
+void Object::Rotate(float deltaTime, glm::vec3 rotationChange)
 {
-	Orientation += rotationChange;
+	Orientation += rotationChange * deltaTime;
 }
 
 void Object::Rescale(glm::vec3 newScale)
