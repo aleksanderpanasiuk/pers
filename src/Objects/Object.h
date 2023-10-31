@@ -12,7 +12,7 @@ public:
 	void changeColor(glm::vec3 Color);
 
 	void changePosition(glm::vec3 newPosition);
-	void Move(glm::vec3 positionChange);
+	void Move(float deltaTime, glm::vec3 positionChange);
 	void Rotate(glm::vec3 rotationChange);
 	void Rescale(glm::vec3 newScale);
 

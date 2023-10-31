@@ -18,9 +18,9 @@ void Object::changeColor(glm::vec3 Color)
 	Object::Color = Color;
 }
 
-void Object::Move(glm::vec3 poistionChange)
+void Object::Move(float deltaTime, glm::vec3 poistionChange)
 {
-	Position = Position + poistionChange;
+	Position = Position + (deltaTime * poistionChange);
 }
 
 void Object::changePosition(glm::vec3 newPosition)
