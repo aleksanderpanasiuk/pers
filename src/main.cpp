@@ -181,6 +181,7 @@ int main()
 
 		if (currentTimeFPS - previousTimeFPS >= 1 / FPS)
 		{
+			double FrameDelta = currentTimeFPS - previousTimeFPS;
 			previousTimeFPS = currentTimeFPS;
 
 			// background color
@@ -204,6 +205,8 @@ int main()
 
 			ImGui::Begin("TEST IMGUI WINDOW");
 			ImGui::Text(("Delta Time: " + std::to_string(deltaTime)).c_str());
+			ImGui::Text(("Frame Delta Time: " + std::to_string(FrameDelta)).c_str());
+			ImGui::Text(("Frames per second: " + std::to_string(1 / FrameDelta)).c_str());
 			ImGui::End();
 			ImGui::Render();
 			ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
