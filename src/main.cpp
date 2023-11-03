@@ -20,22 +20,6 @@ const float FPS = 60.0f;
 const glm::vec4 backgroundColor = glm::vec4(0.13f, 0.13f, 0.13f, 1.0f);
 const glm::vec3 lightColor = glm::vec3(1.0f, 1.0f, 1.0f);
 
-// Vertices coordinates
-Vertex floorVertices[] =
-{ //               COORDINATES           /            COLORS          /           NORMALS         /       TEXTURE COORDINATES    //
-	Vertex{glm::vec3(-1.0f, 0.0f,  1.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec2(0.0f, 0.0f)},
-	Vertex{glm::vec3(-1.0f, 0.0f, -1.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec2(0.0f, 1.0f)},
-	Vertex{glm::vec3( 1.0f, 0.0f, -1.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec2(1.0f, 1.0f)},
-	Vertex{glm::vec3( 1.0f, 0.0f,  1.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec2(1.0f, 0.0f)}
-};
-
-// Indices for vertices order
-GLuint floorIndices[] =
-{
-	0, 1, 2,
-	0, 2, 3
-};
-
 
 int main()
 {
@@ -75,7 +59,23 @@ int main()
 	lightModel = glm::translate(lightModel, lightPos);
 	lightShader.setLight(glm::vec4(lightColor, 1.0f), lightPos);
 
+	/*	EXAMPLE TEXTURE USAGE
 	// floor setup
+	// Vertices coordinates
+	Vertex floorVertices[] =
+	{ //               COORDINATES           /            COLORS          /           NORMALS         /       TEXTURE COORDINATES    //
+		Vertex{glm::vec3(-1.0f, 0.0f,  1.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec2(0.0f, 0.0f)},
+		Vertex{glm::vec3(-1.0f, 0.0f, -1.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec2(0.0f, 1.0f)},
+		Vertex{glm::vec3(1.0f, 0.0f, -1.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec2(1.0f, 1.0f)},
+		Vertex{glm::vec3(1.0f, 0.0f,  1.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec2(1.0f, 0.0f)}
+	};
+
+	// Indices for vertices order
+	GLuint floorIndices[] =
+	{
+		0, 1, 2,
+		0, 2, 3
+	};
 	std::vector <Vertex> verts(floorVertices, floorVertices + sizeof(floorVertices) / sizeof(Vertex));
 	std::vector <GLuint> ind(floorIndices, floorIndices + sizeof(floorIndices) / sizeof(GLuint));
 
@@ -92,7 +92,8 @@ int main()
 	textureShader.Activate();
 	glUniformMatrix4fv(glGetUniformLocation(textureShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(objectModel));
 	textureShader.setLight(glm::vec4(lightColor, 1.0f), lightPos);
-	
+	*/
+
 	glEnable(GL_DEPTH_TEST);
 
 	// rectangles and cubes init and setup
@@ -227,7 +228,7 @@ int main()
 	ImGui_ImplGlfw_Shutdown();
 	ImGui::DestroyContext();
 
-	textureShader.Delete();
+	// textureShader.Delete();
 	shaderProgram.Delete();
 	lightShader.Delete();
 	
