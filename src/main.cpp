@@ -10,8 +10,15 @@
 
 #include <memory>
 
-const unsigned int width = 1280;
-const unsigned int height = 720;
+// screen dimensions
+const unsigned int WIDTH = 1280;
+const unsigned int HEIGHT = 720;
+
+const float FPS = 60.0f;
+
+// colors
+const glm::vec4 backgroundColor = glm::vec4(0.13f, 0.13f, 0.13f, 1.0f);
+const glm::vec3 lightColor = glm::vec3(1.0f, 1.0f, 1.0f);
 
 // Vertices coordinates
 Vertex floorVertices[] =
@@ -38,7 +45,7 @@ int main()
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-	GLFWwindow* window = glfwCreateWindow(width, height, "PERS", NULL, NULL);
+	GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "PERS", NULL, NULL);
 
 	if (window == NULL)
 	{
@@ -49,7 +56,7 @@ int main()
 
 	glfwMakeContextCurrent(window);
 	gladLoadGL();
-	glViewport(0, 0, width, height);
+	glViewport(0, 0, WIDTH, HEIGHT);
 
 	std::vector <Texture> textures = 
 	{
@@ -59,7 +66,6 @@ int main()
 	// light init and setup
 	Shader lightShader("Resources/Shaders/light.vert", "Resources/Shaders/light.frag");
 	lightShader.Activate();
-	glm::vec3 lightColor = glm::vec3(1.0f, 1.0f, 1.0f);
 	glm::vec3 lightPos = glm::vec3(0.0f, 3.0f, 0.0f);
 
 	Light light(lightShader, lightPos, lightColor);
@@ -68,8 +74,6 @@ int main()
 
 	lightModel = glm::translate(lightModel, lightPos);
 	lightShader.setLight(glm::vec4(lightColor, 1.0f), lightPos);
-
-	// light.setShader(lightShader);
 
 	// floor setup
 	std::vector <Vertex> verts(floorVertices, floorVertices + sizeof(floorVertices) / sizeof(Vertex));
@@ -121,7 +125,7 @@ int main()
 	}
 
 	// Creates camera object
-	Camera camera(width, height, glm::vec3(0.0f, 0.0f, 2.0f));
+	Camera camera(WIDTH, HEIGHT, glm::vec3(0.0f, 0.0f, 2.0f));
 
 	IMGUI_CHECKVERSION();
 	ImGui::CreateContext();
@@ -133,7 +137,6 @@ int main()
 	// delta time
 	float previousTime = glfwGetTime();
 	float previousTimeFPS = glfwGetTime();
-	const float FPS = 60;
 
 	// main loop
 	while (!glfwWindowShouldClose(window))
@@ -185,7 +188,9 @@ int main()
 			previousTimeFPS = currentTimeFPS;
 
 			// background color
-			glClearColor(0.13f, 0.13f, 0.13f, 1.0f);
+			glClearColor(backgroundColor[0], backgroundColor[1], 
+				backgroundColor[2], backgroundColor[3]
+			);
 			
 			ImGui_ImplOpenGL3_NewFrame();
 			ImGui_ImplGlfw_NewFrame();
@@ -203,12 +208,13 @@ int main()
 
 			light.Draw(camera);
 
-			ImGui::Begin("TEST IMGUI WINDOW");
+			ImGui::Begin("Diagnostic data");
 			ImGui::Text(("Delta Time: " + std::to_string(deltaTime)).c_str());
 			ImGui::Text(("Frame Delta Time: " + std::to_string(FrameDelta)).c_str());
 			ImGui::Text(("Frames per second: " + std::to_string(1 / FrameDelta)).c_str());
 			ImGui::End();
 			ImGui::Render();
+
 			ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
 
