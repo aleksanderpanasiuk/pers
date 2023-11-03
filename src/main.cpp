@@ -133,7 +133,7 @@ int main()
 	// delta time
 	float previousTime = glfwGetTime();
 	float previousTimeFPS = glfwGetTime();
-	float FPS = 60;
+	const float FPS = 60;
 
 	// main loop
 	while (!glfwWindowShouldClose(window))
