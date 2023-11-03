@@ -5,7 +5,7 @@ Cuboid::Cuboid(Shader& shader, glm::vec3 Position, glm::vec3 Size, glm::vec3 Col
 {
 	changeColor(Color);
 	changePosition(Position);
-	Cuboid::Size = glm::vec3(std::abs(Size.x), std::abs(Size.y), std::abs(Size.z));
+	Object::Size = glm::vec3(std::abs(Size.x), std::abs(Size.y), std::abs(Size.z));
 
 	/*
 		   +----------------------------------+
