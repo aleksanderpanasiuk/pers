@@ -2,6 +2,9 @@
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl3.h"
 
+#include "PhysicsSimulation.h"
+#include "UserInterface.h"
+#include "Renderer.h"
 #include "Mesh.h"
 #include "Objects/Camera.h"
 #include "Objects/Cuboid.h"
@@ -164,7 +167,6 @@ int main()
 		}
 
 
-		// Draws different meshes
 		// floor.Draw(textureShader, camera, objectPos);
 
 		for (Cube& cube : cubes)

@@ -66,8 +66,11 @@
     <ClInclude Include="src\Objects\Light.h" />
     <ClInclude Include="src\Objects\Object.h" />
     <ClInclude Include="src\Objects\Cuboid.h" />
+    <ClInclude Include="src\PhysicsSimulation.h" />
+    <ClInclude Include="src\Renderer.h" />
     <ClInclude Include="src\Shader.h" />
     <ClInclude Include="src\Texture.h" />
+    <ClInclude Include="src\UserInterface.h" />
     <ClInclude Include="src\VAO.h" />
     <ClInclude Include="src\VBO.h" />
   </ItemGroup>
