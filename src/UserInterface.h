@@ -10,6 +10,7 @@ class UserInterface
 public:
 	void init(GLFWwindow* window);
 	void display();
+	void close();
 };
 
 #endif // !USER_INTERFACE_CLASS_H
