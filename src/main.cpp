@@ -1,7 +1,3 @@
-#include "imgui.h"
-#include "imgui_impl_glfw.h"
-#include "imgui_impl_opengl3.h"
-
 #include "PhysicsSimulation.h"
 #include "UserInterface.h"
 #include "Renderer.h"
@@ -129,14 +125,10 @@ int main()
 	}
 
 	// Creates camera object
-	Camera camera(WIDTH, HEIGHT, glm::vec3(0.0f, 0.0f, 2.0f));
+	Camera camera(WIDTH, HEIGHT, glm::vec3(0.0f, 2.0f, 2.0f));
 
-	IMGUI_CHECKVERSION();
-	ImGui::CreateContext();
-	ImGuiIO& io = ImGui::GetIO(); (void)io;
-	ImGui::StyleColorsDark();
-	ImGui_ImplGlfw_InitForOpenGL(window, true);
-	ImGui_ImplOpenGL3_Init("#version 330");
+	UserInterface userInterface;
+	userInterface.init(window);
 
 	// delta time
 	float previousTime = glfwGetTime();
