@@ -3,7 +3,7 @@
 #include "Renderer.h"
 #include "Mesh.h"
 #include "Objects/Camera.h"
-#include "Objects/Cuboid.h"
+#include "Objects/Cube.h"
 #include "Objects/Light.h"
 
 #include <memory>
@@ -101,19 +101,19 @@ int main()
 	shaderProgram.setLight(glm::vec4(lightColor, 1.0f), lightPos);
 	glm::vec3 cubeColor = glm::vec3(0.5f, 0.2f, 0.2f);
 
-	std::vector <Cuboid> cubes;
+	std::vector <Cube> cubes;
 
 	for (int i = 0; i < 5; i++)
 	{
 		for (int j = 0; j < 5; j++)
 		{
-			cubes.push_back(Cuboid(shaderProgram, 
+			cubes.push_back(Cube(shaderProgram, 
 				glm::vec3(2.0f * i, 0.0f, 2.0f * j), glm::vec3(1.0f, 1.0f, 1.0f),
 				cubeColor));
 		}
 	}
 
-	std::vector <Cuboid> cuboids;
+	std::vector <Cube> Cubes;
 	glm::vec3 rectColor = glm::vec3(0.2f, 0.2f, 0.5f);
 	glm::vec3 rectSize = glm::vec3(1.0f, 1.0f, 2.0f);
 
@@ -121,7 +121,7 @@ int main()
 	{
 		for (int j = 1; j <= 5; j++)
 		{
-			cuboids.push_back(Cuboid(shaderProgram, glm::vec3(2.0f * i, 0.0f, -3.0f * j), rectSize, rectColor));
+			Cubes.push_back(Cube(shaderProgram, glm::vec3(2.0f * i, 0.0f, -3.0f * j), rectSize, rectColor));
 		}
 	}
 
@@ -162,16 +162,16 @@ int main()
 
 		// floor.Draw(textureShader, camera, objectPos);
 
-		for (Cuboid& cube : cubes)
+		for (Cube& cube : cubes)
 		{
 			cube.Move(deltaTime, glm::vec3(1.0f, 0.0f, 0.0f));
 			cube.Rotate(deltaTime, glm::vec3(0.0f, 0.0f, -50.0f));
 		}
 
-		for (Cuboid& cuboid : cuboids)
+		for (Cube& Cube : Cubes)
 		{
-			cuboid.Move(deltaTime, glm::vec3(1.0f, 0.0f, 0.0f));
-			cuboid.Rotate(deltaTime, glm::vec3(0.0f, 0.0f, -50.0f));
+			Cube.Move(deltaTime, glm::vec3(1.0f, 0.0f, 0.0f));
+			Cube.Rotate(deltaTime, glm::vec3(0.0f, 0.0f, -50.0f));
 		}
 
 
@@ -192,14 +192,14 @@ int main()
 			ImGui_ImplGlfw_NewFrame();
 			ImGui::NewFrame();
 
-			for (Cuboid& cube : cubes)
+			for (Cube& cube : cubes)
 			{
 				cube.Draw(camera);
 			}
 
-			for (Cuboid& cuboid : cuboids)
+			for (Cube& Cube : Cubes)
 			{
-				cuboid.Draw(camera);
+				Cube.Draw(camera);
 			}
 
 			light.Draw(camera);

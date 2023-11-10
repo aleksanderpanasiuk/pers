@@ -1,6 +1,6 @@
-#include "Cuboid.h"
+#include "Cube.h"
 
-Cuboid::Cuboid(Shader& shader, glm::vec3 Position, glm::vec3 Size, glm::vec3 Color) :
+Cube::Cube(Shader& shader, glm::vec3 Position, glm::vec3 Size, glm::vec3 Color) :
 	Object(shader)
 {
 	changeColor(Color);

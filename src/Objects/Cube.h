@@ -1,12 +1,12 @@
-#ifndef CUBOID_CLASS_H
-#define CUBOID_CLASS_H
+#ifndef Cube_CLASS_H
+#define Cube_CLASS_H
 
 #include "Object.h"
 
-class Cuboid : public Object
+class Cube : public Object
 {
 public:
-	Cuboid(Shader& shader, glm::vec3 Position, glm::vec3 Size, glm::vec3 Color);
+	Cube(Shader& shader, glm::vec3 Position, glm::vec3 Size, glm::vec3 Color);
 
 protected:
 	glm::vec3 Color;
@@ -37,4 +37,4 @@ protected:
 	};
 };
 
-#endif // !CUBOID_CLASS_H
+#endif // !Cube_CLASS_H
