@@ -40,6 +40,7 @@
     <ClCompile Include="src\UserInterface.cpp" />
     <ClCompile Include="src\VAO.cpp" />
     <ClCompile Include="src\VBO.cpp" />
+    <ClCompile Include="src\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Shaders\default.frag" />
@@ -72,6 +73,7 @@
     <ClInclude Include="src\UserInterface.h" />
     <ClInclude Include="src\VAO.h" />
     <ClInclude Include="src\VBO.h" />
+    <ClInclude Include="src\Window.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\Textures\gold.png" />
