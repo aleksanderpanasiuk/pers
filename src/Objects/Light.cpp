@@ -1,7 +1,7 @@
 #include "Light.h"
 
 Light::Light(Shader& shader, glm::vec3 Position, glm::vec3 Color) :
-	Cube(shader, Position, 0.1f, Color)
+	Cuboid(shader, Position, glm::vec3(0.1f, 0.1f, 0.1f), Color)
 {
 
 }

@@ -1,9 +1,9 @@
 #ifndef LIGHT_CLASS_H
 #define LIGHT_CLASS_H
 
-#include "Cube.h"
+#include "Cuboid.h"
 
-class Light : public Cube
+class Light : public Cuboid
 {
 public:
 	Light(Shader& shader, glm::vec3 Position, glm::vec3 Color);

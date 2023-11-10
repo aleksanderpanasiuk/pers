@@ -4,7 +4,6 @@
 #include "Mesh.h"
 #include "Objects/Camera.h"
 #include "Objects/Cuboid.h"
-#include "Objects/Cube.h"
 #include "Objects/Light.h"
 
 #include <memory>
@@ -102,13 +101,15 @@ int main()
 	shaderProgram.setLight(glm::vec4(lightColor, 1.0f), lightPos);
 	glm::vec3 cubeColor = glm::vec3(0.5f, 0.2f, 0.2f);
 
-	std::vector <Cube> cubes;
+	std::vector <Cuboid> cubes;
 
 	for (int i = 0; i < 5; i++)
 	{
 		for (int j = 0; j < 5; j++)
 		{
-			cubes.push_back(Cube(shaderProgram, glm::vec3(2.0f * i, 0.0f, 2.0f * j), 1.0f, cubeColor));
+			cubes.push_back(Cuboid(shaderProgram, 
+				glm::vec3(2.0f * i, 0.0f, 2.0f * j), glm::vec3(1.0f, 1.0f, 1.0f),
+				cubeColor));
 		}
 	}
 
@@ -161,7 +162,7 @@ int main()
 
 		// floor.Draw(textureShader, camera, objectPos);
 
-		for (Cube& cube : cubes)
+		for (Cuboid& cube : cubes)
 		{
 			cube.Move(deltaTime, glm::vec3(1.0f, 0.0f, 0.0f));
 			cube.Rotate(deltaTime, glm::vec3(0.0f, 0.0f, -50.0f));
@@ -191,7 +192,7 @@ int main()
 			ImGui_ImplGlfw_NewFrame();
 			ImGui::NewFrame();
 
-			for (Cube& cube : cubes)
+			for (Cuboid& cube : cubes)
 			{
 				cube.Draw(camera);
 			}
