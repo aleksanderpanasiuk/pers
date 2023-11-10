@@ -99,19 +99,6 @@ int main()
 
 	shaderProgram.Activate();
 	shaderProgram.setLight(glm::vec4(lightColor, 1.0f), lightPos);
-	glm::vec3 cubeColor = glm::vec3(0.5f, 0.2f, 0.2f);
-
-	std::vector <Cube> cubes;
-
-	for (int i = 0; i < 5; i++)
-	{
-		for (int j = 0; j < 5; j++)
-		{
-			cubes.push_back(Cube(shaderProgram, 
-				glm::vec3(2.0f * i, 0.0f, 2.0f * j), glm::vec3(1.0f, 1.0f, 1.0f),
-				cubeColor));
-		}
-	}
 
 	std::vector <Cube> Cubes;
 	glm::vec3 rectColor = glm::vec3(0.2f, 0.2f, 0.5f);
@@ -162,12 +149,6 @@ int main()
 
 		// floor.Draw(textureShader, camera, objectPos);
 
-		for (Cube& cube : cubes)
-		{
-			cube.Move(deltaTime, glm::vec3(1.0f, 0.0f, 0.0f));
-			cube.Rotate(deltaTime, glm::vec3(0.0f, 0.0f, -50.0f));
-		}
-
 		for (Cube& Cube : Cubes)
 		{
 			Cube.Move(deltaTime, glm::vec3(1.0f, 0.0f, 0.0f));
@@ -191,11 +172,6 @@ int main()
 			ImGui_ImplOpenGL3_NewFrame();
 			ImGui_ImplGlfw_NewFrame();
 			ImGui::NewFrame();
-
-			for (Cube& cube : cubes)
-			{
-				cube.Draw(camera);
-			}
 
 			for (Cube& Cube : Cubes)
 			{
