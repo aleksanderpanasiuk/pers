@@ -115,8 +115,11 @@ int main()
 	// Creates camera object
 	Camera camera(WIDTH, HEIGHT, glm::vec3(0.0f, 2.0f, 2.0f));
 
+
+	// initialize user interface with basic window
 	UserInterface userInterface;
 	userInterface.init(window);
+	userInterface.addWindow("test", "test");
 
 	// delta time
 	float previousTime = glfwGetTime();
@@ -169,9 +172,6 @@ int main()
 				backgroundColor[2], backgroundColor[3]
 			);
 			
-			ImGui_ImplOpenGL3_NewFrame();
-			ImGui_ImplGlfw_NewFrame();
-			ImGui::NewFrame();
 
 			for (Cube& Cube : Cubes)
 			{
@@ -180,15 +180,7 @@ int main()
 
 			light.Draw(camera);
 
-			ImGui::Begin("Diagnostic data");
-			ImGui::Text(("Delta Time: " + std::to_string(deltaTime)).c_str());
-			ImGui::Text(("Frame Delta Time: " + std::to_string(FrameDelta)).c_str());
-			ImGui::Text(("Frames per second: " + std::to_string(1 / FrameDelta)).c_str());
-			ImGui::End();
-			ImGui::Render();
-
-			ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-
+			userInterface.Display(deltaTime, FrameDelta);
 
 			// Swap the back buffer with the front buffer
 			glfwSwapBuffers(window);
