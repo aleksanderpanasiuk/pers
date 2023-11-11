@@ -23,6 +23,12 @@ public:
 	void addShader(Shader& shader);
 	void activateShaders();
 
+	// screen dimensions
+	const unsigned int WIDTH = 1280;
+	const unsigned int HEIGHT = 720;
+
+	const float FPS = 60.0f;
+
 
 private:
 	GLFWwindow* window;
@@ -39,13 +45,6 @@ private:
 	glm::vec3 lightColor = glm::vec3(1.0f, 1.0f, 1.0f);
 	
 	Shader lightShader;
-
-
-	// screen dimensions
-	const unsigned int WIDTH = 1280;
-	const unsigned int HEIGHT = 720;
-
-	const float FPS = 60.0f;
 
 	glm::vec4 backgroundColor = glm::vec4(0.13f, 0.13f, 0.13f, 1.0f);
 };
