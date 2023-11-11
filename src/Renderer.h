@@ -4,7 +4,6 @@
 #include <string>
 #include <unordered_map>
 
-#include "Shader.h"
 #include "Objects/Camera.h"
 #include "Objects/Shape.h"
 
@@ -17,9 +16,11 @@ public:
 	void Draw(std::vector<RigidBody>& rigidBodies);
 	void Swap();
 	void Events(float deltaTime);
+
 	GLFWwindow* getWindow();
 	Camera& getCamera();
 	Shader& getDefaultShader();
+	void addShape(unsigned int ID, Shape& shape);
 
 	// screen dimensions
 	const unsigned int WIDTH = 1280;
@@ -55,7 +56,6 @@ private:
 	// draw functions for different object types
 	void drawBackground();
 	void drawRigidBody(RigidBody& rigidBody);
-	void drawCube();
 
 
 	glm::vec4 backgroundColor = glm::vec4(0.13f, 0.13f, 0.13f, 1.0f);

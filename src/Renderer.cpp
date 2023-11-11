@@ -85,17 +85,8 @@ void Renderer::drawBackground()
 
 void Renderer::drawRigidBody(RigidBody& rigidBody)
 {
-	switch (rigidBody.getType())
-	{
-	case RigidCube:
-		drawCube();
-		break;
-	}
-}
-
-void Renderer::drawCube()
-{
-
+	Shapes[rigidBody.getID()].Draw(defaultShader, camera,
+		rigidBody.getPosition(), rigidBody.getOrientation(), rigidBody.getScale());
 }
 
 void Renderer::Swap()
@@ -117,4 +108,9 @@ Camera& Renderer::getCamera()
 Shader& Renderer::getDefaultShader()
 {
 	return defaultShader;
+}
+
+void Renderer::addShape(unsigned int ID, Shape& shape)
+{
+	Shapes[ID] = shape;
 }
