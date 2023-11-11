@@ -30,3 +30,18 @@ glm::vec3 RigidBody::getPosition()
 {
 	return Position;
 }
+
+glm::vec3 RigidBody::getOrientation()
+{
+	return Orientation;
+}
+
+glm::vec3 RigidBody::getScale()
+{
+	return Scale;
+}
+
+Type RigidBody::getType()
+{
+	return type;
+}

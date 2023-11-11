@@ -17,6 +17,9 @@ public:
 	void Rescale(glm::vec3 newScale);
 
 	glm::vec3 getPosition();
+	glm::vec3 getOrientation();
+	glm::vec3 getScale();
+	Type getType();
 
 private:
 	glm::vec3 Position = glm::vec3(0.0f, 0.0f, 0.0f);
