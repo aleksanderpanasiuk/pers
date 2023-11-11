@@ -3,7 +3,7 @@
 Interface::Interface()
 {
 	userInterface.init(renderer.getWindow());
-	userInterface.addWindow("test", "test");
+	userInterface.addWindow("Diagnostic Data", "test");
 
 	glm::vec3 ColorBlue = glm::vec3(0.1f, 0.1f, 0.3f);
 	glm::vec3 ColorRed = glm::vec3(0.3f, 0.1f, 0.1f);
