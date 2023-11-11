@@ -11,9 +11,10 @@ class Renderer
 {
 public:
 	Renderer();
+	bool shouldRun();
 	void Close();
 	void Draw();
-	void Events();
+	void Events(float deltaTime);
 	GLFWwindow* getWindow();
 	void getCamera();
 

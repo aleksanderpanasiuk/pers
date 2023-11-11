@@ -27,6 +27,37 @@ Renderer::Renderer()
 	glEnable(GL_DEPTH_TEST);
 }
 
+bool Renderer::shouldRun()
+{
+	return glfwWindowShouldClose(window);
+}
+
+void Renderer::Events(float deltaTime)
+{
+	// Handles camera inputs
+	camera.Inputs(deltaTime, window);
+	camera.updateMatrix(45.0f, 0.1f, 100.0f);
+
+	glfwPollEvents();
+
+	// temporary exit input
+	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+	{
+		Close();
+	}
+}
+
+void Renderer::Close()
+{
+	for (Shader& shader : shaders)
+	{
+		shader.Delete();
+	}
+
+	glfwDestroyWindow(window);
+	glfwTerminate();
+}
+
 GLFWwindow* Renderer::getWindow()
 {
 	return window;

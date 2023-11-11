@@ -82,13 +82,10 @@ int main()
 		}
 	}
 
-	// Creates camera object
-	Camera camera(WIDTH, HEIGHT, glm::vec3(0.0f, 2.0f, 2.0f));
-
 
 	// initialize user interface with basic window
 	UserInterface userInterface;
-	userInterface.init(window);
+	userInterface.init(renderer.getWindow());
 	userInterface.addWindow("test", "test");
 
 	// delta time
@@ -96,29 +93,22 @@ int main()
 	float previousTimeFPS = glfwGetTime();
 
 	// main loop
-	while (!glfwWindowShouldClose(window))
+	while (!renderer.shouldRun())
 	{
 		// delta tiem calculations
 		float currentTime = glfwGetTime();
 		float deltaTime = currentTime - previousTime;
 		previousTime = currentTime;
 
-		// Clean the back buffer and depth buffer
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		renderer.Events(deltaTime);
 
-
-		// Handles camera inputs
-		camera.Inputs(deltaTime, window);
-		camera.updateMatrix(45.0f, 0.1f, 100.0f);
-
-		glfwPollEvents();
-
-		// temporary exit input
-		if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+		if (!renderer.shouldRun())
 		{
 			break;
 		}
 
+		// Clean the back buffer and depth buffer
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		// floor.Draw(textureShader, camera, objectPos);
 
@@ -160,11 +150,7 @@ int main()
 	userInterface.close();
 
 	// textureShader.Delete();
-	shaderProgram.Delete();
-	lightShader.Delete();
-	
-	glfwDestroyWindow(window);
-	glfwTerminate();
+	renderer.Close();
 
 	return 0;
 }
