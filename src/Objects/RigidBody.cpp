@@ -1,7 +1,8 @@
 #include "RigidBody.h"
 
-RigidBody::RigidBody(Type type, glm::vec3 Position)
+RigidBody::RigidBody(unsigned int ID, Type type, glm::vec3 Position)
 {
+	RigidBody::ID = ID;
 	RigidBody::Position = Position;
 	RigidBody::type = type;
 }
