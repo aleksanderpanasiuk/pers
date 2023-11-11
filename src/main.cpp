@@ -19,48 +19,6 @@ const glm::vec3 lightColor = glm::vec3(1.0f, 1.0f, 1.0f);
 int main()
 {
 	Renderer renderer;
-	
-	/*
-	std::vector <Texture> textures = 
-	{
-		Texture("Resources/Textures/grid.png", "diffuse", 0, GL_RGBA, GL_UNSIGNED_BYTE)
-	};
-	*/
-
-	/*	EXAMPLE TEXTURE USAGE
-	// floor setup
-	// Vertices coordinates
-	Vertex floorVertices[] =
-	{ //               COORDINATES           /            COLORS          /           NORMALS         /       TEXTURE COORDINATES    //
-		Vertex{glm::vec3(-1.0f, 0.0f,  1.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec2(0.0f, 0.0f)},
-		Vertex{glm::vec3(-1.0f, 0.0f, -1.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec2(0.0f, 1.0f)},
-		Vertex{glm::vec3(1.0f, 0.0f, -1.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec2(1.0f, 1.0f)},
-		Vertex{glm::vec3(1.0f, 0.0f,  1.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec3(1.0f, 1.0f, 1.0f), glm::vec2(1.0f, 0.0f)}
-	};
-
-	// Indices for vertices order
-	GLuint floorIndices[] =
-	{
-		0, 1, 2,
-		0, 2, 3
-	};
-	std::vector <Vertex> verts(floorVertices, floorVertices + sizeof(floorVertices) / sizeof(Vertex));
-	std::vector <GLuint> ind(floorIndices, floorIndices + sizeof(floorIndices) / sizeof(GLuint));
-
-	Shader textureShader("Resources/Shaders/texture.vert", "Resources/Shaders/texture.frag");
-
-	Mesh floor;
-	floor.setData(verts, ind);
-	floor.setTextures(textures);
-
-	glm::vec3 objectPos = glm::vec3(0.0f, 0.0f, 0.0f);
-	glm::mat4 objectModel = glm::mat4(1.0f);
-	objectModel = glm::translate(objectModel, objectPos);
-
-	textureShader.Activate();
-	glUniformMatrix4fv(glGetUniformLocation(textureShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(objectModel));
-	textureShader.setLight(glm::vec4(lightColor, 1.0f), lightPos);
-	*/
 
 	// rectangles and cubes init and setup
 	Shader shaderProgram("Resources/Shaders/default.vert", "Resources/Shaders/default.frag");
