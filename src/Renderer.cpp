@@ -64,6 +64,16 @@ void Renderer::Close()
 
 void Renderer::Draw(std::vector<RigidBody>& rigidBodies)
 {
+	drawBackground();
+
+	for (RigidBody& rigidBody : rigidBodies)
+	{
+		drawRigidBody(rigidBody);
+	}
+}
+
+void Renderer::drawBackground()
+{
 	// Clean the back buffer and depth buffer
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -71,11 +81,6 @@ void Renderer::Draw(std::vector<RigidBody>& rigidBodies)
 	glClearColor(backgroundColor[0], backgroundColor[1],
 		backgroundColor[2], backgroundColor[3]
 	);
-
-	for (RigidBody& rigidBody : rigidBodies)
-	{
-		drawRigidBody(rigidBody);
-	}
 }
 
 void Renderer::drawRigidBody(RigidBody& rigidBody)

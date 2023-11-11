@@ -50,6 +50,7 @@ private:
 
 
 	// draw functions for different object types
+	void drawBackground();
 	void drawRigidBody(RigidBody& rigidBody);
 	void drawCube();
 
