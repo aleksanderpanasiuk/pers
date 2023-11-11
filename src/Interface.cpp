@@ -64,7 +64,7 @@ void Interface::handleEvents(float deltaTime)
 
 void Interface::DrawFrame(float& previousTimeFPS, float deltaTime, float currentTimeFPS)
 {
-	double FrameDelta = currentTimeFPS - previousTimeFPS;
+	float FrameDelta = currentTimeFPS - previousTimeFPS;
 	previousTimeFPS = currentTimeFPS;
 
 	renderer.Draw(physicsSimulation.getRigidBodies());
