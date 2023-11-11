@@ -1,7 +1,6 @@
 #include "PhysicsSimulation.h"
 #include "UserInterface.h"
 #include "Renderer.h"
-#include "Mesh.h"
 #include "Objects/Camera.h"
 #include "Objects/Cube.h"
 #include "Objects/Light.h"
