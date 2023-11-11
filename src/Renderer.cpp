@@ -25,6 +25,10 @@ Renderer::Renderer()
 	lightShader.setShader(lighVertShaderPath, lighFragShaderPath);
 	lightShader.Activate();
 
+	defaultShader.setShader(defaultVertShaderPath, defaultFragShaderPath);
+	defaultShader.Activate();
+	defaultShader.setLight(glm::vec4(lightColor, 1.0f), lightPosition);
+
 	glEnable(GL_DEPTH_TEST);
 }
 
@@ -45,16 +49,14 @@ void Renderer::Events(float deltaTime)
 	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
 	{
 		Close();
-		windowClosed = true;
 	}
 }
 
 void Renderer::Close()
 {
-	for (Shader& shader : shaders)
-	{
-		shader.Delete();
-	}
+	windowClosed = true;
+	defaultShader.Delete();
+	lightShader.Delete();
 
 	glfwDestroyWindow(window);
 	glfwTerminate();
@@ -87,16 +89,7 @@ Camera& Renderer::getCamera()
 	return camera;
 }
 
-void Renderer::addShader(Shader& shader)
+Shader& Renderer::getDefaultShader()
 {
-	shaders.push_back(shader);
-}
-
-void Renderer::activateShaders()
-{
-	for (Shader& shader : shaders)
-	{
-		shader.Activate();
-		shader.setLight(glm::vec4(lightColor, 1.0f), lightPosition);
-	}
+	return defaultShader;
 }

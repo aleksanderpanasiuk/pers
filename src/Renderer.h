@@ -19,9 +19,7 @@ public:
 	void Events(float deltaTime);
 	GLFWwindow* getWindow();
 	Camera& getCamera();
-
-	void addShader(Shader& shader);
-	void activateShaders();
+	Shader& getDefaultShader();
 
 	// screen dimensions
 	const unsigned int WIDTH = 1280;
@@ -36,7 +34,10 @@ private:
 
 	Camera camera;
 
-	std::vector<Shader> shaders;
+	// basic shader
+	std::string defaultVertShaderPath = "Resources/Shaders/default.vert";
+	std::string defaultFragShaderPath = "Resources/Shaders/default.frag";
+	Shader defaultShader;
 
 	
 	// light
@@ -46,6 +47,7 @@ private:
 	glm::vec3 lightColor = glm::vec3(1.0f, 1.0f, 1.0f);
 	
 	Shader lightShader;
+
 
 	glm::vec4 backgroundColor = glm::vec4(0.13f, 0.13f, 0.13f, 1.0f);
 };

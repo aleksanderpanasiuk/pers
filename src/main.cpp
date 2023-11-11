@@ -3,19 +3,10 @@
 #include "Renderer.h"
 #include "Objects/Cube.h"
 
-#include <memory>
-
 
 int main()
 {
 	Renderer renderer;
-
-	// rectangles and cubes init and setup
-	Shader shaderProgram; 
-	shaderProgram.setShader("Resources/Shaders/default.vert", "Resources/Shaders/default.frag");
-
-	renderer.addShader(shaderProgram);
-	renderer.activateShaders();
 
 	std::vector <Cube> Cubes;
 	glm::vec3 rectColor = glm::vec3(0.2f, 0.2f, 0.5f);
@@ -25,7 +16,7 @@ int main()
 	{
 		for (int j = 1; j <= 5; j++)
 		{
-			Cubes.push_back(Cube(shaderProgram, glm::vec3(2.0f * i, 0.0f, -3.0f * j), rectSize, rectColor));
+			Cubes.push_back(Cube(renderer.getDefaultShader(), glm::vec3(2.0f * i, 0.0f, -3.0f * j), rectSize, rectColor));
 		}
 	}
 
