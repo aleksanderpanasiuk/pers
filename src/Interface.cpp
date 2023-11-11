@@ -13,9 +13,11 @@ Interface::Interface()
 		for (int j = 1; j <= 5; j++)
 		{
 			if ((i+j)%2 == 0)
-				addRigidBody(RigidCube, glm::vec3(2.0f * i, 0.0f, -3.0f * j), ColorRed);
+				addRigidBody(RigidCube, glm::vec3(2.0f * i, 0.0f, -3.0f * j), 
+					glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f), ColorRed);
 			else
-				addRigidBody(RigidCube, glm::vec3(2.0f * i, 0.0f, -3.0f * j), ColorBlue);
+				addRigidBody(RigidCube, glm::vec3(2.0f * i, 0.0f, -3.0f * j),
+					glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(2.0f, 1.0f, 1.0f), ColorRed);
 		}
 	}
 }
@@ -76,11 +78,12 @@ void Interface::DrawFrame(float& previousTimeFPS, float deltaTime, float current
 	renderer.Swap();
 }
 
-unsigned int Interface::addRigidBody(RigidType type, glm::vec3 position, glm::vec3 color)
+unsigned int Interface::addRigidBody(RigidType type, glm::vec3 position, 
+	glm::vec3 orientation, glm::vec3 scale, glm::vec3 color)
 {
 	unsigned int nextID = physicsSimulation.getRigidBodiesNumber();
 
-	physicsSimulation.addRigidBody(RigidBody(nextID, type, position));
+	physicsSimulation.addRigidBody(RigidBody(nextID, type, position, orientation, scale));
 	Shape shape(type, color);
 	renderer.addShape(nextID, shape);
 
