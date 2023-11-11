@@ -37,19 +37,11 @@ bool Renderer::shouldClose()
 	return windowClosed or glfwWindowShouldClose(window);
 }
 
-void Renderer::Events(float deltaTime)
+void Renderer::moveCamera(float deltaTime)
 {
 	// Handles camera inputs
 	camera.Inputs(deltaTime, window);
 	camera.updateMatrix(45.0f, 0.1f, 100.0f);
-
-	glfwPollEvents();
-
-	// temporary exit input
-	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-	{
-		Close();
-	}
 }
 
 void Renderer::Close()

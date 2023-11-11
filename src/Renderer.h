@@ -16,6 +16,7 @@ public:
 	void Draw(std::vector<RigidBody>& rigidBodies);
 	void Swap();
 	void Events(float deltaTime);
+	void moveCamera(float deltaTime);
 
 	GLFWwindow* getWindow();
 	Camera& getCamera();
