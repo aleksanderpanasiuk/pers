@@ -20,43 +20,14 @@ const glm::vec3 lightColor = glm::vec3(1.0f, 1.0f, 1.0f);
 
 int main()
 {
-	glfwInit();
-
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-
-	GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "PERS", NULL, NULL);
-
-	if (window == NULL)
-	{
-		std::cerr << "Failed to create GLFW window" << std::endl;
-		glfwTerminate();
-		return -1;
-	}
-
-	glfwMakeContextCurrent(window);
-	gladLoadGL();
-	glViewport(0, 0, WIDTH, HEIGHT);
-
+	Renderer renderer;
+	
 	/*
 	std::vector <Texture> textures = 
 	{
 		Texture("Resources/Textures/grid.png", "diffuse", 0, GL_RGBA, GL_UNSIGNED_BYTE)
 	};
 	*/
-
-	// light init and setup
-	Shader lightShader("Resources/Shaders/light.vert", "Resources/Shaders/light.frag");
-	lightShader.Activate();
-	glm::vec3 lightPos = glm::vec3(0.0f, 3.0f, 0.0f);
-
-	Light light(lightShader, lightPos, lightColor);
-	glm::mat4 lightModel = light.getModel();
-	
-
-	lightModel = glm::translate(lightModel, lightPos);
-	lightShader.setLight(glm::vec4(lightColor, 1.0f), lightPos);
 
 	/*	EXAMPLE TEXTURE USAGE
 	// floor setup
@@ -93,13 +64,11 @@ int main()
 	textureShader.setLight(glm::vec4(lightColor, 1.0f), lightPos);
 	*/
 
-	glEnable(GL_DEPTH_TEST);
-
 	// rectangles and cubes init and setup
 	Shader shaderProgram("Resources/Shaders/default.vert", "Resources/Shaders/default.frag");
 
-	shaderProgram.Activate();
-	shaderProgram.setLight(glm::vec4(lightColor, 1.0f), lightPos);
+	renderer.addShader(shaderProgram);
+	renderer.activateShaders();
 
 	std::vector <Cube> Cubes;
 	glm::vec3 rectColor = glm::vec3(0.2f, 0.2f, 0.5f);

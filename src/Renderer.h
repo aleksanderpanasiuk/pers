@@ -5,6 +5,7 @@
 
 #include "Mesh.h"
 #include "Shader.h"
+#include "Objects/Light.h"
 
 class Renderer
 {
@@ -15,7 +16,8 @@ public:
 	void Events();
 	void getCamera();
 
-	void addShader(Shader shader);
+	void addShader(Shader& shader);
+	void activateShaders();
 
 
 private:
@@ -25,12 +27,15 @@ private:
 
 	std::vector<Shader> shaders;
 
+	
 	// light
 	std::string lighVertShaderPath = "Resources/Shaders/light.vert";
 	std::string lighFragShaderPath = "Resources/Shaders/light.frag";
-	Shader lightShader;
-	glm::vec3 lightPos = glm::vec3(0.0f, 3.0f, 0.0f);
+	glm::vec3 lightPosition = glm::vec3(0.0f, 3.0f, 0.0f);
 	glm::vec3 lightColor = glm::vec3(1.0f, 1.0f, 1.0f);
+	
+	Shader lightShader;
+
 
 	// screen dimensions
 	const unsigned int WIDTH = 1280;
