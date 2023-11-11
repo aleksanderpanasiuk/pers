@@ -30,32 +30,47 @@ void Interface::Run()
 		float deltaTime = currentTime - previousTime;
 		previousTime = currentTime;
 
-
 		physicsSimulation.simulate(deltaTime);
 
-
-		renderer.Events(deltaTime);
+		handleEvents(deltaTime);
 
 		if (renderer.shouldClose())
 		{
 			break;
 		}
 
-
 		// rendering frame
 		float currentTimeFPS = glfwGetTime();
 
 		if (currentTimeFPS - previousTimeFPS >= 1 / renderer.FPS)
 		{
-			double FrameDelta = currentTimeFPS - previousTimeFPS;
-			previousTimeFPS = currentTimeFPS;
-
-			renderer.Draw(physicsSimulation.getRigidBodies());
-			userInterface.Display(deltaTime, FrameDelta);
-
-			renderer.Swap();
+			DrawFrame(previousTimeFPS, deltaTime, currentTimeFPS);
 		}
 	}
+}
+
+void Interface::handleEvents(float deltaTime)
+{
+	glfwPollEvents();
+
+	// temporary exit input
+	if (glfwGetKey(renderer.getWindow(), GLFW_KEY_ESCAPE) == GLFW_PRESS)
+	{
+		renderer.Close();
+	}
+
+	renderer.moveCamera(deltaTime);
+}
+
+void Interface::DrawFrame(float& previousTimeFPS, float deltaTime, float currentTimeFPS)
+{
+	double FrameDelta = currentTimeFPS - previousTimeFPS;
+	previousTimeFPS = currentTimeFPS;
+
+	renderer.Draw(physicsSimulation.getRigidBodies());
+	userInterface.Display(deltaTime, FrameDelta);
+
+	renderer.Swap();
 }
 
 void Interface::addRigidBody(RigidType type, glm::vec3 position, glm::vec3 color)
