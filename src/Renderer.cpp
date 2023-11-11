@@ -27,6 +27,11 @@ Renderer::Renderer()
 	glEnable(GL_DEPTH_TEST);
 }
 
+GLFWwindow* Renderer::getWindow()
+{
+	return window;
+}
+
 void Renderer::addShader(Shader& shader)
 {
 	shaders.push_back(shader);

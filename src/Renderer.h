@@ -14,6 +14,7 @@ public:
 	void Close();
 	void Draw();
 	void Events();
+	GLFWwindow* getWindow();
 	void getCamera();
 
 	void addShader(Shader& shader);
