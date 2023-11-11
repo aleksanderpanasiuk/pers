@@ -85,7 +85,12 @@ void Renderer::drawBackground()
 
 void Renderer::drawRigidBody(RigidBody& rigidBody)
 {
-	Shapes[rigidBody.getID()].Draw(defaultShader, camera,
+	int id = rigidBody.getID();
+
+	if (Shapes.count(id) == 0)
+		throw std::invalid_argument("Shape with given id does not exist: " + std::to_string(id));
+
+	Shapes[id].Draw(defaultShader, camera,
 		rigidBody.getPosition(), rigidBody.getOrientation(), rigidBody.getScale());
 }
 
