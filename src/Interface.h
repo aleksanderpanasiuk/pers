@@ -10,6 +10,7 @@ class Interface
 public:
 	Interface();
 	void Run();
+	void Close();
 
 
 private:
