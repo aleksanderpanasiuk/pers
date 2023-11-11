@@ -2,7 +2,8 @@
 
 Shape::Shape()
 {
-
+	Shape::type = RigidCube;
+	Shape::Color = glm::vec3(0.0f, 0.0f, 0.0f);
 }
 
 Shape::Shape(RigidType type, glm::vec3 Color)
