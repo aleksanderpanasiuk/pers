@@ -9,7 +9,7 @@
 class RigidBody
 {
 public:
-	RigidBody(unsigned int ID, Type type, glm::vec3 Position);
+	RigidBody(unsigned int ID, RigidType type, glm::vec3 Position);
 
 	void changePosition(glm::vec3 newPosition);
 	void Move(float deltaTime, glm::vec3 positionChange);
@@ -19,7 +19,7 @@ public:
 	glm::vec3 getPosition();
 	glm::vec3 getOrientation();
 	glm::vec3 getScale();
-	Type getType();
+	RigidType getType();
 
 private:
 	unsigned int ID;
@@ -27,7 +27,7 @@ private:
 	glm::vec3 Orientation = glm::vec3(0.0f, 0.0f, 0.0f);
 	glm::vec3 Scale = glm::vec3(1.0f, 1.0f, 1.0f);
 
-	Type type;
+	RigidType type;
 };
 
 #endif // !RIGID_BODY_CLASS_H

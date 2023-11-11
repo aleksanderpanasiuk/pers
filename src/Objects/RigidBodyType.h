@@ -1,1 +1,1 @@
-enum Type { RigidCube, RigidSphere, RigidPlane };
+enum RigidType { RigidCube, RigidSphere, RigidPlane };

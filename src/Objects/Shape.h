@@ -2,11 +2,12 @@
 #define SHAPE_CLASS_H
 
 #include "../Mesh.h"
+#include "RigidBody.h"
 
 class Shape
 {
 public:
-	Shape(Type type);
+	Shape(RigidType type);
 	void Draw(Shader& shader, Camera& camera);
 	bool isVisible = true;
 

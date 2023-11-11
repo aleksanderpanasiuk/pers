@@ -1,6 +1,6 @@
 #include "RigidBody.h"
 
-RigidBody::RigidBody(unsigned int ID, Type type, glm::vec3 Position)
+RigidBody::RigidBody(unsigned int ID, RigidType type, glm::vec3 Position)
 {
 	RigidBody::ID = ID;
 	RigidBody::Position = Position;
@@ -42,7 +42,7 @@ glm::vec3 RigidBody::getScale()
 	return Scale;
 }
 
-Type RigidBody::getType()
+RigidType RigidBody::getType()
 {
 	return type;
 }

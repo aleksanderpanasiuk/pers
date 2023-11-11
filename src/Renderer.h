@@ -6,7 +6,6 @@
 
 #include "Shader.h"
 #include "Objects/Camera.h"
-#include "Objects/RigidBody.h"
 #include "Objects/Shape.h"
 
 class Renderer
