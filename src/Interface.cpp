@@ -53,7 +53,7 @@ void Interface::handleEvents(float deltaTime)
 {
 	glfwPollEvents();
 
-	// temporary exit input
+	// exit input
 	if (glfwGetKey(renderer.getWindow(), GLFW_KEY_ESCAPE) == GLFW_PRESS)
 	{
 		renderer.Close();
