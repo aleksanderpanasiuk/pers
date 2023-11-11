@@ -34,6 +34,7 @@
     <ClCompile Include="src\Objects\Object.cpp" />
     <ClCompile Include="src\Objects\Cube.cpp" />
     <ClCompile Include="src\Objects\RigidBody.cpp" />
+    <ClCompile Include="src\Objects\Shape.cpp" />
     <ClCompile Include="src\PhysicsSimulation.cpp" />
     <ClCompile Include="src\Renderer.cpp" />
     <ClCompile Include="src\Shader.cpp" />
