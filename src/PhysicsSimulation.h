@@ -3,7 +3,8 @@
 
 class PhysicsSimulation
 {
-
+public:
+	void simulate();
 };
 
 #endif // !PHYSICS_SIMULATION_CLASS_H
