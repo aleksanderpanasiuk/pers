@@ -6,6 +6,7 @@
 
 int main()
 {
+	// initialize renderer with default shaders and white light
 	Renderer renderer;
 
 	std::vector <Cube> Cubes;
@@ -33,7 +34,7 @@ int main()
 	// main loop
 	while (!renderer.shouldClose())
 	{
-		// delta tiem calculations
+		// delta time calculations
 		float currentTime = glfwGetTime();
 		float deltaTime = currentTime - previousTime;
 		previousTime = currentTime;
@@ -44,8 +45,6 @@ int main()
 		{
 			break;
 		}
-
-		// floor.Draw(textureShader, camera, objectPos);
 
 		for (Cube& Cube : Cubes)
 		{
