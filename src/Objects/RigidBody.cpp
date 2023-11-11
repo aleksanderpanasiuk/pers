@@ -1,9 +1,12 @@
 #include "RigidBody.h"
 
-RigidBody::RigidBody(unsigned int ID, RigidType type, glm::vec3 Position)
+RigidBody::RigidBody(unsigned int ID, RigidType type, 
+	glm::vec3 Position, glm::vec3 Orientation, glm::vec3 Scale)
 {
 	RigidBody::ID = ID;
 	RigidBody::Position = Position;
+	RigidBody::Orientation = Orientation;
+	RigidBody::Scale = Scale;
 	RigidBody::type = type;
 }
 
