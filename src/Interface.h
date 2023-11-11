@@ -23,7 +23,7 @@ private:
 	void DrawFrame(float& previousTimeFPS, float deltaTime, float currentTimeFPS);
 	void handleEvents(float deltaTime);
 	
-	void addRigidBody(RigidType type, glm::vec3 position, glm::vec3 color);
+	unsigned int addRigidBody(RigidType type, glm::vec3 position, glm::vec3 color);
 };
 
 #endif // !INTERFACE_CLASS_H

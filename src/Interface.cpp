@@ -22,7 +22,6 @@ Interface::Interface()
 
 void Interface::Run()
 {
-	// delta time
 	float previousTime = glfwGetTime();
 	float previousTimeFPS = glfwGetTime();
 
@@ -77,13 +76,15 @@ void Interface::DrawFrame(float& previousTimeFPS, float deltaTime, float current
 	renderer.Swap();
 }
 
-void Interface::addRigidBody(RigidType type, glm::vec3 position, glm::vec3 color)
+unsigned int Interface::addRigidBody(RigidType type, glm::vec3 position, glm::vec3 color)
 {
 	unsigned int nextID = physicsSimulation.getRigidBodiesNumber();
 
 	physicsSimulation.addRigidBody(RigidBody(nextID, type, position));
 	Shape shape(type, color);
 	renderer.addShape(nextID, shape);
+
+	return nextID;
 }
 
 void Interface::Close()
