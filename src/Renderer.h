@@ -12,7 +12,7 @@ class Renderer
 {
 public:
 	Renderer();
-	bool shouldRun();
+	bool shouldClose();
 	void Close();
 	void Draw();
 	void Swap();

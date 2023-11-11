@@ -2,8 +2,6 @@
 
 
 Renderer::Renderer()
-	: camera(WIDTH, HEIGHT, glm::vec3(0.0f, 2.0f, 2.0f)),
-	lightShader(lighVertShaderPath, lighFragShaderPath)
 {
 	glfwInit();
 
@@ -22,12 +20,15 @@ Renderer::Renderer()
 	gladLoadGL();
 	glViewport(0, 0, WIDTH, HEIGHT);
 
+	camera.setDimensions(WIDTH, HEIGHT, glm::vec3(0.0f, 2.0f, 2.0f));
+
+	lightShader.setShader(lighVertShaderPath, lighFragShaderPath);
 	lightShader.Activate();
 
 	glEnable(GL_DEPTH_TEST);
 }
 
-bool Renderer::shouldRun()
+bool Renderer::shouldClose()
 {
 	return glfwWindowShouldClose(window);
 }
