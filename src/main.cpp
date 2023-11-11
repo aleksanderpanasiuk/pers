@@ -6,6 +6,9 @@
 
 int main()
 {
+	// initialize physics simulation
+	PhysicsSimulation physicsSimulation;
+
 	// initialize renderer with default shaders and white light
 	Renderer renderer;
 
@@ -18,9 +21,9 @@ int main()
 		for (int j = 1; j <= 5; j++)
 		{
 			Cubes.push_back(Cube(renderer.getDefaultShader(), glm::vec3(2.0f * i, 0.0f, -3.0f * j), rectSize, rectColor));
+			physicsSimulation.addRigidBody(RigidBody(RigidCube, glm::vec3(2.0f * i, 0.0f, -3.0f * j)));
 		}
 	}
-
 
 	// initialize user interface with basic window
 	UserInterface userInterface;
