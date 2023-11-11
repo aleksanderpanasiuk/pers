@@ -14,6 +14,7 @@ public:
 	bool shouldRun();
 	void Close();
 	void Draw();
+	void Swap();
 	void Events(float deltaTime);
 	GLFWwindow* getWindow();
 	void getCamera();

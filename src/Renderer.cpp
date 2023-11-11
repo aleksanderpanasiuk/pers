@@ -58,6 +58,17 @@ void Renderer::Close()
 	glfwTerminate();
 }
 
+void Renderer::Draw()
+{
+	// Clean the back buffer and depth buffer
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+	// background color
+	glClearColor(backgroundColor[0], backgroundColor[1],
+		backgroundColor[2], backgroundColor[3]
+	);
+}
+
 GLFWwindow* Renderer::getWindow()
 {
 	return window;

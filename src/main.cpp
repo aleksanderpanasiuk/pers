@@ -107,9 +107,6 @@ int main()
 			break;
 		}
 
-		// Clean the back buffer and depth buffer
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
 		// floor.Draw(textureShader, camera, objectPos);
 
 		for (Cube& Cube : Cubes)
@@ -127,18 +124,12 @@ int main()
 			double FrameDelta = currentTimeFPS - previousTimeFPS;
 			previousTimeFPS = currentTimeFPS;
 
-			// background color
-			glClearColor(backgroundColor[0], backgroundColor[1], 
-				backgroundColor[2], backgroundColor[3]
-			);
-			
+			renderer.Draw();
 
 			for (Cube& Cube : Cubes)
 			{
 				Cube.Draw(camera);
 			}
-
-			light.Draw(camera);
 
 			userInterface.Display(deltaTime, FrameDelta);
 
