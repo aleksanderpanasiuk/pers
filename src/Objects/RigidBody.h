@@ -9,7 +9,7 @@
 class RigidBody
 {
 public:
-	RigidBody(Type type);
+	RigidBody(Type type, glm::vec3 Position);
 
 	void changePosition(glm::vec3 newPosition);
 	void Move(float deltaTime, glm::vec3 positionChange);
