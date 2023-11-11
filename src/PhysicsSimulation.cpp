@@ -1,8 +1,11 @@
 #include "PhysicsSimulation.h"
 
-void PhysicsSimulation::simulate()
+void PhysicsSimulation::simulate(float deltaTime)
 {
-
+	for (RigidBody& rigidBody : rigidBodies)
+	{
+		rigidBody.Move(deltaTime, glm::vec3(1.0f, 0.0f, 0.0f));
+	}
 }
 
 std::vector<RigidBody>& PhysicsSimulation::getRigidBodies()

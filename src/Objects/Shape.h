@@ -7,6 +7,7 @@
 class Shape
 {
 public:
+	Shape();
 	Shape(RigidType type, glm::vec3 Color);
 	void Draw(Shader& shader, Camera& camera, 
 		glm::vec3 Position, glm::vec3 Orientation, glm::vec3 Scale

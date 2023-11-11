@@ -6,7 +6,7 @@
 class PhysicsSimulation
 {
 public:
-	void simulate();
+	void simulate(float deltaTime);
 	std::vector<RigidBody>& getRigidBodies();
 	void addRigidBody(RigidBody rigidBody);
 
