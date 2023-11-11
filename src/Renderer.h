@@ -6,6 +6,7 @@
 #include "Mesh.h"
 #include "Shader.h"
 #include "Objects/Camera.h"
+#include "Objects/RigidBody.h"
 
 class Renderer
 {
@@ -13,7 +14,7 @@ public:
 	Renderer();
 	bool shouldClose();
 	void Close();
-	void Draw();
+	void Draw(std::vector<RigidBody>& rigidBodies);
 	void Swap();
 	void Events(float deltaTime);
 	GLFWwindow* getWindow();
@@ -46,6 +47,11 @@ private:
 	glm::vec3 lightColor = glm::vec3(1.0f, 1.0f, 1.0f);
 	
 	Shader lightShader;
+
+
+	// draw functions for different object types
+	void drawRigidBody(const RigidBody& rigidBody);
+	void drawCube();
 
 
 	glm::vec4 backgroundColor = glm::vec4(0.13f, 0.13f, 0.13f, 1.0f);

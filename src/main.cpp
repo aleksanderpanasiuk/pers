@@ -64,7 +64,7 @@ int main()
 			double FrameDelta = currentTimeFPS - previousTimeFPS;
 			previousTimeFPS = currentTimeFPS;
 
-			renderer.Draw();
+			renderer.Draw(physicsSimulation.getRigidBodies());
 
 			for (Cube& Cube : Cubes)
 			{
