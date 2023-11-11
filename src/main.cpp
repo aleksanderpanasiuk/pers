@@ -16,12 +16,15 @@ int main()
 	glm::vec3 rectColor = glm::vec3(0.2f, 0.2f, 0.5f);
 	glm::vec3 rectSize = glm::vec3(1.0f, 1.0f, 2.0f);
 
+	unsigned int rigidBodyID = 0;
+
 	for (int i = 0; i < 5; i++)
 	{
 		for (int j = 1; j <= 5; j++)
 		{
 			Cubes.push_back(Cube(renderer.getDefaultShader(), glm::vec3(2.0f * i, 0.0f, -3.0f * j), rectSize, rectColor));
-			physicsSimulation.addRigidBody(RigidBody(RigidCube, glm::vec3(2.0f * i, 0.0f, -3.0f * j)));
+			physicsSimulation.addRigidBody(RigidBody(rigidBodyID, RigidCube, glm::vec3(2.0f * i, 0.0f, -3.0f * j)));
+			rigidBodyID++;
 		}
 	}
 

@@ -2,11 +2,12 @@
 #define RENDERER_CLASS_H
 
 #include <string>
+#include <unordered_map>
 
-#include "Mesh.h"
 #include "Shader.h"
 #include "Objects/Camera.h"
 #include "Objects/RigidBody.h"
+#include "Objects/Shape.h"
 
 class Renderer
 {
@@ -47,6 +48,9 @@ private:
 	glm::vec3 lightColor = glm::vec3(1.0f, 1.0f, 1.0f);
 	
 	Shader lightShader;
+
+
+	std::unordered_map<int, Shape> Shapes;
 
 
 	// draw functions for different object types
