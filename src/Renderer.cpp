@@ -22,7 +22,7 @@ void Renderer::startGLFW()
 
 	if (window == NULL)
 	{
-		throw "Failed to create GLFW window";
+		throw std::runtime_error("Failed to create GLFW window");
 	}
 
 	glfwMakeContextCurrent(window);
