@@ -16,6 +16,7 @@ public:
 	void Rotate(float deltaTime, glm::vec3 rotationChange);
 	void Rescale(glm::vec3 newScale);
 
+	unsigned int getID();
 	glm::vec3 getPosition();
 	glm::vec3 getOrientation();
 	glm::vec3 getScale();

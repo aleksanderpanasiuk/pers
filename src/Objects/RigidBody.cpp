@@ -27,6 +27,11 @@ void RigidBody::Rescale(glm::vec3 newScale)
 	Scale = newScale;
 }
 
+unsigned int RigidBody::getID()
+{
+	return ID;
+}
+
 glm::vec3 RigidBody::getPosition()
 {
 	return Position;
