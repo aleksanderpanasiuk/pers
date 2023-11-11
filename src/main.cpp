@@ -5,16 +5,6 @@
 
 #include <memory>
 
-// screen dimensions
-const unsigned int WIDTH = 1280;
-const unsigned int HEIGHT = 720;
-
-const float FPS = 60.0f;
-
-// colors
-const glm::vec4 backgroundColor = glm::vec4(0.13f, 0.13f, 0.13f, 1.0f);
-const glm::vec3 lightColor = glm::vec3(1.0f, 1.0f, 1.0f);
-
 
 int main()
 {
@@ -76,7 +66,7 @@ int main()
 		// rendering frame
 		float currentTimeFPS = glfwGetTime();
 
-		if (currentTimeFPS - previousTimeFPS >= 1 / FPS)
+		if (currentTimeFPS - previousTimeFPS >= 1 / renderer.FPS)
 		{
 			double FrameDelta = currentTimeFPS - previousTimeFPS;
 			previousTimeFPS = currentTimeFPS;

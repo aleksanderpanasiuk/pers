@@ -30,7 +30,7 @@ Renderer::Renderer()
 
 bool Renderer::shouldClose()
 {
-	return glfwWindowShouldClose(window);
+	return windowClosed or glfwWindowShouldClose(window);
 }
 
 void Renderer::Events(float deltaTime)
@@ -45,6 +45,7 @@ void Renderer::Events(float deltaTime)
 	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
 	{
 		Close();
+		windowClosed = true;
 	}
 }
 

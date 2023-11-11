@@ -32,6 +32,7 @@ public:
 
 private:
 	GLFWwindow* window;
+	bool windowClosed = false;
 
 	Camera camera;
 
