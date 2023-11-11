@@ -6,16 +6,12 @@ Interface::Interface()
 	userInterface.addWindow("test", "test");
 
 	glm::vec3 cubeColor = glm::vec3(0.2f, 0.2f, 0.5f);
-	unsigned int rigidBodyID = 0;
 
 	for (int i = 0; i < 5; i++)
 	{
 		for (int j = 1; j <= 5; j++)
 		{
-			physicsSimulation.addRigidBody(RigidBody(rigidBodyID, RigidCube, glm::vec3(2.0f * i, 0.0f, -3.0f * j)));
-			Shape shape(RigidCube, cubeColor);
-			renderer.addShape(rigidBodyID, shape);
-			rigidBodyID++;
+			addRigidBody(RigidCube, glm::vec3(2.0f * i, 0.0f, -3.0f * j), cubeColor);
 		}
 	}
 }
@@ -60,6 +56,15 @@ void Interface::Run()
 			renderer.Swap();
 		}
 	}
+}
+
+void Interface::addRigidBody(RigidType type, glm::vec3 position, glm::vec3 color)
+{
+	unsigned int nextID = physicsSimulation.getRigidBodiesNumber();
+
+	physicsSimulation.addRigidBody(RigidBody(nextID, type, position));
+	Shape shape(type, color);
+	renderer.addShape(nextID, shape);
 }
 
 void Interface::Close()
