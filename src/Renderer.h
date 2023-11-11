@@ -54,6 +54,10 @@ private:
 	std::unordered_map<int, Shape> Shapes;
 
 
+	void startGLFW();
+	void activateShaders();
+
+
 	// draw functions for different object types
 	void drawBackground();
 	void drawRigidBody(RigidBody& rigidBody);

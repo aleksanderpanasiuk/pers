@@ -3,6 +3,15 @@
 
 Renderer::Renderer()
 {
+	startGLFW();
+
+	camera.setDimensions(WIDTH, HEIGHT, glm::vec3(0.0f, 2.0f, 2.0f));
+
+	activateShaders();
+}
+
+void Renderer::startGLFW()
+{
 	glfwInit();
 
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -20,16 +29,17 @@ Renderer::Renderer()
 	gladLoadGL();
 	glViewport(0, 0, WIDTH, HEIGHT);
 
-	camera.setDimensions(WIDTH, HEIGHT, glm::vec3(0.0f, 2.0f, 2.0f));
+	glEnable(GL_DEPTH_TEST);
+}
 
+void Renderer::activateShaders()
+{
 	lightShader.setShader(lighVertShaderPath, lighFragShaderPath);
 	lightShader.Activate();
 
 	defaultShader.setShader(defaultVertShaderPath, defaultFragShaderPath);
 	defaultShader.Activate();
 	defaultShader.setLight(glm::vec4(lightColor, 1.0f), lightPosition);
-
-	glEnable(GL_DEPTH_TEST);
 }
 
 bool Renderer::shouldClose()
