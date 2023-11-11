@@ -28,7 +28,7 @@ public:
 	float speed = 20.0f;
 	float sensitivity = 700000.0f;
 
-	Camera(int width, int height, glm::vec3 position);
+	void setDimensions(int width, int height, glm::vec3 position);
 
 	// Updates the camera matrix to the Vertex Shader
 	void updateMatrix(float FOVdeg, float nearPlane, float farPlane);
