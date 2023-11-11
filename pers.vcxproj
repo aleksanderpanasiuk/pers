@@ -62,6 +62,7 @@
     <ClInclude Include="imgui\imstb_textedit.h" />
     <ClInclude Include="imgui\imstb_truetype.h" />
     <ClInclude Include="src\EBO.h" />
+    <ClInclude Include="src\Interface.h" />
     <ClInclude Include="src\Mesh.h" />
     <ClInclude Include="src\Objects\Camera.h" />
     <ClInclude Include="src\Objects\RigidBody.h" />

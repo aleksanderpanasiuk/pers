@@ -1,6 +1,4 @@
-#include "PhysicsSimulation.h"
-#include "UserInterface.h"
-#include "Renderer.h"
+#include "Interface.h"
 
 
 int main()
