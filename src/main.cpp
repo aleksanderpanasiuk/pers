@@ -39,10 +39,12 @@ int main()
 	gladLoadGL();
 	glViewport(0, 0, WIDTH, HEIGHT);
 
+	/*
 	std::vector <Texture> textures = 
 	{
 		Texture("Resources/Textures/grid.png", "diffuse", 0, GL_RGBA, GL_UNSIGNED_BYTE)
 	};
+	*/
 
 	// light init and setup
 	Shader lightShader("Resources/Shaders/light.vert", "Resources/Shaders/light.frag");
