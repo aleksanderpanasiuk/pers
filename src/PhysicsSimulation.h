@@ -7,7 +7,7 @@ class PhysicsSimulation
 {
 public:
 	void simulate();
-	std::vector<RigidBody> getRigidBodies();
+	std::vector<RigidBody>& getRigidBodies();
 	void addRigidBody(RigidBody rigidBody);
 
 private:

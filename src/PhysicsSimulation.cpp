@@ -5,7 +5,7 @@ void PhysicsSimulation::simulate()
 
 }
 
-std::vector<RigidBody> PhysicsSimulation::getRigidBodies()
+std::vector<RigidBody>& PhysicsSimulation::getRigidBodies()
 {
 	return rigidBodies;
 }
