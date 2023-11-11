@@ -18,3 +18,8 @@ void PhysicsSimulation::addRigidBody(RigidBody rigidBody)
 {
 	rigidBodies.push_back(rigidBody);
 }
+
+unsigned int PhysicsSimulation::getRigidBodiesNumber()
+{
+	return rigidBodies.size();
+}

@@ -9,6 +9,7 @@ public:
 	void simulate(float deltaTime);
 	std::vector<RigidBody>& getRigidBodies();
 	void addRigidBody(RigidBody rigidBody);
+	unsigned int getRigidBodiesNumber();
 
 private:
 	std::vector<RigidBody> rigidBodies;
