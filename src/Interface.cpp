@@ -5,13 +5,17 @@ Interface::Interface()
 	userInterface.init(renderer.getWindow());
 	userInterface.addWindow("test", "test");
 
-	glm::vec3 cubeColor = glm::vec3(0.2f, 0.2f, 0.5f);
+	glm::vec3 ColorBlue = glm::vec3(0.1f, 0.1f, 0.3f);
+	glm::vec3 ColorRed = glm::vec3(0.3f, 0.1f, 0.1f);
 
 	for (int i = 0; i < 5; i++)
 	{
 		for (int j = 1; j <= 5; j++)
 		{
-			addRigidBody(RigidCube, glm::vec3(2.0f * i, 0.0f, -3.0f * j), cubeColor);
+			if ((i+j)%2 == 0)
+				addRigidBody(RigidCube, glm::vec3(2.0f * i, 0.0f, -3.0f * j), ColorRed);
+			else
+				addRigidBody(RigidCube, glm::vec3(2.0f * i, 0.0f, -3.0f * j), ColorBlue);
 		}
 	}
 }
