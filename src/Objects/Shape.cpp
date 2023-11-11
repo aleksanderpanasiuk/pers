@@ -1,7 +1,8 @@
 #include "Shape.h"
 
-Shape::Shape(RigidType type)
+Shape::Shape(RigidType type, glm::vec3 Color)
 {
+	Shape::Color = Color;
 	Shape::type = type;
 
 	switch (type)
@@ -15,6 +16,16 @@ Shape::Shape(RigidType type)
 		break;
 	default:
 		break;
+	}
+}
+
+void Shape::Draw(Shader& shader, Camera& camera,
+	glm::vec3 Position, glm::vec3 Orientation, glm::vec3 Scale
+)
+{
+	if (isVisible)
+	{
+		mesh.Draw(shader, camera, Position, Orientation, Scale);
 	}
 }
 
