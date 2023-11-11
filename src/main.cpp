@@ -1,7 +1,6 @@
 #include "PhysicsSimulation.h"
 #include "UserInterface.h"
 #include "Renderer.h"
-#include "Objects/Cube.h"
 
 
 int main()
@@ -12,19 +11,15 @@ int main()
 	// initialize renderer with default shaders and white light
 	Renderer renderer;
 
-	std::vector <Cube> Cubes;
-	glm::vec3 rectColor = glm::vec3(0.2f, 0.2f, 0.5f);
-	glm::vec3 rectSize = glm::vec3(1.0f, 1.0f, 2.0f);
-
+	glm::vec3 cubeColor = glm::vec3(0.2f, 0.2f, 0.5f);
 	unsigned int rigidBodyID = 0;
 
 	for (int i = 0; i < 5; i++)
 	{
 		for (int j = 1; j <= 5; j++)
 		{
-			Cubes.push_back(Cube(renderer.getDefaultShader(), glm::vec3(2.0f * i, 0.0f, -3.0f * j), rectSize, rectColor));
 			physicsSimulation.addRigidBody(RigidBody(rigidBodyID, RigidCube, glm::vec3(2.0f * i, 0.0f, -3.0f * j)));
-			Shape shape(RigidCube, rectColor);
+			Shape shape(RigidCube, cubeColor);
 			renderer.addShape(rigidBodyID, shape);
 			rigidBodyID++;
 		}
@@ -47,18 +42,15 @@ int main()
 		float deltaTime = currentTime - previousTime;
 		previousTime = currentTime;
 
+
 		physicsSimulation.simulate(deltaTime);
+
+
 		renderer.Events(deltaTime);
 
 		if (renderer.shouldClose())
 		{
 			break;
-		}
-
-		for (Cube& Cube : Cubes)
-		{
-			Cube.Move(deltaTime, glm::vec3(1.0f, 0.0f, 0.0f));
-			Cube.Rotate(deltaTime, glm::vec3(0.0f, 0.0f, -50.0f));
 		}
 
 
@@ -71,12 +63,6 @@ int main()
 			previousTimeFPS = currentTimeFPS;
 
 			renderer.Draw(physicsSimulation.getRigidBodies());
-
-			for (Cube& Cube : Cubes)
-			{
-				Cube.Draw(renderer.getCamera());
-			}
-
 			userInterface.Display(deltaTime, FrameDelta);
 
 			renderer.Swap();

@@ -31,8 +31,6 @@
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Mesh.cpp" />
     <ClCompile Include="src\Objects\Camera.cpp" />
-    <ClCompile Include="src\Objects\Object.cpp" />
-    <ClCompile Include="src\Objects\Cube.cpp" />
     <ClCompile Include="src\Objects\RigidBody.cpp" />
     <ClCompile Include="src\Objects\Shape.cpp" />
     <ClCompile Include="src\PhysicsSimulation.cpp" />
@@ -66,8 +64,6 @@
     <ClInclude Include="src\EBO.h" />
     <ClInclude Include="src\Mesh.h" />
     <ClInclude Include="src\Objects\Camera.h" />
-    <ClInclude Include="src\Objects\Object.h" />
-    <ClInclude Include="src\Objects\Cube.h" />
     <ClInclude Include="src\Objects\RigidBody.h" />
     <ClInclude Include="src\Objects\RigidBodyType.h" />
     <ClInclude Include="src\Objects\Shape.h" />
