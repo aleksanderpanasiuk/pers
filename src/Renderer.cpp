@@ -119,5 +119,8 @@ Shader& Renderer::getDefaultShader()
 
 void Renderer::addShape(unsigned int ID, Shape& shape)
 {
+	if (Shapes.count(ID) != 0)
+		throw std::invalid_argument("Shape with given ID already exists");
+
 	Shapes[ID] = shape;
 }
