@@ -1,5 +1,10 @@
 #include "Shape.h"
 
+Shape::Shape()
+{
+
+}
+
 Shape::Shape(RigidType type, glm::vec3 Color)
 {
 	Shape::Color = Color;
@@ -105,6 +110,27 @@ void Shape::setDataCube()
 		Vertex{verticesPosition[2],    Color, glm::vec3(1.0f, 0.0f, 0.0f), glm::vec2(0.0f, 0.0f)},
 		Vertex{verticesPosition[5],    Color, glm::vec3(1.0f, 0.0f, 0.0f), glm::vec2(0.0f, 0.0f)},
 		Vertex{verticesPosition[6],    Color, glm::vec3(1.0f, 0.0f, 0.0f), glm::vec2(0.0f, 0.0f)}
+	};
+
+	Indices =
+	{
+		0, 1, 2, // front
+		0, 2, 3,
+
+		4, 5, 6, // back
+		4, 6, 7,
+
+		8, 9, 11, // bottom
+		8, 11, 10,
+
+		13, 12, 14, // top
+		13, 14, 15,
+
+		16, 17, 19, // left
+		16, 18, 19,
+
+		20, 21, 23, // right
+		20, 22, 23
 	};
 
 	mesh.setData(Vertices, Indices);

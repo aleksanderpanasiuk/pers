@@ -24,6 +24,8 @@ int main()
 		{
 			Cubes.push_back(Cube(renderer.getDefaultShader(), glm::vec3(2.0f * i, 0.0f, -3.0f * j), rectSize, rectColor));
 			physicsSimulation.addRigidBody(RigidBody(rigidBodyID, RigidCube, glm::vec3(2.0f * i, 0.0f, -3.0f * j)));
+			Shape shape(RigidCube, rectColor);
+			renderer.addShape(rigidBodyID, shape);
 			rigidBodyID++;
 		}
 	}
@@ -45,6 +47,7 @@ int main()
 		float deltaTime = currentTime - previousTime;
 		previousTime = currentTime;
 
+		physicsSimulation.simulate(deltaTime);
 		renderer.Events(deltaTime);
 
 		if (renderer.shouldClose())
