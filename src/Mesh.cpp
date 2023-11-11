@@ -48,7 +48,9 @@ void Mesh::Draw(Shader& shader, Camera& camera, glm::vec3 Position, glm::vec3 Or
 	Rotation = glm::rotate(Rotation, glm::radians(Orientation.y), glm::vec3(0.0f, 1.0f, 0.0f));
 	Rotation = glm::rotate(Rotation, glm::radians(Orientation.z), glm::vec3(0.0f, 0.0f, 1.0f));
 	
-	Model = glm::scale(Model, Scale) * Rotation;
+	Model = Model * Rotation;
+
+	Model = glm::scale(Model, Scale);
 
 	glUniformMatrix4fv(glGetUniformLocation(shader.ID, "model"), 1, GL_FALSE, glm::value_ptr(Model));
 	// sending rotation twice for normals calculations
