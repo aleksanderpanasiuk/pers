@@ -6,6 +6,7 @@
 #include "Mesh.h"
 #include "Shader.h"
 #include "Objects/Light.h"
+#include "Objects/Camera.h"
 
 class Renderer
 {
@@ -17,7 +18,7 @@ public:
 	void Swap();
 	void Events(float deltaTime);
 	GLFWwindow* getWindow();
-	void getCamera();
+	Camera& getCamera();
 
 	void addShader(Shader& shader);
 	void activateShaders();

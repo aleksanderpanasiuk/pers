@@ -69,9 +69,20 @@ void Renderer::Draw()
 	);
 }
 
+void Renderer::Swap()
+{
+	// Swap the back buffer with the front buffer
+	glfwSwapBuffers(window);
+}
+
 GLFWwindow* Renderer::getWindow()
 {
 	return window;
+}
+
+Camera& Renderer::getCamera()
+{
+	return camera;
 }
 
 void Renderer::addShader(Shader& shader)

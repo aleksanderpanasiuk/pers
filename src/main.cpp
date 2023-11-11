@@ -1,9 +1,7 @@
 #include "PhysicsSimulation.h"
 #include "UserInterface.h"
 #include "Renderer.h"
-#include "Objects/Camera.h"
 #include "Objects/Cube.h"
-#include "Objects/Light.h"
 
 #include <memory>
 
@@ -128,13 +126,12 @@ int main()
 
 			for (Cube& Cube : Cubes)
 			{
-				Cube.Draw(camera);
+				Cube.Draw(renderer.getCamera());
 			}
 
 			userInterface.Display(deltaTime, FrameDelta);
 
-			// Swap the back buffer with the front buffer
-			glfwSwapBuffers(window);
+			renderer.Swap();
 		}
 	}
 
