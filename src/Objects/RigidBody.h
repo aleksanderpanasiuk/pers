@@ -2,6 +2,7 @@
 #define RIGID_BODY_CLASS_H
 
 #include <glm/glm.hpp>
+#include <vector>
 
 #include "RigidBodyType.h"
 
