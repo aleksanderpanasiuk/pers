@@ -9,13 +9,13 @@
 #include <iostream>
 #include <cerrno>
 
-std::string get_file_contents(const char* filename);
+std::string get_file_contents(std::string filename);
 
 class Shader
 {
 public:
 	GLuint ID;
-	Shader(const char* vertexFile, const char* fragmentFile);
+	Shader(std::string vertexFile, std::string fragmentFile);
 
 	void Activate();
 	void Delete();
