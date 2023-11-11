@@ -14,7 +14,7 @@ Interface::Interface()
 		{
 			if ((i+j)%2 == 0)
 				addRigidBody(RigidCube, glm::vec3(2.0f * i, 0.0f, -3.0f * j), 
-					glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f), ColorRed);
+					glm::vec3(0.0f, 45.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f), ColorRed);
 			else
 				addRigidBody(RigidCube, glm::vec3(2.0f * i, 0.0f, -3.0f * j),
 					glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 2.0f), ColorBlue);
@@ -28,7 +28,7 @@ void Interface::Run()
 	float previousTimeFPS = glfwGetTime();
 
 	// main loop
-	while (!renderer.shouldClose())
+	while (not renderer.shouldClose())
 	{
 		// delta time calculations
 		float currentTime = glfwGetTime();
