@@ -21,7 +21,8 @@ int main()
 	Renderer renderer;
 
 	// rectangles and cubes init and setup
-	Shader shaderProgram("Resources/Shaders/default.vert", "Resources/Shaders/default.frag");
+	Shader shaderProgram; 
+	shaderProgram.setShader("Resources/Shaders/default.vert", "Resources/Shaders/default.frag");
 
 	renderer.addShader(shaderProgram);
 	renderer.activateShaders();
@@ -49,7 +50,7 @@ int main()
 	float previousTimeFPS = glfwGetTime();
 
 	// main loop
-	while (!renderer.shouldRun())
+	while (!renderer.shouldClose())
 	{
 		// delta tiem calculations
 		float currentTime = glfwGetTime();
@@ -58,7 +59,7 @@ int main()
 
 		renderer.Events(deltaTime);
 
-		if (!renderer.shouldRun())
+		if (renderer.shouldClose())
 		{
 			break;
 		}
@@ -94,8 +95,6 @@ int main()
 	}
 
 	userInterface.close();
-
-	// textureShader.Delete();
 	renderer.Close();
 
 	return 0;

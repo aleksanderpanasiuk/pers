@@ -2,11 +2,11 @@
 
 
 
-Camera::Camera(int width, int height, glm::vec3 position)
+void Camera::setDimensions(int width, int height, glm::vec3 position)
 {
 	Camera::width = width;
 	Camera::height = height;
-	Position = position;
+	Camera::Position = position;
 }
 
 void Camera::updateMatrix(float FOVdeg, float nearPlane, float farPlane)
@@ -18,7 +18,8 @@ void Camera::updateMatrix(float FOVdeg, float nearPlane, float farPlane)
 	// Makes camera look in the right direction from the right position
 	view = glm::lookAt(Position, Position + Orientation, Up);
 	// Adds perspective to the scene
-	projection = glm::perspective(glm::radians(FOVdeg), (float)width / height, nearPlane, farPlane);
+	float aspect = (float)width / (float)height;
+	projection = glm::perspective(glm::radians(FOVdeg), aspect, nearPlane, farPlane);
 
 	// Sets new camera matrix
 	cameraMatrix = projection * view;
