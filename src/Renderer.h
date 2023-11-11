@@ -50,7 +50,7 @@ private:
 
 
 	// draw functions for different object types
-	void drawRigidBody(const RigidBody& rigidBody);
+	void drawRigidBody(RigidBody& rigidBody);
 	void drawCube();
 
 

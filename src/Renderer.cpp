@@ -72,13 +72,23 @@ void Renderer::Draw(std::vector<RigidBody>& rigidBodies)
 		backgroundColor[2], backgroundColor[3]
 	);
 
-	for (const RigidBody& rigidBody : rigidBodies)
+	for (RigidBody& rigidBody : rigidBodies)
 	{
 		drawRigidBody(rigidBody);
 	}
 }
 
-void Renderer::drawRigidBody(const RigidBody& rigidBody)
+void Renderer::drawRigidBody(RigidBody& rigidBody)
+{
+	switch (rigidBody.getType())
+	{
+	case RigidCube:
+		drawCube();
+		break;
+	}
+}
+
+void Renderer::drawCube()
 {
 
 }
