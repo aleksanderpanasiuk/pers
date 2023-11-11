@@ -24,14 +24,14 @@ Interface::Interface()
 
 void Interface::Run()
 {
-	float previousTime = glfwGetTime();
-	float previousTimeFPS = glfwGetTime();
+	float previousTime = (float) glfwGetTime();
+	float previousTimeFPS = (float) glfwGetTime();
 
 	// main loop
 	while (not renderer.shouldClose())
 	{
 		// delta time calculations
-		float currentTime = glfwGetTime();
+		float currentTime = (float) glfwGetTime();
 		float deltaTime = currentTime - previousTime;
 		previousTime = currentTime;
 
@@ -45,7 +45,7 @@ void Interface::Run()
 		}
 
 		// rendering frame
-		float currentTimeFPS = glfwGetTime();
+		float currentTimeFPS =  (float) glfwGetTime();
 
 		if (currentTimeFPS - previousTimeFPS >= 1 / renderer.FPS)
 		{
