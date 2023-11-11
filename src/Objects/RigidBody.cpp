@@ -1,5 +1,10 @@
 #include "RigidBody.h"
 
+RigidBody::RigidBody(Type type)
+{
+	RigidBody::type = type;
+}
+
 void RigidBody::Move(float deltaTime, glm::vec3 poistionChange)
 {
 	Position = Position + (deltaTime * poistionChange);

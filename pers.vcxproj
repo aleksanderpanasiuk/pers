@@ -68,6 +68,7 @@
     <ClInclude Include="src\Objects\Object.h" />
     <ClInclude Include="src\Objects\Cube.h" />
     <ClInclude Include="src\Objects\RigidBody.h" />
+    <ClInclude Include="src\Objects\RigidBodyType.h" />
     <ClInclude Include="src\PhysicsSimulation.h" />
     <ClInclude Include="src\Renderer.h" />
     <ClInclude Include="src\Shader.h" />
