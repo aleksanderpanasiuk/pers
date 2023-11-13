@@ -12,6 +12,7 @@ Interface::Interface()
 		glm::vec3(10.0f, 0.1f, 10.0f), floorColor, false
 	);
 
+	// moving cubes
 	glm::vec3 ColorBlue = glm::vec3(0.1f, 0.1f, 0.3f);
 	glm::vec3 ColorRed = glm::vec3(0.3f, 0.1f, 0.1f);
 
@@ -19,12 +20,18 @@ Interface::Interface()
 	{
 		for (int j = 1; j <= 5; j++)
 		{
-			if ((i+j)%2 == 0)
-				addRigidBody(RigidCube, glm::vec3(2.0f * i, 0.0f, -3.0f * j), 
-					glm::vec3(0.0f, 45.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f), ColorRed, true);
-			else
+			if ((i + j) % 2 == 0)
+			{
 				addRigidBody(RigidCube, glm::vec3(2.0f * i, 0.0f, -3.0f * j),
-					glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 2.0f), ColorBlue, true);
+					glm::vec3(0.0f, 45.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f),
+					ColorRed, true);
+			}
+			else
+			{
+				addRigidBody(RigidCube, glm::vec3(2.0f * i, 0.0f, -3.0f * j),
+					glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 2.0f),
+					ColorBlue, true);
+			}
 		}
 	}
 }

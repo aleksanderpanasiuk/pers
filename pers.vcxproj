@@ -67,7 +67,6 @@
     <ClInclude Include="src\Mesh.h" />
     <ClInclude Include="src\Objects\Camera.h" />
     <ClInclude Include="src\Objects\RigidBody.h" />
-    <ClInclude Include="src\Objects\RigidBodyType.h" />
     <ClInclude Include="src\Objects\Shape.h" />
     <ClInclude Include="src\PhysicsSimulation.h" />
     <ClInclude Include="src\Renderer.h" />

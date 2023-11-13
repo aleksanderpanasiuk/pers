@@ -4,7 +4,9 @@
 #include <glm/glm.hpp>
 #include <vector>
 
-#include "RigidBodyType.h"
+
+enum RigidType { RigidCube, RigidSphere, RigidPlane };
+
 
 class RigidBody
 {
