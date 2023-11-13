@@ -23,6 +23,8 @@ public:
 	glm::vec3 getScale();
 	RigidType getType();
 
+	bool isAffectedByForces = true;
+
 private:
 	unsigned int ID;
 	glm::vec3 Position = glm::vec3(0.0f, 0.0f, 0.0f);
