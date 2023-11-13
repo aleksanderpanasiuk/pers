@@ -12,9 +12,9 @@ RigidBody::RigidBody(unsigned int ID, RigidType type,
 	RigidBody::isAffectedByForces = isAffectedByForces;
 }
 
-void RigidBody::Move(float deltaTime, glm::vec3 poistionChange)
+void RigidBody::Move(float deltaTime)
 {
-	Position = Position + (deltaTime * poistionChange);
+	Position = Position + (deltaTime * Velocity);
 }
 
 void RigidBody::changePosition(glm::vec3 newPosition)
@@ -35,6 +35,16 @@ void RigidBody::Rescale(glm::vec3 newScale)
 unsigned int RigidBody::getID()
 {
 	return ID;
+}
+
+void RigidBody::setVelocity(glm::vec3 Velocity)
+{
+	RigidBody::Velocity = Velocity;
+}
+
+glm::vec3 RigidBody::getVelocity()
+{
+	return Velocity;
 }
 
 glm::vec3 RigidBody::getPosition()

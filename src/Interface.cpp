@@ -34,6 +34,11 @@ Interface::Interface()
 			}
 		}
 	}
+
+	for (RigidBody& rigidBody : physicsSimulation.getRigidBodies())
+	{
+		rigidBody.setVelocity(glm::vec3(1.0f, 0.0f, 0.0f));
+	}
 }
 
 void Interface::Run()
