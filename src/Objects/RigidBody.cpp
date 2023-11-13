@@ -1,13 +1,15 @@
 #include "RigidBody.h"
 
 RigidBody::RigidBody(unsigned int ID, RigidType type, 
-	glm::vec3 Position, glm::vec3 Orientation, glm::vec3 Scale)
+	glm::vec3 Position, glm::vec3 Orientation, glm::vec3 Scale,
+	bool isAffectedByForces)
 {
 	RigidBody::ID = ID;
 	RigidBody::Position = Position;
 	RigidBody::Orientation = Orientation;
 	RigidBody::Scale = Scale;
 	RigidBody::type = type;
+	RigidBody::isAffectedByForces = isAffectedByForces;
 }
 
 void RigidBody::Move(float deltaTime, glm::vec3 poistionChange)

@@ -4,8 +4,11 @@ void PhysicsSimulation::simulate(float deltaTime)
 {
 	for (RigidBody& rigidBody : rigidBodies)
 	{
-		rigidBody.Move(deltaTime, glm::vec3(1.0f, 0.0f, 0.0f));
-		rigidBody.Rotate(deltaTime, glm::vec3(0.0f, 0.0f, -50.0f));
+		if (rigidBody.isAffectedByForces)
+		{
+			rigidBody.Move(deltaTime, glm::vec3(1.0f, 0.0f, 0.0f));
+			rigidBody.Rotate(deltaTime, glm::vec3(0.0f, 0.0f, -50.0f));
+		}
 	}
 }
 

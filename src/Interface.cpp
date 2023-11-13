@@ -5,6 +5,13 @@ Interface::Interface()
 	userInterface.init(renderer.getWindow());
 	userInterface.addWindow("Diagnostic Data", "test");
 
+	// floor
+	glm::vec3 floorColor = glm::vec3(0.6f, 0.6f, 0.6f);
+	addRigidBody(
+		RigidCube, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f),
+		glm::vec3(10.0f, 0.1f, 10.0f), floorColor, false
+	);
+
 	glm::vec3 ColorBlue = glm::vec3(0.1f, 0.1f, 0.3f);
 	glm::vec3 ColorRed = glm::vec3(0.3f, 0.1f, 0.1f);
 
@@ -14,10 +21,10 @@ Interface::Interface()
 		{
 			if ((i+j)%2 == 0)
 				addRigidBody(RigidCube, glm::vec3(2.0f * i, 0.0f, -3.0f * j), 
-					glm::vec3(0.0f, 45.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f), ColorRed);
+					glm::vec3(0.0f, 45.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f), ColorRed, true);
 			else
 				addRigidBody(RigidCube, glm::vec3(2.0f * i, 0.0f, -3.0f * j),
-					glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 2.0f), ColorBlue);
+					glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 2.0f), ColorBlue, true);
 		}
 	}
 }
@@ -79,11 +86,16 @@ void Interface::DrawFrame(float& previousTimeFPS, float deltaTime, float current
 }
 
 unsigned int Interface::addRigidBody(RigidType type, glm::vec3 position, 
-	glm::vec3 orientation, glm::vec3 scale, glm::vec3 color)
+	glm::vec3 orientation, glm::vec3 scale, glm::vec3 color,
+	bool isAffectedByForces)
 {
 	unsigned int nextID = physicsSimulation.getRigidBodiesNumber();
 
-	physicsSimulation.addRigidBody(RigidBody(nextID, type, position, orientation, scale));
+	physicsSimulation.addRigidBody(
+		RigidBody(
+			nextID, type, position, orientation, scale, isAffectedByForces
+		)
+	);
 	Shape shape(type, color);
 	renderer.addShape(nextID, shape);
 
