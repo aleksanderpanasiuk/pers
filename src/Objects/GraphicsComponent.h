@@ -4,10 +4,10 @@
 #include "../Mesh.h"
 #include "RigidBody.h"
 
-class Shape
+class GraphicsComponent
 {
 public:
-	Shape(std::unique_ptr<RigidBody>& rigidBodyPtr, glm::vec3 Color);
+	GraphicsComponent(std::unique_ptr<RigidBody>& rigidBodyPtr, glm::vec3 Color);
 	void Draw(Shader& shader, Camera& camera);
 
 	bool isVisible = true;

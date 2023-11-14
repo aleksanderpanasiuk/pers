@@ -1,9 +1,9 @@
-#include "Shape.h"
+#include "GraphicsComponent.h"
 
-Shape::Shape(std::unique_ptr<RigidBody>& rigidBody, glm::vec3 Color)
+GraphicsComponent::GraphicsComponent(std::unique_ptr<RigidBody>& rigidBody, glm::vec3 Color)
 	: rigidBodyPtr(std::move(rigidBody))
 {
-	Shape::Color = Color;
+	GraphicsComponent::Color = Color;
 
 	switch (rigidBodyPtr->getType())
 	{
@@ -19,7 +19,7 @@ Shape::Shape(std::unique_ptr<RigidBody>& rigidBody, glm::vec3 Color)
 	}
 }
 
-void Shape::Draw(Shader& shader, Camera& camera)
+void GraphicsComponent::Draw(Shader& shader, Camera& camera)
 {
 	if (isVisible)
 	{		
@@ -31,7 +31,7 @@ void Shape::Draw(Shader& shader, Camera& camera)
 	}
 }
 
-void Shape::setDataCube()
+void GraphicsComponent::setDataCube()
 {
 	glm::vec3 Size = glm::vec3(1.0f, 1.0f, 1.0f);
 
