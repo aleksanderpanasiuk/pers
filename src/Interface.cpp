@@ -70,7 +70,7 @@ void Interface::DrawFrame(float& previousTimeFPS, float deltaTime, float current
 	float FrameDelta = currentTimeFPS - previousTimeFPS;
 	previousTimeFPS = currentTimeFPS;
 
-	renderer.Draw();
+	renderer.Draw(scene.getObjects());
 	userInterface.Display(deltaTime, FrameDelta);
 
 	renderer.Swap();

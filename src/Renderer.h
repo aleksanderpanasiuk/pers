@@ -5,7 +5,7 @@
 #include <unordered_map>
 
 #include "Objects/Camera.h"
-#include "Objects/Shape.h"
+#include "Objects/Object.h"
 
 class Renderer
 {
@@ -13,14 +13,13 @@ public:
 	Renderer();
 	bool shouldClose();
 	void Close();
-	void Draw();
+	void Draw(std::vector<Object>& Objects);
 	void Swap();
 	void moveCamera(float deltaTime);
 
 	GLFWwindow* getWindow();
 	Camera& getCamera();
 	Shader& getDefaultShader();
-	void addShape(Shape& shape);
 
 	// screen dimensions
 	const unsigned int WIDTH = 1280;
@@ -50,16 +49,13 @@ private:
 	Shader lightShader;
 
 
-	std::vector<Shape> Shapes;
-
-
 	void startGLFW();
 	void activateShaders();
 
 
 	// draw functions for different object types
 	void drawBackground();
-	void drawShapes();
+	void drawObjects(std::vector<Object>& Objects);
 
 
 	glm::vec4 backgroundColor = glm::vec4(0.13f, 0.13f, 0.13f, 1.0f);

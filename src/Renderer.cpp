@@ -64,11 +64,11 @@ void Renderer::Close()
 	glfwTerminate();
 }
 
-void Renderer::Draw()
+void Renderer::Draw(std::vector<Object>& Objects)
 {
 	drawBackground();
 
-	drawShapes();
+	drawObjects(Objects);
 }
 
 void Renderer::drawBackground()
@@ -82,11 +82,11 @@ void Renderer::drawBackground()
 	);
 }
 
-void Renderer::drawShapes()
+void Renderer::drawObjects(std::vector<Object>& Objects)
 {
-	for (Shape& shape : Shapes)
+	for (Object& object : Objects)
 	{
-		shape.Draw(defaultShader, camera);
+		object.Render(defaultShader, camera);
 	}
 }
 
@@ -109,9 +109,4 @@ Camera& Renderer::getCamera()
 Shader& Renderer::getDefaultShader()
 {
 	return defaultShader;
-}
-
-void Renderer::addShape(Shape& shape)
-{
-	Shapes.push_back(shape);
 }
