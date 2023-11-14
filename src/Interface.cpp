@@ -6,38 +6,23 @@ Interface::Interface()
 	userInterface.addWindow("Diagnostic Data", "test");
 
 	// floor
-	glm::vec3 floorColor = glm::vec3(0.6f, 0.6f, 0.6f);
-	addRigidBody(
-		RigidCube, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f),
-		glm::vec3(10.0f, 0.1f, 10.0f), floorColor, false
-	);
+	addFloor();
 
 	// moving cubes
 	glm::vec3 ColorBlue = glm::vec3(0.1f, 0.1f, 0.3f);
 	glm::vec3 ColorRed = glm::vec3(0.3f, 0.1f, 0.1f);
 
-	for (int i = 0; i < 5; i++)
-	{
-		for (int j = 1; j <= 5; j++)
-		{
-			if ((i + j) % 2 == 0)
-			{
-				addRigidBody(RigidCube, glm::vec3(2.0f * i, 0.0f, -3.0f * j),
-					glm::vec3(0.0f, 45.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f),
-					ColorRed, true);
-			}
-			else
-			{
-				addRigidBody(RigidCube, glm::vec3(2.0f * i, 0.0f, -3.0f * j),
-					glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 2.0f),
-					ColorBlue, true);
-			}
-		}
-	}
+
+	addRigidBody(
+		RigidCube, glm::vec3(0.0f, 5.0f, 0.0f),
+		glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f),
+		ColorRed, true
+	);
+
 
 	for (RigidBody& rigidBody : physicsSimulation.getRigidBodies())
 	{
-		rigidBody.setVelocity(glm::vec3(1.0f, 0.0f, 0.0f));
+		rigidBody.setVelocity(glm::vec3(0.0f, -1.0f, 0.0f));
 	}
 }
 
@@ -112,6 +97,18 @@ unsigned int Interface::addRigidBody(RigidType type, glm::vec3 position,
 	renderer.addShape(nextID, shape);
 
 	return nextID;
+}
+
+unsigned int Interface::addFloor(glm::vec3 Size)
+{
+	return addRigidBody(
+		RigidCube, 
+		glm::vec3(0.0f, 0.0f, 0.0f), 
+		glm::vec3(0.0f, 0.0f, 0.0f),
+		Size, 
+		floorColor, 
+		false
+	);
 }
 
 void Interface::Close()

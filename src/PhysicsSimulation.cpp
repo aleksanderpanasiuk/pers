@@ -7,7 +7,6 @@ void PhysicsSimulation::simulate(float deltaTime)
 		if (rigidBody.isAffectedByForces)
 		{
 			rigidBody.Move(deltaTime);
-			rigidBody.Rotate(deltaTime, glm::vec3(0.0f, 0.0f, -50.0f));
 		}
 	}
 }
