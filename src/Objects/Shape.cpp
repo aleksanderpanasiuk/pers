@@ -1,6 +1,6 @@
 #include "Shape.h"
 
-Shape::Shape(std::unique_ptr<RigidBody> rigidBody, glm::vec3 Color)
+Shape::Shape(std::unique_ptr<RigidBody>& rigidBody, glm::vec3 Color)
 	: rigidBodyPtr(std::move(rigidBody))
 {
 	Shape::Color = Color;

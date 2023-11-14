@@ -7,7 +7,7 @@
 class Shape
 {
 public:
-	Shape(std::unique_ptr<RigidBody> rigidBodyPtr, glm::vec3 Color);
+	Shape(std::unique_ptr<RigidBody>& rigidBodyPtr, glm::vec3 Color);
 	void Draw(Shader& shader, Camera& camera);
 
 	bool isVisible = true;

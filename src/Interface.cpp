@@ -6,21 +6,18 @@ Interface::Interface()
 	userInterface.addWindow("Diagnostic Data", "test");
 
 	// floor
-	unsigned int floorID = addFloor();
+	addFloor();
 
 	// moving cubes
 	glm::vec3 ColorBlue = glm::vec3(0.1f, 0.1f, 0.3f);
 	glm::vec3 ColorRed = glm::vec3(0.3f, 0.1f, 0.1f);
 
 
-	unsigned int cubeID = addObject(
+	addObject(
 		RigidCube, glm::vec3(0.0f, 5.0f, 0.0f),
 		glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f),
 		ColorRed, true
 	);
-
-
-	physicsSimulation.getRigidBodies()[cubeID].setVelocity(glm::vec3(0.0f, -1.0f, 0.0f));
 }
 
 void Interface::Run()
@@ -73,32 +70,30 @@ void Interface::DrawFrame(float& previousTimeFPS, float deltaTime, float current
 	float FrameDelta = currentTimeFPS - previousTimeFPS;
 	previousTimeFPS = currentTimeFPS;
 
-	renderer.Draw(physicsSimulation.getRigidBodies());
+	renderer.Draw();
 	userInterface.Display(deltaTime, FrameDelta);
 
 	renderer.Swap();
 }
 
-unsigned int Interface::addObject(RigidType type, glm::vec3 position,
+void Interface::addObject(RigidType type, glm::vec3 position,
 	glm::vec3 orientation, glm::vec3 scale, glm::vec3 color,
-	bool isAffectedByForces)
+	bool isAffectedByForces
+)
 {
-	unsigned int nextID = physicsSimulation.getRigidBodiesNumber();
-
-	physicsSimulation.addRigidBody(
-		RigidBody(
-			nextID, type, position, orientation, scale, isAffectedByForces
-		)
+	RigidBody rigidBody(
+		type, position, orientation, scale, isAffectedByForces
 	);
-	Shape shape(type, color);
-	renderer.addShape(nextID, shape);
+	physicsSimulation.addRigidBody(rigidBody);
 
-	return nextID;
+	std::unique_ptr<RigidBody> rigidBodyPtr(&rigidBody);
+	Shape shape(rigidBodyPtr, color);
+	renderer.addShape(shape);
 }
 
-unsigned int Interface::addFloor(glm::vec3 Size)
+void Interface::addFloor(glm::vec3 Size)
 {
-	return addObject(
+	addObject(
 		RigidCube, 
 		glm::vec3(0.0f, 0.0f, 0.0f), 
 		glm::vec3(0.0f, 0.0f, 0.0f),
