@@ -35,6 +35,7 @@
     <ClCompile Include="src\Objects\Object.cpp" />
     <ClCompile Include="src\Objects\RigidBody.cpp" />
     <ClCompile Include="src\Objects\GraphicsComponent.cpp" />
+    <ClCompile Include="src\Objects\Scene.cpp" />
     <ClCompile Include="src\PhysicsSimulation.cpp" />
     <ClCompile Include="src\Renderer.cpp" />
     <ClCompile Include="src\Shader.cpp" />
@@ -70,6 +71,7 @@
     <ClInclude Include="src\Objects\Object.h" />
     <ClInclude Include="src\Objects\RigidBody.h" />
     <ClInclude Include="src\Objects\GraphicsComponent.h" />
+    <ClInclude Include="src\Objects\Scene.h" />
     <ClInclude Include="src\PhysicsSimulation.h" />
     <ClInclude Include="src\Renderer.h" />
     <ClInclude Include="src\Shader.h" />
