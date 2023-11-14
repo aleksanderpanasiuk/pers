@@ -1,18 +1,12 @@
 #ifndef PHYSICS_SIMULATION_CLASS_H
 #define PHYSICS_SIMULATION_CLASS_H
 
-#include "Objects/RigidBody.h"
+#include "Objects/Object.h"
 
 class PhysicsSimulation
 {
 public:
-	void simulate(float deltaTime);
-	std::vector<RigidBody>& getRigidBodies();
-	void addRigidBody(RigidBody& rigidBody);
-	size_t getRigidBodiesNumber();
-
-private:
-	std::vector<RigidBody> rigidBodies;
+	void simulate(float deltaTime, std::vector<Object>& Objects);
 };
 
 #endif // !PHYSICS_SIMULATION_CLASS_H

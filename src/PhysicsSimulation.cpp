@@ -1,27 +1,9 @@
 #include "PhysicsSimulation.h"
 
-void PhysicsSimulation::simulate(float deltaTime)
+void PhysicsSimulation::simulate(float deltaTime, std::vector<Object>& Objects)
 {
-	for (RigidBody& rigidBody : rigidBodies)
+	for (Object& object : Objects)
 	{
-		if (rigidBody.isAffectedByForces)
-		{
-			rigidBody.Move(deltaTime);
-		}
+		object.Update(deltaTime);
 	}
-}
-
-std::vector<RigidBody>& PhysicsSimulation::getRigidBodies()
-{
-	return rigidBodies;
-}
-
-void PhysicsSimulation::addRigidBody(RigidBody& rigidBody)
-{
-	rigidBodies.push_back(rigidBody);
-}
-
-size_t PhysicsSimulation::getRigidBodiesNumber()
-{
-	return rigidBodies.size();
 }
