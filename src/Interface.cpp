@@ -6,24 +6,21 @@ Interface::Interface()
 	userInterface.addWindow("Diagnostic Data", "test");
 
 	// floor
-	addFloor();
+	unsigned int floorID = addFloor();
 
 	// moving cubes
 	glm::vec3 ColorBlue = glm::vec3(0.1f, 0.1f, 0.3f);
 	glm::vec3 ColorRed = glm::vec3(0.3f, 0.1f, 0.1f);
 
 
-	addRigidBody(
+	unsigned int cubeID = addObject(
 		RigidCube, glm::vec3(0.0f, 5.0f, 0.0f),
 		glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f),
 		ColorRed, true
 	);
 
 
-	for (RigidBody& rigidBody : physicsSimulation.getRigidBodies())
-	{
-		rigidBody.setVelocity(glm::vec3(0.0f, -1.0f, 0.0f));
-	}
+	physicsSimulation.getRigidBodies()[cubeID].setVelocity(glm::vec3(0.0f, -1.0f, 0.0f));
 }
 
 void Interface::Run()
@@ -82,7 +79,7 @@ void Interface::DrawFrame(float& previousTimeFPS, float deltaTime, float current
 	renderer.Swap();
 }
 
-unsigned int Interface::addRigidBody(RigidType type, glm::vec3 position, 
+unsigned int Interface::addObject(RigidType type, glm::vec3 position,
 	glm::vec3 orientation, glm::vec3 scale, glm::vec3 color,
 	bool isAffectedByForces)
 {
@@ -101,7 +98,7 @@ unsigned int Interface::addRigidBody(RigidType type, glm::vec3 position,
 
 unsigned int Interface::addFloor(glm::vec3 Size)
 {
-	return addRigidBody(
+	return addObject(
 		RigidCube, 
 		glm::vec3(0.0f, 0.0f, 0.0f), 
 		glm::vec3(0.0f, 0.0f, 0.0f),
