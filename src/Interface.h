@@ -34,6 +34,8 @@ private:
 
 	glm::vec3 floorColor = glm::vec3(0.6f, 0.6f, 0.6f);
 	void addFloor(glm::vec3 Size = glm::vec3(10.0f, 0.1f, 10.0f));
+
+	void sceneSetup();
 };
 
 #endif // !INTERFACE_CLASS_H

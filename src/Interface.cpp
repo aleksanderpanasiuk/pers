@@ -5,19 +5,7 @@ Interface::Interface()
 	userInterface.init(renderer.getWindow());
 	userInterface.addWindow("Diagnostic Data", "test");
 
-	// floor
-	addFloor();
-
-	// moving cubes
-	glm::vec3 ColorBlue = glm::vec3(0.1f, 0.1f, 0.3f);
-	glm::vec3 ColorRed = glm::vec3(0.3f, 0.1f, 0.1f);
-
-
-	addObject(
-		RigidCube, glm::vec3(0.0f, 5.0f, 0.0f),
-		glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f),
-		ColorRed, true
-	);
+	sceneSetup();
 }
 
 void Interface::Run()
@@ -106,4 +94,29 @@ void Interface::Close()
 {
 	userInterface.close();
 	renderer.Close();
+}
+
+void Interface::sceneSetup()
+{
+	// floor
+	addFloor(glm::vec3(100.0f, 0.1f, 100.0f));
+
+	// moving cubes
+	glm::vec3 ColorBlue = glm::vec3(0.1f, 0.1f, 0.3f);
+	glm::vec3 ColorRed = glm::vec3(0.3f, 0.1f, 0.1f);
+
+
+	addObject(
+		RigidCube, glm::vec3(0.0f, 5.0f, 0.0f),
+		glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f),
+		ColorRed, true
+	);
+
+	for (Object& object : scene.getObjects())
+	{
+		if (object.getRigidBody().isAffectedByForces)
+		{
+			object.getRigidBody().setVelocity(glm::vec3(0.0f, -1.0f, 0.0f));
+		}
+	}
 }
