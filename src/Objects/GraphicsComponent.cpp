@@ -1,11 +1,10 @@
 #include "GraphicsComponent.h"
 
-GraphicsComponent::GraphicsComponent(std::unique_ptr<RigidBody>& rigidBody, glm::vec3 Color)
-	: rigidBodyPtr(std::move(rigidBody))
+GraphicsComponent::GraphicsComponent(RigidType rigidType, glm::vec3 Color)
 {
 	GraphicsComponent::Color = Color;
 
-	switch (rigidBodyPtr->getType())
+	switch (rigidType)
 	{
 	case RigidCube:
 		setDataCube();
@@ -19,14 +18,19 @@ GraphicsComponent::GraphicsComponent(std::unique_ptr<RigidBody>& rigidBody, glm:
 	}
 }
 
-void GraphicsComponent::Draw(Shader& shader, Camera& camera)
+void GraphicsComponent::Draw(
+	Shader& shader, Camera& camera,
+	glm::vec3 Position,
+	glm::vec3 Orientation,
+	glm::vec3 Scale
+)
 {
 	if (isVisible)
 	{		
 		mesh.Draw(shader, camera, 
-			rigidBodyPtr->getPosition(),
-			rigidBodyPtr->getOrientation(),
-			rigidBodyPtr->getScale()
+			Position,
+			Orientation,
+			Scale
 		);
 	}
 }

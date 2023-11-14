@@ -7,15 +7,19 @@
 class GraphicsComponent
 {
 public:
-	GraphicsComponent(std::unique_ptr<RigidBody>& rigidBodyPtr, glm::vec3 Color);
-	void Draw(Shader& shader, Camera& camera);
+	GraphicsComponent(RigidType rigidType, glm::vec3 Color);
+	void Draw(
+		Shader& shader, Camera& camera, 
+		glm::vec3 Position,
+		glm::vec3 Orientation,
+		glm::vec3 Scale
+	);
 
 	bool isVisible = true;
 
 
 private:
 	Mesh mesh;
-	std::unique_ptr<RigidBody> rigidBodyPtr;
 
 
 	glm::vec3 Color = glm::vec3(0.0f, 0.0f, 0.0f);
