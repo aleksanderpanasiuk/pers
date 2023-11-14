@@ -11,16 +11,19 @@ enum RigidType { RigidCube, RigidSphere, RigidPlane };
 class RigidBody
 {
 public:
-	RigidBody(unsigned int ID, RigidType type,
-		glm::vec3 Position, glm::vec3 Orientation, glm::vec3 Scale, 
-		bool isAffectedByForces);
+	RigidBody(
+		RigidType type,
+		glm::vec3 Position, 
+		glm::vec3 Orientation, 
+		glm::vec3 Scale, 
+		bool isAffectedByForces
+	);
 
 	void changePosition(glm::vec3 newPosition);
 	void Move(float deltaTime);
 	void Rotate(float deltaTime, glm::vec3 rotationChange);
 	void Rescale(glm::vec3 newScale);
 
-	unsigned int getID();
 	void setVelocity(glm::vec3 Velocity);
 	glm::vec3 getVelocity();
 	glm::vec3 getPosition();
@@ -31,7 +34,6 @@ public:
 	bool isAffectedByForces = true;
 
 private:
-	unsigned int ID;
 	RigidType type;
 
 	glm::vec3 Velocity = glm::vec3(0.0f, 0.0f, 0.0f);

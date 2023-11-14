@@ -1,10 +1,13 @@
 #include "RigidBody.h"
 
-RigidBody::RigidBody(unsigned int ID, RigidType type, 
-	glm::vec3 Position, glm::vec3 Orientation, glm::vec3 Scale,
-	bool isAffectedByForces)
+RigidBody::RigidBody(
+	RigidType type, 
+	glm::vec3 Position, 
+	glm::vec3 Orientation, 
+	glm::vec3 Scale,
+	bool isAffectedByForces
+)
 {
-	RigidBody::ID = ID;
 	RigidBody::Position = Position;
 	RigidBody::Orientation = Orientation;
 	RigidBody::Scale = Scale;
@@ -30,11 +33,6 @@ void RigidBody::Rotate(float deltaTime, glm::vec3 rotationChange)
 void RigidBody::Rescale(glm::vec3 newScale)
 {
 	Scale = newScale;
-}
-
-unsigned int RigidBody::getID()
-{
-	return ID;
 }
 
 void RigidBody::setVelocity(glm::vec3 Velocity)
