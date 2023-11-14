@@ -13,7 +13,7 @@ public:
 	Renderer();
 	bool shouldClose();
 	void Close();
-	void Draw(std::vector<RigidBody>& rigidBodies);
+	void Draw();
 	void Swap();
 	void moveCamera(float deltaTime);
 
