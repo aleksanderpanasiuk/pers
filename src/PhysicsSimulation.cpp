@@ -16,12 +16,12 @@ std::vector<RigidBody>& PhysicsSimulation::getRigidBodies()
 	return rigidBodies;
 }
 
-void PhysicsSimulation::addRigidBody(RigidBody rigidBody)
+void PhysicsSimulation::addRigidBody(RigidBody& rigidBody)
 {
 	rigidBodies.push_back(rigidBody);
 }
 
-unsigned int PhysicsSimulation::getRigidBodiesNumber()
+size_t PhysicsSimulation::getRigidBodiesNumber()
 {
 	return rigidBodies.size();
 }

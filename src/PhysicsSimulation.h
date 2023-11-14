@@ -8,8 +8,8 @@ class PhysicsSimulation
 public:
 	void simulate(float deltaTime);
 	std::vector<RigidBody>& getRigidBodies();
-	void addRigidBody(RigidBody rigidBody);
-	unsigned int getRigidBodiesNumber();
+	void addRigidBody(RigidBody& rigidBody);
+	size_t getRigidBodiesNumber();
 
 private:
 	std::vector<RigidBody> rigidBodies;
