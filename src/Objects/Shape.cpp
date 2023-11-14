@@ -1,17 +1,11 @@
 #include "Shape.h"
 
-Shape::Shape()
-{
-	Shape::type = RigidCube;
-	Shape::Color = glm::vec3(0.0f, 0.0f, 0.0f);
-}
-
-Shape::Shape(RigidType type, glm::vec3 Color)
+Shape::Shape(std::unique_ptr<RigidBody> rigidBody, glm::vec3 Color)
+	: rigidBodyPtr(std::move(rigidBody))
 {
 	Shape::Color = Color;
-	Shape::type = type;
 
-	switch (type)
+	switch (rigidBodyPtr->getType())
 	{
 	case RigidCube:
 		setDataCube();
@@ -25,13 +19,15 @@ Shape::Shape(RigidType type, glm::vec3 Color)
 	}
 }
 
-void Shape::Draw(Shader& shader, Camera& camera,
-	glm::vec3 Position, glm::vec3 Orientation, glm::vec3 Scale
-)
+void Shape::Draw(Shader& shader, Camera& camera)
 {
 	if (isVisible)
-	{
-		mesh.Draw(shader, camera, Position, Orientation, Scale);
+	{		
+		mesh.Draw(shader, camera, 
+			rigidBodyPtr->getPosition(),
+			rigidBodyPtr->getOrientation(),
+			rigidBodyPtr->getScale()
+		);
 	}
 }
 
