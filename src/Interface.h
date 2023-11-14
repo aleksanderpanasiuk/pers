@@ -4,6 +4,7 @@
 #include "PhysicsSimulation.h"
 #include "UserInterface.h"
 #include "Renderer.h"
+#include "Objects/Scene.h"
 
 class Interface
 {
@@ -19,6 +20,9 @@ private:
 	Renderer renderer;
 
 	UserInterface userInterface;
+
+	Scene scene;
+
 
 	void DrawFrame(float& previousTimeFPS, float deltaTime, float currentTimeFPS);
 	void handleEvents(float deltaTime);

@@ -84,11 +84,10 @@ void Interface::addObject(RigidType type, glm::vec3 position,
 	RigidBody rigidBody(
 		type, position, orientation, scale, isAffectedByForces
 	);
-	physicsSimulation.addRigidBody(rigidBody);
 
-	std::unique_ptr<RigidBody> rigidBodyPtr(&rigidBody);
-	Shape shape(rigidBodyPtr, color);
-	renderer.addShape(shape);
+	GraphicsComponent graphicsComponent(type, color);
+	
+	scene.addObject(Object(graphicsComponent, rigidBody));
 }
 
 void Interface::addFloor(glm::vec3 Size)
