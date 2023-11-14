@@ -68,10 +68,7 @@ void Renderer::Draw(std::vector<RigidBody>& rigidBodies)
 {
 	drawBackground();
 
-	for (RigidBody& rigidBody : rigidBodies)
-	{
-		drawRigidBody(rigidBody);
-	}
+	drawShapes();
 }
 
 void Renderer::drawBackground()
@@ -85,15 +82,12 @@ void Renderer::drawBackground()
 	);
 }
 
-void Renderer::drawRigidBody(RigidBody& rigidBody)
+void Renderer::drawShapes()
 {
-	int id = rigidBody.getID();
-
-	if (Shapes.count(id) == 0)
-		throw std::invalid_argument("Shape with given id does not exist: " + std::to_string(id));
-
-	Shapes[id].Draw(defaultShader, camera,
-		rigidBody.getPosition(), rigidBody.getOrientation(), rigidBody.getScale());
+	for (Shape& shape : Shapes)
+	{
+		shape.Draw(defaultShader, camera);
+	}
 }
 
 void Renderer::Swap()
@@ -117,10 +111,7 @@ Shader& Renderer::getDefaultShader()
 	return defaultShader;
 }
 
-void Renderer::addShape(unsigned int ID, Shape& shape)
+void Renderer::addShape(Shape& shape)
 {
-	if (Shapes.count(ID) != 0)
-		throw std::invalid_argument("Shape with given ID already exists");
-
-	Shapes[ID] = shape;
+	Shapes.push_back(shape);
 }

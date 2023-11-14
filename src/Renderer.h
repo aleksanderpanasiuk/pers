@@ -20,7 +20,7 @@ public:
 	GLFWwindow* getWindow();
 	Camera& getCamera();
 	Shader& getDefaultShader();
-	void addShape(unsigned int ID, Shape& shape);
+	void addShape(Shape& shape);
 
 	// screen dimensions
 	const unsigned int WIDTH = 1280;
@@ -50,7 +50,7 @@ private:
 	Shader lightShader;
 
 
-	std::unordered_map<int, Shape> Shapes;
+	std::vector<Shape> Shapes;
 
 
 	void startGLFW();
@@ -59,7 +59,7 @@ private:
 
 	// draw functions for different object types
 	void drawBackground();
-	void drawRigidBody(RigidBody& rigidBody);
+	void drawShapes();
 
 
 	glm::vec4 backgroundColor = glm::vec4(0.13f, 0.13f, 0.13f, 1.0f);
