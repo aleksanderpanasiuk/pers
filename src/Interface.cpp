@@ -33,7 +33,7 @@ void Interface::Run()
 		float deltaTime = currentTime - previousTime;
 		previousTime = currentTime;
 
-		physicsSimulation.simulate(deltaTime);
+		physicsSimulation.simulate(deltaTime, scene.getObjects());
 
 		handleEvents(deltaTime);
 
