@@ -64,7 +64,7 @@ void Renderer::Close()
 	glfwTerminate();
 }
 
-void Renderer::Draw(std::vector<RigidBody>& rigidBodies)
+void Renderer::Draw()
 {
 	drawBackground();
 
