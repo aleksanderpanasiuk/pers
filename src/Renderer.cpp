@@ -1,8 +1,14 @@
 #include "Renderer.h"
 
 
-Renderer::Renderer()
+void Renderer::Init(toml::v3::node_view<toml::v3::node> shadersData)
 {
+	defaultVertShaderPath = shadersData["defaultVertShaderPath"].value_or("");
+	defaultFragShaderPath = shadersData["defaultFragShaderPath"].value_or("");
+
+	lighVertShaderPath = shadersData["lighVertShaderPath"].value_or("");
+	lighFragShaderPath = shadersData["lighFragShaderPath"].value_or("");
+	
 	startGLFW();
 
 	camera.setDimensions(WIDTH, HEIGHT, glm::vec3(0.0f, 2.0f, 2.0f));
@@ -88,6 +94,11 @@ void Renderer::drawObjects(std::vector<Object>& Objects)
 	{
 		object.Render(defaultShader, camera);
 	}
+}
+
+void Renderer::setSettings()
+{
+
 }
 
 void Renderer::Swap()

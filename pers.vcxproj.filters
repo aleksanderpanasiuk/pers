@@ -31,6 +31,9 @@
     <Filter Include="Header Files\imgui">
       <UniqueIdentifier>{19aad2be-bef9-4651-bfc5-eaf763e76844}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Config">
+      <UniqueIdentifier>{87363efc-3384-4f41-a85f-083ab41bce5c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\glad.c">
@@ -130,6 +133,9 @@
     </None>
     <None Include="Resources\Shaders\texture.vert">
       <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="Config\config.toml">
+      <Filter>Config</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

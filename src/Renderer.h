@@ -1,6 +1,7 @@
 #ifndef RENDERER_CLASS_H
 #define RENDERER_CLASS_H
 
+#include <toml/toml.hpp>
 #include <string>
 #include <unordered_map>
 
@@ -10,12 +11,13 @@
 class Renderer
 {
 public:
-	Renderer();
 	bool shouldClose();
+	void Init(toml::v3::node_view<toml::v3::node> shadersData);
 	void Close();
 	void Draw(std::vector<Object>& Objects);
 	void Swap();
 	void moveCamera(float deltaTime);
+	void setSettings();
 
 	GLFWwindow* getWindow();
 	Camera& getCamera();
@@ -36,7 +38,7 @@ private:
 
 	// basic shader
 	std::string defaultVertShaderPath = "Resources/Shaders/default.vert";
-	std::string defaultFragShaderPath = "Resources/Shaders/default.frag";
+	std::string defaultFragShaderPath = "Resoudsadrces/Shaders/default.frag";
 	Shader defaultShader;
 
 	
