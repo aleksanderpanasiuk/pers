@@ -7,15 +7,6 @@ std::string get_file_contents(std::string filename)
 
 	if (file)
 	{
-		/*
-		std::string contents;
-		in.seekg(0, std::ios::end);
-		contents.resize(in.tellg());
-		in.seekg(0, std::ios::beg);
-		in.read(&contents[0], contents.size());
-		in.close();
-		*/	
-
 		std::stringstream strStream;
 		strStream << file.rdbuf();
 		std::string contents = strStream.str();
@@ -25,7 +16,7 @@ std::string get_file_contents(std::string filename)
 		return contents;
 	}
 
-	throw ;
+	throw std::ifstream::failure("File " + filename + "not found");
 }
 
 void Shader::setShader(std::string vertexFile, std::string fragmentFile)
