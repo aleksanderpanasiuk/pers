@@ -1,20 +1,31 @@
 #include "Shader.h"
 
-// Reads a text file and outputs a string with everything in the text file
+
 std::string get_file_contents(std::string filename)
 {
-	std::ifstream in(filename, std::ios::binary);
-	if (in)
+	std::ifstream file(filename, std::ios::binary);
+
+	if (file)
 	{
+		/*
 		std::string contents;
 		in.seekg(0, std::ios::end);
 		contents.resize(in.tellg());
 		in.seekg(0, std::ios::beg);
 		in.read(&contents[0], contents.size());
 		in.close();
-		return(contents);
+		*/	
+
+		std::stringstream strStream;
+		strStream << file.rdbuf();
+		std::string contents = strStream.str();
+
+		file.close();
+
+		return contents;
 	}
-	throw(errno);
+
+	throw ;
 }
 
 void Shader::setShader(std::string vertexFile, std::string fragmentFile)
