@@ -25,6 +25,8 @@ private:
 	Scene scene;
 
 
+	void Config(toml::v3::table config);
+
 	void DrawFrame(float& previousTimeFPS, float deltaTime, float currentTimeFPS);
 	void handleEvents(float deltaTime);
 	

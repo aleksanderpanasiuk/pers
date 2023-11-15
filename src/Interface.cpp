@@ -3,12 +3,26 @@
 Interface::Interface()
 {
 	toml::v3::table config = toml::parse_file("Config/config.toml");
+	Config(config);
 	renderer.Init(config);
 
 	userInterface.init(renderer.getWindow());
 	userInterface.addWindow("Diagnostic Data", "test");
 
 	sceneSetup();
+}
+
+void Interface::Config(toml::v3::table config)
+{
+	// colors
+	auto colorsData = config["colors"];
+
+	auto fColor = colorsData["floorColor"];
+	floorColor = glm::vec3(
+		fColor[0].value_or(0.0f),
+		fColor[1].value_or(0.0f),
+		fColor[2].value_or(0.0f)
+	);
 }
 
 void Interface::Run()
