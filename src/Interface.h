@@ -1,6 +1,10 @@
 #ifndef INTERFACE_CLASS_H
 #define INTERFACE_CLASS_H
 
+
+#include <toml/toml.hpp>
+
+
 #include "PhysicsSimulation.h"
 #include "UserInterface.h"
 #include "Renderer.h"
