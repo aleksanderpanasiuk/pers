@@ -1,19 +1,47 @@
 #include "Renderer.h"
 
 
-void Renderer::Init(toml::v3::node_view<toml::v3::node> shadersData)
+void Renderer::Init(toml::v3::table config)
 {
-	defaultVertShaderPath = shadersData["defaultVertShaderPath"].value_or("");
-	defaultFragShaderPath = shadersData["defaultFragShaderPath"].value_or("");
+	setConfig(config);
 
-	lighVertShaderPath = shadersData["lighVertShaderPath"].value_or("");
-	lighFragShaderPath = shadersData["lighFragShaderPath"].value_or("");
-	
+
 	startGLFW();
 
 	camera.setDimensions(WIDTH, HEIGHT, glm::vec3(0.0f, 2.0f, 2.0f));
 
 	activateShaders();
+}
+
+void Renderer::setConfig(toml::v3::table config)
+{
+	// load shader scripts
+	auto shadersData = config["shaders"];
+
+	defaultVertShaderPath = shadersData["defaultVertShaderPath"].value_or("");
+	defaultFragShaderPath = shadersData["defaultFragShaderPath"].value_or("");
+
+	lighVertShaderPath = shadersData["lighVertShaderPath"].value_or("");
+	lighFragShaderPath = shadersData["lighFragShaderPath"].value_or("");
+
+
+	// load colors
+	auto colorsData = config["colors"];
+
+	auto lColor = colorsData["lightColor"];
+	lightColor = glm::vec3(
+		lColor[0].value_or(0.0f), 
+		lColor[1].value_or(0.0f), 
+		lColor[2].value_or(0.0f)
+	);
+
+	auto bgColor = colorsData["backgroundColor"];
+	backgroundColor = glm::vec4(
+		bgColor[0].value_or(0.0f),
+		bgColor[1].value_or(0.0f),
+		bgColor[2].value_or(0.0f),
+		bgColor[3].value_or(0.0f)
+	);
 }
 
 void Renderer::startGLFW()

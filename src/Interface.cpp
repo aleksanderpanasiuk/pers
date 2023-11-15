@@ -3,7 +3,7 @@
 Interface::Interface()
 {
 	toml::v3::table config = toml::parse_file("Config/config.toml");
-	renderer.Init(config["shaders"]);
+	renderer.Init(config);
 
 	userInterface.init(renderer.getWindow());
 	userInterface.addWindow("Diagnostic Data", "test");

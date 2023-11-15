@@ -4,3 +4,8 @@ defaultFragShaderPath = "Resources/Shaders/default.frag"
 
 lighVertShaderPath = "Resources/Shaders/light.vert"
 lighFragShaderPath = "Resources/Shaders/light.frag"
+
+
+[colors]
+lightColor = [1.0, 1.0, 1.0]
+backgroundColor = [0.13, 0.13, 0.13, 1.0]

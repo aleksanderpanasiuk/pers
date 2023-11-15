@@ -12,7 +12,7 @@ class Renderer
 {
 public:
 	bool shouldClose();
-	void Init(toml::v3::node_view<toml::v3::node> shadersData);
+	void Init(toml::v3::table config);
 	void Close();
 	void Draw(std::vector<Object>& Objects);
 	void Swap();
@@ -46,11 +46,12 @@ private:
 	std::string lighVertShaderPath = "Resources/Shaders/light.vert";
 	std::string lighFragShaderPath = "Resources/Shaders/light.frag";
 	glm::vec3 lightPosition = glm::vec3(0.0f, 3.0f, 0.0f);
-	glm::vec3 lightColor = glm::vec3(1.0f, 1.0f, 1.0f);
+	glm::vec3 lightColor = glm::vec3(0.0f, 0.0f, 0.0f);
 	
 	Shader lightShader;
 
 
+	void setConfig(toml::v3::table config);
 	void startGLFW();
 	void activateShaders();
 
