@@ -1,0 +1,6 @@
+[shaders]
+defaultVertShaderPath = "Resources/Shaders/default.vert"
+defaultFragShaderPath = "Resources/Shaders/default.frag"
+
+lighVertShaderPath = "Resources/Shaders/light.vert"
+lighFragShaderPath = "Resources/Shaders/light.frag"
