@@ -34,6 +34,8 @@ public:
 
 	bool isAffectedByForces = true;
 
+	void applyForce(glm::vec3 Force);
+
 private:
 	RigidType type;
 

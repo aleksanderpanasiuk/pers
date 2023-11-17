@@ -19,7 +19,7 @@ RigidBody::RigidBody(
 	// apply standard gravity
 	if (isAffectedByForces)
 	{
-		RigidBody::NetForce = glm::vec3(0.0f, -9.81f, 0.0f);
+		applyForce(glm::vec3(0.0f, -9.81f, 0.0f));
 	}
 }
 
@@ -47,6 +47,11 @@ void RigidBody::Rescale(glm::vec3 newScale)
 void RigidBody::setVelocity(glm::vec3 Velocity)
 {
 	RigidBody::Velocity = Velocity;
+}
+
+void RigidBody::applyForce(glm::vec3 Force)
+{
+	NetForce += Force;
 }
 
 glm::vec3 RigidBody::getVelocity()
