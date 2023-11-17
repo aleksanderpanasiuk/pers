@@ -37,6 +37,14 @@ void RigidBody::Rescale(glm::vec3 newScale)
 	Scale = newScale;
 }
 
+void RigidBody::Accelerate(glm::vec3 Acceleration, float deltaTime)
+{
+	if (isAffectedByForces)
+	{
+		Velocity += Acceleration * deltaTime;
+	}
+}
+
 void RigidBody::setVelocity(glm::vec3 Velocity)
 {
 	RigidBody::Velocity = Velocity;

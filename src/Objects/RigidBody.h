@@ -26,7 +26,7 @@ public:
 	void Rescale(glm::vec3 newScale);
 
 	void setVelocity(glm::vec3 Velocity);
-	void Accelerate(glm::vec3 Acceleration);
+	void Accelerate(glm::vec3 Acceleration, float deltaTime);
 
 	glm::vec3 getVelocity();
 	glm::vec3 getPosition();
