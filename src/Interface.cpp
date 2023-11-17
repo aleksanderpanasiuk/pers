@@ -128,7 +128,7 @@ void Interface::sceneSetup()
 		RigidCube, 
 		glm::vec3(0.0f, 5.0f, 0.0f),
 		glm::vec3(0.0f, 0.0f, 0.0f), 
-		glm::vec3(0.01f, 0.01f, 0.01f),
+		glm::vec3(1.1f, 1.1f, 1.1f),
 		ColorRed, true,
 		1.0f
 	);
