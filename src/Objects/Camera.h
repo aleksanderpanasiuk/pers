@@ -25,7 +25,7 @@ public:
 
 	int width;
 	int height;
-	float speed = 20.0f;
+	float speed = 2.0f;
 	float sensitivity = 700000.0f;
 
 	void setDimensions(int width, int height, glm::vec3 position);
