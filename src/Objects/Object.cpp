@@ -10,10 +10,7 @@ Object::Object(GraphicsComponent& graphicsComponent, RigidBody& rigidBody)
 
 void Object::Update(float deltaTime)
 {
-	if (rigidBody.isAffectedByForces)
-	{
-		rigidBody.Move(deltaTime);
-	}
+	rigidBody.Move(deltaTime);
 }
 
 void Object::Render(Shader& shader, Camera& camera)
