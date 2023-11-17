@@ -59,6 +59,8 @@ void Renderer::startGLFW()
 		throw std::runtime_error("Failed to create GLFW window");
 	}
 
+	glfwMaximizeWindow(window);
+
 	glfwMakeContextCurrent(window);
 	gladLoadGL();
 	glViewport(0, 0, WIDTH, HEIGHT);
