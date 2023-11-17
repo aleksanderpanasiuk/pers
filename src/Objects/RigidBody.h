@@ -16,7 +16,8 @@ public:
 		glm::vec3 Position, 
 		glm::vec3 Orientation, 
 		glm::vec3 Scale, 
-		bool isAffectedByForces
+		bool isAffectedByForces,
+		float mass
 	);
 
 	void changePosition(glm::vec3 newPosition);
@@ -25,6 +26,8 @@ public:
 	void Rescale(glm::vec3 newScale);
 
 	void setVelocity(glm::vec3 Velocity);
+	void Accelerate(glm::vec3 Acceleration);
+
 	glm::vec3 getVelocity();
 	glm::vec3 getPosition();
 	glm::vec3 getOrientation();
@@ -35,6 +38,8 @@ public:
 
 private:
 	RigidType type;
+
+	float Mass = 1.0f;
 
 	glm::vec3 Velocity = glm::vec3(0.0f, 0.0f, 0.0f);
 	glm::vec3 Position = glm::vec3(0.0f, 0.0f, 0.0f);

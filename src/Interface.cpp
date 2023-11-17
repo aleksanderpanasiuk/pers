@@ -83,11 +83,11 @@ void Interface::DrawFrame(float& previousTimeFPS, float deltaTime, float current
 
 void Interface::addObject(RigidType type, glm::vec3 position,
 	glm::vec3 orientation, glm::vec3 scale, glm::vec3 color,
-	bool isAffectedByForces
+	bool isAffectedByForces, float mass
 )
 {
 	RigidBody rigidBody(
-		type, position, orientation, scale, isAffectedByForces
+		type, position, orientation, scale, isAffectedByForces, mass
 	);
 
 	GraphicsComponent graphicsComponent(type, color);
@@ -103,7 +103,8 @@ void Interface::addFloor(glm::vec3 Size)
 		glm::vec3(0.0f, 0.0f, 0.0f),
 		Size, 
 		floorColor, 
-		false
+		false,
+		Size.x * Size.y * Size. z // density = kg/m^3
 	);
 }
 
@@ -124,16 +125,11 @@ void Interface::sceneSetup()
 
 
 	addObject(
-		RigidCube, glm::vec3(0.0f, 5.0f, 0.0f),
-		glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 1.0f, 1.0f),
-		ColorRed, true
+		RigidCube, 
+		glm::vec3(0.0f, 5.0f, 0.0f),
+		glm::vec3(0.0f, 0.0f, 0.0f), 
+		glm::vec3(0.01f, 0.01f, 0.01f),
+		ColorRed, true,
+		1.0f
 	);
-
-	for (Object& object : scene.getObjects())
-	{
-		if (object.getRigidBody().isAffectedByForces)
-		{
-			object.getRigidBody().setVelocity(glm::vec3(0.0f, -1.0f, 0.0f));
-		}
-	}
 }

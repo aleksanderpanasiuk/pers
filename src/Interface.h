@@ -31,8 +31,9 @@ private:
 	void handleEvents(float deltaTime);
 	
 	void addObject(RigidType type, glm::vec3 position,
-		glm::vec3 orientation, glm::vec3 scale, 
-		glm::vec3 color, bool isAffectedByForces
+		glm::vec3 orientation, glm::vec3 scale,
+		glm::vec3 color, bool isAffectedByForces,
+		float mass
 	);
 
 	glm::vec3 floorColor = glm::vec3(0.6f, 0.6f, 0.6f);

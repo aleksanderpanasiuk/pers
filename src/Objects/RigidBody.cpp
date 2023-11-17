@@ -5,7 +5,8 @@ RigidBody::RigidBody(
 	glm::vec3 Position, 
 	glm::vec3 Orientation, 
 	glm::vec3 Scale,
-	bool isAffectedByForces
+	bool isAffectedByForces,
+	float mass
 )
 {
 	RigidBody::Position = Position;
@@ -13,6 +14,7 @@ RigidBody::RigidBody(
 	RigidBody::Scale = Scale;
 	RigidBody::type = type;
 	RigidBody::isAffectedByForces = isAffectedByForces;
+	RigidBody::Mass = mass;
 }
 
 void RigidBody::Move(float deltaTime)
