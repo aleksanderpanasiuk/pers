@@ -1,9 +1,9 @@
 #include "RigidBody.h"
 
 RigidBody::RigidBody(
-	RigidType type, 
-	glm::vec3 Position, 
-	glm::vec3 Orientation, 
+	RigidType type,
+	glm::vec3 Position,
+	glm::vec3 Orientation,
 	glm::vec3 Scale,
 	bool isAffectedByForces,
 	float mass
@@ -15,11 +15,18 @@ RigidBody::RigidBody(
 	RigidBody::type = type;
 	RigidBody::isAffectedByForces = isAffectedByForces;
 	RigidBody::Mass = mass;
+
+	// apply standard gravity
+	if (isAffectedByForces)
+	{
+		RigidBody::NetForce = glm::vec3(0.0f, -9.81f, 0.0f);
+	}
 }
 
 void RigidBody::Move(float deltaTime)
 {
-	Position = Position + (deltaTime * Velocity);
+	Velocity += (NetForce / Mass) * deltaTime;
+	Position += (deltaTime * Velocity);
 }
 
 void RigidBody::changePosition(glm::vec3 newPosition)
@@ -35,14 +42,6 @@ void RigidBody::Rotate(float deltaTime, glm::vec3 rotationChange)
 void RigidBody::Rescale(glm::vec3 newScale)
 {
 	Scale = newScale;
-}
-
-void RigidBody::Accelerate(glm::vec3 Acceleration, float deltaTime)
-{
-	if (isAffectedByForces)
-	{
-		Velocity += Acceleration * deltaTime;
-	}
 }
 
 void RigidBody::setVelocity(glm::vec3 Velocity)
