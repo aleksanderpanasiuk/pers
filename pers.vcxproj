@@ -32,6 +32,7 @@
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Mesh.cpp" />
     <ClCompile Include="src\Objects\Camera.cpp" />
+    <ClCompile Include="src\Objects\Inspector.cpp" />
     <ClCompile Include="src\Objects\Object.cpp" />
     <ClCompile Include="src\Objects\RigidBody.cpp" />
     <ClCompile Include="src\Objects\GraphicsComponent.cpp" />
@@ -69,6 +70,7 @@
     <ClInclude Include="src\Interface.h" />
     <ClInclude Include="src\Mesh.h" />
     <ClInclude Include="src\Objects\Camera.h" />
+    <ClInclude Include="src\Objects\Inspector.h" />
     <ClInclude Include="src\Objects\Object.h" />
     <ClInclude Include="src\Objects\RigidBody.h" />
     <ClInclude Include="src\Objects\GraphicsComponent.h" />

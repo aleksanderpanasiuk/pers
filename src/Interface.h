@@ -6,6 +6,7 @@
 #include "UserInterface.h"
 #include "Renderer.h"
 #include "Objects/Scene.h"
+#include "Objects/Inspector.h"
 
 class Interface
 {
@@ -23,6 +24,8 @@ private:
 	UserInterface userInterface;
 
 	Scene scene;
+
+	Inspector inspector;
 
 
 	void Config(toml::v3::table config);

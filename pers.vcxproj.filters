@@ -114,6 +114,9 @@
     <ClCompile Include="src\Objects\GraphicsComponent.cpp">
       <Filter>Source Files\Objects</Filter>
     </ClCompile>
+    <ClCompile Include="src\Objects\Inspector.cpp">
+      <Filter>Source Files\Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Shaders\default.frag">
@@ -212,6 +215,9 @@
       <Filter>Header Files\Objects</Filter>
     </ClInclude>
     <ClInclude Include="src\Objects\Scene.h">
+      <Filter>Header Files\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Objects\Inspector.h">
       <Filter>Header Files\Objects</Filter>
     </ClInclude>
   </ItemGroup>
