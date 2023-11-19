@@ -38,12 +38,13 @@ RigidType Object::getType()
 	return Object::type;
 }
 
-std::vector<glm::vec3> Object::getVertices()
+
+std::vector<std::vector<glm::vec3>> Object::getSides()
 {
 	switch (type)
 	{
 	case RigidCube:
-		return calculateVerticesCube();
+		return calculateSidesCube();
 		break;
 	case RigidSphere:
 		break;
@@ -53,24 +54,34 @@ std::vector<glm::vec3> Object::getVertices()
 		break;
 	}
 
-	return std::vector<glm::vec3>();
+	return std::vector<std::vector<glm::vec3>>();
 }
 
-std::vector<glm::vec3> Object::calculateVerticesCube()
+std::vector<std::vector<glm::vec3>> Object::calculateSidesCube()
 {
-	glm::vec3 Position = rigidBody.getPosition();
 	glm::vec3 Size = rigidBody.getScale();
+	glm::vec3 Position = rigidBody.getPosition();
 
-	std::vector<glm::vec3> Vertices = {
+	std::vector<glm::vec3> verticesPosition = {
 		glm::vec3(Position.x - (Size.x / 2), Position.y - (Size.y / 2), Position.z - (Size.z / 2)),
-		glm::vec3(Position.x - (Size.x / 2), Position.y - (Size.y / 2), Position.z + (Size.z / 2)),
-		glm::vec3(Position.x - (Size.x / 2), Position.y + (Size.y / 2), Position.z - (Size.z / 2)),
-		glm::vec3(Position.x - (Size.x / 2), Position.y + (Size.y / 2), Position.z + (Size.z / 2)),
 		glm::vec3(Position.x + (Size.x / 2), Position.y - (Size.y / 2), Position.z - (Size.z / 2)),
-		glm::vec3(Position.x + (Size.x / 2), Position.y - (Size.y / 2), Position.z + (Size.z / 2)),
 		glm::vec3(Position.x + (Size.x / 2), Position.y + (Size.y / 2), Position.z - (Size.z / 2)),
-		glm::vec3(Position.x + (Size.x / 2), Position.y + (Size.y / 2), Position.z + (Size.z / 2))
+		glm::vec3(Position.x - (Size.x / 2), Position.y + (Size.y / 2), Position.z - (Size.z / 2)),
+		glm::vec3(Position.x - (Size.x / 2), Position.y - (Size.y / 2), Position.z + (Size.z / 2)),
+		glm::vec3(Position.x + (Size.x / 2), Position.y - (Size.y / 2), Position.z + (Size.z / 2)),
+		glm::vec3(Position.x + (Size.x / 2), Position.y + (Size.y / 2), Position.z + (Size.z / 2)),
+		glm::vec3(Position.x - (Size.x / 2), Position.y + (Size.y / 2), Position.z + (Size.z / 2))
 	};
 
-	return Vertices;
+	std::vector<std::vector<glm::vec3>> Sides = {
+		{verticesPosition[0], verticesPosition[1], verticesPosition[2], verticesPosition[3]},
+		{verticesPosition[4], verticesPosition[5], verticesPosition[6], verticesPosition[7]},
+		{verticesPosition[0], verticesPosition[1], verticesPosition[4], verticesPosition[5]},
+		{verticesPosition[2], verticesPosition[3], verticesPosition[6], verticesPosition[7]},
+		{verticesPosition[0], verticesPosition[3], verticesPosition[4], verticesPosition[7]},
+		{verticesPosition[1], verticesPosition[2], verticesPosition[5], verticesPosition[6]}
+	};
+
+	return Sides;
 }
+

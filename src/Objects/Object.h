@@ -15,15 +15,14 @@ public:
 	RigidBody& getRigidBody();
 
 	RigidType getType();
-	std::vector<glm::vec3> getVertices();
+	std::vector<std::vector<glm::vec3>> getSides();
 
 private:
 	GraphicsComponent graphicsComponent;
 	RigidBody rigidBody;
 	RigidType type;
 
-
-	std::vector<glm::vec3> calculateVerticesCube();
+	std::vector<std::vector<glm::vec3>> calculateSidesCube();
 };
 
 #endif // !OBJECT_CLASS_H
