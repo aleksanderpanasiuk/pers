@@ -33,6 +33,11 @@ RigidBody& Object::getRigidBody()
 	return rigidBody;
 }
 
+glm::vec3 Object::getPosition()
+{
+	return rigidBody.getPosition();
+}
+
 RigidType Object::getType()
 {
 	return Object::type;

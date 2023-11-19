@@ -13,7 +13,8 @@ public:
 
 	GraphicsComponent& getGraphicsComponent();
 	RigidBody& getRigidBody();
-
+	
+	glm::vec3 getPosition();
 	RigidType getType();
 	std::vector<std::vector<glm::vec3>> getSides();
 
