@@ -6,13 +6,15 @@
 class Inspector
 {
 public:
-	void Update(std::vector<Object>& objects);
+	void Update(std::vector<Object>& objects, Camera camera);
 	std::string getSelectedObjectData();
 
 private:
-	Object SelectedObject;
+	std::unique_ptr<Object> SelectedObject;
+
+	void CheckHoverCube(Object& Cube);
 	glm::vec4 calculatePlane();
-	std::pair<float, float> calculatePoint();
+	glm::vec3 calculatePoint();
 };
 
 #endif // !INSPECTOR_CLASS_H
