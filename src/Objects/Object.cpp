@@ -5,7 +5,7 @@ Object::Object(GraphicsComponent& graphicsComponent, RigidBody& rigidBody)
 	: graphicsComponent(graphicsComponent),
 	rigidBody(rigidBody)
 {
-
+	Object::type = rigidBody.getType();
 }
 
 void Object::Update(float deltaTime)
@@ -31,4 +31,9 @@ GraphicsComponent& Object::getGraphicsComponent()
 RigidBody& Object::getRigidBody()
 {
 	return rigidBody;
+}
+
+RigidType Object::getType()
+{
+	return Object::type;
 }

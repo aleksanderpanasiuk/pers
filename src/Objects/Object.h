@@ -14,9 +14,12 @@ public:
 	GraphicsComponent& getGraphicsComponent();
 	RigidBody& getRigidBody();
 
+	RigidType getType();
+
 private:
 	GraphicsComponent graphicsComponent;
 	RigidBody rigidBody;
+	RigidType type;
 };
 
 #endif // !OBJECT_CLASS_H
