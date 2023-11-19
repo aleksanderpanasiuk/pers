@@ -81,10 +81,10 @@ std::vector<std::vector<glm::vec3>> Object::calculateSidesCube()
 	std::vector<std::vector<glm::vec3>> Sides = {
 		{verticesPosition[0], verticesPosition[1], verticesPosition[2], verticesPosition[3]},
 		{verticesPosition[4], verticesPosition[5], verticesPosition[6], verticesPosition[7]},
-		{verticesPosition[0], verticesPosition[1], verticesPosition[4], verticesPosition[5]},
-		{verticesPosition[2], verticesPosition[3], verticesPosition[6], verticesPosition[7]},
-		{verticesPosition[0], verticesPosition[3], verticesPosition[4], verticesPosition[7]},
-		{verticesPosition[1], verticesPosition[2], verticesPosition[5], verticesPosition[6]}
+		{verticesPosition[0], verticesPosition[1], verticesPosition[5], verticesPosition[4]},
+		{verticesPosition[2], verticesPosition[3], verticesPosition[7], verticesPosition[6]},
+		{verticesPosition[0], verticesPosition[3], verticesPosition[7], verticesPosition[4]},
+		{verticesPosition[1], verticesPosition[2], verticesPosition[6], verticesPosition[5]}
 	};
 
 	return Sides;
