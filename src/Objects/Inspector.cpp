@@ -5,34 +5,7 @@ void Inspector::Update(GLFWwindow* window, std::vector<Object>& objects, Camera 
 {
 	if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS)
 	{
-		glm::vec3 cameraNormal = camera.Orientation;
-		glm::vec3 cameraPosition = camera.Position;
-		float closestObjectDistance = 9999999.0f;
-
-		for (Object& object : objects)
-		{
-			bool isPointing = false;
-
-			switch (object.getType())
-			{
-			case RigidCube:
-				isPointing = CheckHoverCube(object, cameraPosition, cameraNormal);
-				break;
-			default:
-				break;
-			}
-
-			if (isPointing)
-			{
-				float distance = glm::length(cameraPosition - object.getPosition());
-
-				if (distance < closestObjectDistance)
-				{
-					closestObjectDistance = distance;
-					SelectedObject = std::make_unique<Object>(object);
-				}
-			}
-		}
+		SelectObject(window, objects, camera);
 
 		if (SelectedObject != nullptr)
 		{
@@ -44,6 +17,38 @@ void Inspector::Update(GLFWwindow* window, std::vector<Object>& objects, Camera 
 std::string Inspector::getSelectedObjectData()
 {
 	return std::string();
+}
+
+void Inspector::SelectObject(GLFWwindow* window, std::vector<Object>& objects, Camera camera)
+{
+	glm::vec3 cameraNormal = camera.Orientation;
+	glm::vec3 cameraPosition = camera.Position;
+	float closestObjectDistance = 9999999.0f;
+
+	for (Object& object : objects)
+	{
+		bool isPointing = false;
+
+		switch (object.getType())
+		{
+		case RigidCube:
+			isPointing = CheckHoverCube(object, cameraPosition, cameraNormal);
+			break;
+		default:
+			break;
+		}
+
+		if (isPointing)
+		{
+			float distance = glm::length(cameraPosition - object.getPosition());
+
+			if (distance < closestObjectDistance)
+			{
+				closestObjectDistance = distance;
+				SelectedObject = std::make_unique<Object>(object);
+			}
+		}
+	}
 }
 
 bool Inspector::CheckHoverCube(Object& Cube, glm::vec3 cameraPosition, glm::vec3 cameraNormal)
