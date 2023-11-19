@@ -15,7 +15,9 @@ private:
 	bool CheckHoverCube(Object& Cube, glm::vec3 cameraPosition, glm::vec3 cameraNormal);
 	bool CheckHoverPlane(std::vector<glm::vec3> Side, glm::vec3 cameraPosition, glm::vec3 cameraNormal);
 	glm::vec4 calculatePlane(std::vector<glm::vec3> Side);
-	glm::vec3 calculatePoint(glm::vec4 Plane, glm::vec3 cameraPosition, glm::vec3 cameraNormal);
+	std::pair<bool, glm::vec3> calculatePoint(glm::vec4 Plane, glm::vec3 cameraPosition, glm::vec3 cameraNormal);
+	bool CheckIfPointInSquare(std::vector<glm::vec3> Side, glm::vec3 Point);
+	bool CheckIfPointWithinBoundries(glm::vec3 Point, glm::vec3 S1, glm::vec3 S2);
 };
 
 #endif // !INSPECTOR_CLASS_H

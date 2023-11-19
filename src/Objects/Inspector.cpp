@@ -21,8 +21,9 @@ void Inspector::Update(std::vector<Object>& objects, Camera camera)
 
 		if (isPointing)
 		{
+			std::cout << "is pointing " << object.getPosition().y << "\n";
 			SelectedObject = std::make_unique<Object>(object);
-			break;
+			// break;
 		}
 	}
 }
@@ -48,10 +49,17 @@ bool Inspector::CheckHoverCube(Object& Cube, glm::vec3 cameraPosition, glm::vec3
 
 bool Inspector::CheckHoverPlane(std::vector<glm::vec3> Side, glm::vec3 cameraPosition, glm::vec3 cameraNormal)
 {
+	// calculate plane and point lying on it
 	glm::vec4 Plane = calculatePlane(Side);
-	glm::vec3 Point = calculatePoint(Plane, cameraPosition, cameraNormal);
+	std::pair<bool, glm::vec3> PointData = calculatePoint(Plane, cameraPosition, cameraNormal);
 
-	return false;
+	// check if camera is facing the object
+	if (not PointData.first)
+		return false;
+
+	// check if the point is within side(square)
+
+	return CheckIfPointInSquare(Side, PointData.second);
 }
 
 glm::vec4 Inspector::calculatePlane(std::vector<glm::vec3> Side)
@@ -68,14 +76,63 @@ glm::vec4 Inspector::calculatePlane(std::vector<glm::vec3> Side)
 	return glm::vec4(A, B, C, D);
 }
 
-glm::vec3 Inspector::calculatePoint(glm::vec4 Plane, glm::vec3 cameraPosition, glm::vec3 cameraNormal)
+std::pair<bool, glm::vec3> Inspector::calculatePoint(glm::vec4 Plane, glm::vec3 cameraPosition, glm::vec3 cameraNormal)
 {
 	float t = (-Plane.x * cameraPosition.x - Plane.y * cameraPosition.y - Plane.z * cameraPosition.z - Plane.w) /
 		(Plane.x * cameraNormal.x + Plane.y * cameraNormal.y + Plane.z * cameraNormal.z);
 
-	return glm::vec3(
+	// check if camera is facing the object
+
+	return std::make_pair(t > 0, glm::vec3(
 		cameraPosition[0] + t * cameraNormal[0],
 		cameraPosition[1] + t * cameraNormal[1],
 		cameraPosition[2] + t * cameraNormal[2]
+	));
+}
+
+bool Inspector::CheckIfPointInSquare(std::vector<glm::vec3> Side, glm::vec3 Point)
+{
+	// provided that Side[0] and Side[1] create opposite side to Side[2] and Side[3]
+	// and Side[1] creates side with Side[2]
+	glm::vec3 S1 = Side[0];
+	glm::vec3 S2 = Side[1];
+	glm::vec3 S3 = Side[2];
+
+	return CheckIfPointWithinBoundries(Point, S1, S2) and CheckIfPointWithinBoundries(Point, S2, S3);
+}
+
+bool Inspector::CheckIfPointWithinBoundries(glm::vec3 Point, glm::vec3 S1, glm::vec3 S2)
+{
+	// calculate projected point
+	glm::vec3 v = S2 - S1;
+
+	float t = v.x * (Point.x - S1.x) + v.y * (Point.y - S1.y) + v.z * (Point.z - S1.z);
+	t /= (v.x * v.x) + (v.y * v.y) + (v.z * v.z);
+
+	glm::vec3 ProjectedPoint(
+		S1.x + t * v.x,
+		S1.y + t * v.y,
+		S1.z + t * v.z
 	);
+
+
+	// calculate vector from side vertices to projected point
+	glm::vec3 u1(
+		ProjectedPoint.x - S1.x,
+		ProjectedPoint.y - S1.y,
+		ProjectedPoint.z - S1.z
+	);
+
+	glm::vec3 u2(
+		ProjectedPoint.x - S2.x,
+		ProjectedPoint.y - S2.y,
+		ProjectedPoint.z - S2.z
+	);
+
+	// check if vectors length sum to side length
+	float sideLength = glm::length(S2-S1);
+	float vectorsLength = glm::length(u1) + glm::length(u2);
+	float epsilon = 0.1f;
+
+	return sideLength+epsilon >= vectorsLength;
 }
