@@ -6,7 +6,7 @@
 class Inspector
 {
 public:
-	void Update(std::vector<Object>& objects, Camera camera);
+	void Update(GLFWwindow* window, std::vector<Object>& objects, Camera camera);
 	std::string getSelectedObjectData();
 
 private:

@@ -69,7 +69,7 @@ void Interface::handleEvents(float deltaTime)
 
 	renderer.moveCamera(deltaTime);
 
-	inspector.Update(scene.getObjects(), renderer.getCamera());
+	inspector.Update(renderer.getWindow(), scene.getObjects(), renderer.getCamera());
 }
 
 void Interface::DrawFrame(float& previousTimeFPS, float deltaTime, float currentTimeFPS)

@@ -1,29 +1,42 @@
 #include "Inspector.h"
 
 
-void Inspector::Update(std::vector<Object>& objects, Camera camera)
+void Inspector::Update(GLFWwindow* window, std::vector<Object>& objects, Camera camera)
 {
-	glm::vec3 cameraNormal = camera.Orientation;
-	glm::vec3 cameraPosition = camera.Position;
-
-	for (Object& object : objects)
+	if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS)
 	{
-		bool isPointing = false;
+		glm::vec3 cameraNormal = camera.Orientation;
+		glm::vec3 cameraPosition = camera.Position;
+		float closestObjectDistance = 9999999.0f;
 
-		switch (object.getType())
+		for (Object& object : objects)
 		{
-		case RigidCube:
-			isPointing = CheckHoverCube(object, cameraPosition, cameraNormal);
-			break;
-		default:
-			break;
+			bool isPointing = false;
+
+			switch (object.getType())
+			{
+			case RigidCube:
+				isPointing = CheckHoverCube(object, cameraPosition, cameraNormal);
+				break;
+			default:
+				break;
+			}
+
+			if (isPointing)
+			{
+				float distance = glm::length(cameraPosition - object.getPosition());
+
+				if (distance < closestObjectDistance)
+				{
+					closestObjectDistance = distance;
+					SelectedObject = std::make_unique<Object>(object);
+				}
+			}
 		}
 
-		if (isPointing)
+		if (SelectedObject != nullptr)
 		{
-			std::cout << "is pointing " << object.getPosition().y << "\n";
-			SelectedObject = std::make_unique<Object>(object);
-			// break;
+			std::cout << "is pointing " << SelectedObject->getPosition().y << "\n";
 		}
 	}
 }
