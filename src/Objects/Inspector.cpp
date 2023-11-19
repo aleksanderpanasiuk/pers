@@ -27,18 +27,7 @@ void Inspector::SelectObject(GLFWwindow* window, std::vector<Object>& objects, C
 
 	for (Object& object : objects)
 	{
-		bool isPointing = false;
-
-		switch (object.getType())
-		{
-		case RigidCube:
-			isPointing = CheckHoverCube(object, cameraPosition, cameraNormal);
-			break;
-		default:
-			break;
-		}
-
-		if (isPointing)
+		if (isPointingAtObject(object, cameraPosition, cameraNormal))
 		{
 			float distance = glm::length(cameraPosition - object.getPosition());
 
@@ -49,6 +38,22 @@ void Inspector::SelectObject(GLFWwindow* window, std::vector<Object>& objects, C
 			}
 		}
 	}
+}
+
+bool Inspector::isPointingAtObject(Object& object, glm::vec3 cameraPosition, glm::vec3 cameraNormal)
+{
+	bool isPointing = false;
+
+	switch (object.getType())
+	{
+	case RigidCube:
+		isPointing = CheckHoverCube(object, cameraPosition, cameraNormal);
+		break;
+	default:
+		break;
+	}
+
+	return isPointing;
 }
 
 bool Inspector::CheckHoverCube(Object& Cube, glm::vec3 cameraPosition, glm::vec3 cameraNormal)
