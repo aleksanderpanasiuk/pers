@@ -6,34 +6,17 @@ void Inspector::Update(GLFWwindow* window, std::vector<Object>& objects, Camera 
 	if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS)
 	{
 		SelectObject(window, objects, camera);
+
+		if (SelectedObject != nullptr)
+		{
+			std::cout << "is pointing " << SelectedObject->getPosition().y << "\n";
+		}
 	}
 }
 
 std::string Inspector::getSelectedObjectData()
 {
-	if (SelectedObject == nullptr)
-	{
-		return "Select Object";
-	}
-	
-	std::string ObjectData = "Object type: ";
-
-	switch (SelectedObject->getType())
-	{
-	case RigidCube:
-		ObjectData += "Cube\n";
-		break;
-	default:
-		ObjectData += "Unknown\n";
-		break;
-	}
-
-	ObjectData += "Position: \n";
-	ObjectData += "\tx:" + std::to_string(SelectedObject->getPosition().x) + "\n";
-	ObjectData += "\ty:" + std::to_string(SelectedObject->getPosition().y) + "\n";
-	ObjectData += "\tz:" + std::to_string(SelectedObject->getPosition().z) + "\n";
-
-	return ObjectData;
+	return std::string();
 }
 
 void Inspector::SelectObject(GLFWwindow* window, std::vector<Object>& objects, Camera camera)

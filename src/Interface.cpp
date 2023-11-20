@@ -7,6 +7,7 @@ Interface::Interface()
 	renderer.Init(config);
 
 	userInterface.init(renderer.getWindow());
+	userInterface.addWindow("Diagnostic Data", "test");
 
 	sceneSetup();
 }
@@ -77,7 +78,7 @@ void Interface::DrawFrame(float& previousTimeFPS, float deltaTime, float current
 	previousTimeFPS = currentTimeFPS;
 
 	renderer.Draw(scene.getObjects());
-	userInterface.Display(deltaTime, FrameDelta, inspector.getSelectedObjectData());
+	userInterface.Display(deltaTime, FrameDelta);
 
 	renderer.Swap();
 }
@@ -130,7 +131,7 @@ void Interface::sceneSetup()
 		glm::vec3(0.0f, 5.0f, 0.0f),
 		glm::vec3(0.0f, 0.0f, 0.0f), 
 		glm::vec3(1.0f, 1.0f, 1.0f),
-		ColorRed, true,
+		ColorRed, false,
 		1.0f
 	);
 }
