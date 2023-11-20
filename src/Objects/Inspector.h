@@ -15,7 +15,7 @@ private:
 	void SelectObject(GLFWwindow* window, std::vector<Object>& objects, Camera camera);
 	bool isPointingAtObject(Object& object, glm::vec3 cameraPosition, glm::vec3 cameraNormal);
 	
-	glm::vec3 CalculateCursorVector(GLFWwindow* window, glm::vec3 cameraOrientation);
+	glm::vec3 CalculateCursorVector(GLFWwindow* window, Camera camera);
 
 
 	bool CheckHoverCube(Object& Cube, glm::vec3 cameraPosition, glm::vec3 cameraNormal);

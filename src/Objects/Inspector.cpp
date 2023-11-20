@@ -21,7 +21,7 @@ std::string Inspector::getSelectedObjectData()
 
 void Inspector::SelectObject(GLFWwindow* window, std::vector<Object>& objects, Camera camera)
 {
-	glm::vec3 cameraNormal = CalculateCursorVector(window, camera.Orientation);
+	glm::vec3 cameraNormal = CalculateCursorVector(window, camera);
 	glm::vec3 cameraPosition = camera.Position;
 	float closestObjectDistance = 9999999.0f;
 
@@ -56,7 +56,7 @@ bool Inspector::isPointingAtObject(Object& object, glm::vec3 cameraPosition, glm
 	return isPointing;
 }
 
-glm::vec3 Inspector::CalculateCursorVector(GLFWwindow* window, glm::vec3 cameraOrientation)
+glm::vec3 Inspector::CalculateCursorVector(GLFWwindow* window, Camera camera)
 {
 	// Stores the coordinates of the cursor
 	double mouseX;
@@ -72,11 +72,11 @@ glm::vec3 Inspector::CalculateCursorVector(GLFWwindow* window, glm::vec3 cameraO
 	float width = (float)widthI;
 	float height = (float)heightI;
 
-	float rotateY = 90 * (mouseY - (height / 2)) / height;
-	float rotateX = -90 * (mouseX - (width / 2)) / height;
+	float rotateY = camera.fieldOfView * (mouseY - (height / 2)) / height;
+	float rotateX = -camera.fieldOfView * (mouseX - (width / 2)) / height;
 
-	glm::vec3 cursorNormal = glm::rotate(cameraOrientation, glm::radians(rotateY), glm::normalize(glm::cross(-cameraOrientation, glm::vec3(0.0f, 1.0f, 0.0f))));
-	cursorNormal = glm::rotate(cursorNormal, glm::radians(rotateX), glm::normalize(glm::cross(-cameraOrientation, glm::vec3(1.0f, 0.0f, 0.0f))));
+	glm::vec3 cursorNormal = glm::rotate(camera.Orientation, glm::radians(rotateY), glm::normalize(glm::cross(-camera.Orientation, glm::vec3(0.0f, 1.0f, 0.0f))));
+	cursorNormal = glm::rotate(cursorNormal, glm::radians(rotateX), glm::normalize(glm::cross(-camera.Orientation, glm::vec3(1.0f, 0.0f, 0.0f))));
 
 	return cursorNormal;
 }
