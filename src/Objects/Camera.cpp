@@ -9,7 +9,7 @@ void Camera::setDimensions(int width, int height, glm::vec3 position)
 	Camera::Position = position;
 }
 
-void Camera::updateMatrix(float FOVdeg, float nearPlane, float farPlane)
+void Camera::updateMatrix(float nearPlane, float farPlane)
 {
 	// Initializes matrices since otherwise they will be the null matrix
 	glm::mat4 view = glm::mat4(1.0f);
@@ -19,7 +19,7 @@ void Camera::updateMatrix(float FOVdeg, float nearPlane, float farPlane)
 	view = glm::lookAt(Position, Position + Orientation, Up);
 	// Adds perspective to the scene
 	float aspect = (float)width / (float)height;
-	projection = glm::perspective(glm::radians(FOVdeg), aspect, nearPlane, farPlane);
+	projection = glm::perspective(glm::radians(fieldOfView), aspect, nearPlane, farPlane);
 
 	// Sets new camera matrix
 	cameraMatrix = projection * view;

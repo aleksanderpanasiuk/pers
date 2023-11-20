@@ -25,13 +25,14 @@ public:
 
 	int width;
 	int height;
+	float fieldOfView = 90.0f;
 	float speed = 2.0f;
 	float sensitivity = 700000.0f;
 
 	void setDimensions(int width, int height, glm::vec3 position);
 
 	// Updates the camera matrix to the Vertex Shader
-	void updateMatrix(float FOVdeg, float nearPlane, float farPlane);
+	void updateMatrix(float nearPlane, float farPlane);
 	void Matrix(Shader& shader, const char* uniform);
 	void Inputs(float deltaTime, GLFWwindow* window);
 };

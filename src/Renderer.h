@@ -35,7 +35,6 @@ private:
 	bool windowClosed = false;
 
 	Camera camera;
-	float fieldOfView = 90.0f;
 
 	// basic shader
 	std::string defaultVertShaderPath = "Resources/Shaders/default.vert";

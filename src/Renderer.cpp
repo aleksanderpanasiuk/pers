@@ -87,7 +87,7 @@ void Renderer::moveCamera(float deltaTime)
 {
 	// Handles camera inputs
 	camera.Inputs(deltaTime, window);
-	camera.updateMatrix(fieldOfView, 0.1f, 1000.0f);
+	camera.updateMatrix(0.1f, 1000.0f);
 }
 
 void Renderer::Close()
