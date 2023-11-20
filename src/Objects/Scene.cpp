@@ -9,3 +9,8 @@ std::vector<Object>& Scene::getObjects()
 {
 	return Objects;
 }
+
+unsigned int Scene::getNumberOfObjects()
+{
+	return Objects.size();
+}

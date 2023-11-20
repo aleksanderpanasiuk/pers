@@ -8,6 +8,7 @@ class Scene
 public:
 	void addObject(Object object);
 	std::vector<Object>& getObjects();
+	unsigned int getNumberOfObjects();
 
 private:
 	std::vector<Object> Objects;
