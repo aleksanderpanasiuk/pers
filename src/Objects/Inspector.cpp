@@ -16,7 +16,10 @@ std::string Inspector::getSelectedObjectData()
 		return "Select Object";
 	}
 	
-	std::string ObjectData = "Object type: ";
+	std::string ObjectData = "Id: ";
+	ObjectData += std::to_string(SelectedObject->getID()) + "\n";
+
+	ObjectData += "Object type: ";
 
 	switch (SelectedObject->getType())
 	{
