@@ -8,35 +8,32 @@ void UserInterface::init(GLFWwindow* window)
 	ImGui::StyleColorsDark();
 	ImGui_ImplGlfw_InitForOpenGL(window, true);
 	ImGui_ImplOpenGL3_Init("#version 330");
+
+	DiagnosticWindow.setTitle("Diagnostics");
+	InspectorWindow.setTitle("Inspector Window");
 }
 
-void UserInterface::Display(float deltaTime, float FrameDelta)
+void UserInterface::Display(float deltaTime, float FrameDelta, std::string InspectorData)
 {
 	ImGui_ImplOpenGL3_NewFrame();
 	ImGui_ImplGlfw_NewFrame();
 	ImGui::NewFrame();
 
+	// diagnostic window
 	std::string diagnosticData =
 		"Delta Time: " + std::to_string(deltaTime) + "\n" +
 		"Frame Delta Time: " + std::to_string(FrameDelta) + "\n" +
 		"Frames per second: " + std::to_string(1 / FrameDelta) + "\n";
 
-	for (Window& window : windows)
-	{
-		window.setContent(diagnosticData);
-		window.Display();
-	}
+	DiagnosticWindow.setContent(diagnosticData);
+	DiagnosticWindow.Display();
 
+	// inspector window
+	InspectorWindow.setContent(InspectorData);
+	InspectorWindow.Display();
 
+	ImGui::Render();
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-}
-
-void UserInterface::addWindow(std::string title, std::string content)
-{
-	int newId = windows.size();
-	windows.push_back(Window(newId));
-	windows[newId].setTitle(title);
-	windows[newId].setContent(content);
 }
 
 

@@ -7,12 +7,12 @@ class UserInterface
 {
 public:
 	void init(GLFWwindow* window);
-	void Display(float deltaTime, float FrameDelta);
+	void Display(float deltaTime, float FrameDelta, std::string InspectorData);
 	void close();
-	void addWindow(std::string title, std::string content);
 
 private:
-	std::vector<Window> windows;
+	Window DiagnosticWindow;
+	Window InspectorWindow;
 };
 
 #endif // !USER_INTERFACE_CLASS_H
