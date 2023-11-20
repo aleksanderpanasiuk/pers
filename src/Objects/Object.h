@@ -7,7 +7,7 @@
 class Object
 {
 public:
-	Object(GraphicsComponent& graphicsComponent, RigidBody& rigidBody);
+	Object(unsigned int ID, GraphicsComponent& graphicsComponent, RigidBody& rigidBody);
 	void Update(float deltaTime);
 	void Render(Shader& shader, Camera& camera);
 
@@ -17,8 +17,10 @@ public:
 	glm::vec3 getPosition();
 	RigidType getType();
 	std::vector<std::vector<glm::vec3>> getSides();
+	unsigned int getID();
 
 private:
+	unsigned int ID;
 	GraphicsComponent graphicsComponent;
 	RigidBody rigidBody;
 	RigidType type;

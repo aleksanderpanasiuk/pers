@@ -1,10 +1,11 @@
 #include "Object.h"
 
 
-Object::Object(GraphicsComponent& graphicsComponent, RigidBody& rigidBody)
+Object::Object(unsigned int ID, GraphicsComponent& graphicsComponent, RigidBody& rigidBody)
 	: graphicsComponent(graphicsComponent),
 	rigidBody(rigidBody)
 {
+	Object::ID = ID;
 	Object::type = rigidBody.getType();
 }
 
@@ -60,6 +61,11 @@ std::vector<std::vector<glm::vec3>> Object::getSides()
 	}
 
 	return std::vector<std::vector<glm::vec3>>();
+}
+
+unsigned int Object::getID()
+{
+	return Object::ID;
 }
 
 std::vector<std::vector<glm::vec3>> Object::calculateSidesCube()

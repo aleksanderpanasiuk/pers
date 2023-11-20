@@ -93,7 +93,7 @@ void Interface::addObject(RigidType type, glm::vec3 position,
 
 	GraphicsComponent graphicsComponent(type, color);
 	
-	scene.addObject(Object(graphicsComponent, rigidBody));
+	scene.addObject(Object(scene.getNumberOfObjects(), graphicsComponent, rigidBody));
 }
 
 void Interface::addFloor(glm::vec3 Size)
