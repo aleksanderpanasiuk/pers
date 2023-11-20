@@ -11,8 +11,6 @@
 class Window
 {
 public:
-	Window(unsigned int ID);
-
 	void setTitle(std::string title);
 	std::string getTitle();
 	void setContent(std::string content);
@@ -20,7 +18,6 @@ public:
 	void Display();
 
 private:
-	unsigned int ID;
 	std::string title = "";
 	std::string content = "";
 };

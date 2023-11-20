@@ -1,10 +1,5 @@
 #include "Window.h"
 
-Window::Window(unsigned int ID)
-{
-	Window::ID = ID;
-}
-
 void Window::setTitle(std::string title)
 {
 	Window::title = title;
@@ -31,5 +26,4 @@ void Window::Display()
 	ImGui::Text(Window::content.c_str());
 
 	ImGui::End();
-	ImGui::Render();
 }
