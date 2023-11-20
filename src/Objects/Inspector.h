@@ -11,8 +11,12 @@ public:
 
 private:
 	std::unique_ptr<Object> SelectedObject = nullptr;
+
 	void SelectObject(GLFWwindow* window, std::vector<Object>& objects, Camera camera);
 	bool isPointingAtObject(Object& object, glm::vec3 cameraPosition, glm::vec3 cameraNormal);
+	
+	glm::vec3 CalculateCursorVector(GLFWwindow* window, glm::vec3 cameraOrientation);
+
 
 	bool CheckHoverCube(Object& Cube, glm::vec3 cameraPosition, glm::vec3 cameraNormal);
 	bool CheckHoverPlane(std::vector<glm::vec3> Side, glm::vec3 cameraPosition, glm::vec3 cameraNormal);
