@@ -33,14 +33,14 @@ private:
 	void DrawFrame(float& previousTimeFPS, float deltaTime, float currentTimeFPS);
 	void handleEvents(float deltaTime);
 	
-	void addObject(RigidType type, glm::vec3 position,
+	unsigned int addObject(RigidType type, glm::vec3 position,
 		glm::vec3 orientation, glm::vec3 scale,
 		glm::vec3 color, bool isAffectedByForces,
 		float mass
 	);
 
 	glm::vec3 floorColor = glm::vec3(0.6f, 0.6f, 0.6f);
-	void addFloor(glm::vec3 Size = glm::vec3(10.0f, 0.1f, 10.0f));
+	unsigned int addFloor(glm::vec3 Size = glm::vec3(10.0f, 0.1f, 10.0f));
 
 	void sceneSetup();
 };

@@ -85,7 +85,7 @@ void Interface::DrawFrame(float& previousTimeFPS, float deltaTime, float current
 	renderer.Swap();
 }
 
-void Interface::addObject(RigidType type, glm::vec3 position,
+unsigned int Interface::addObject(RigidType type, glm::vec3 position,
 	glm::vec3 orientation, glm::vec3 scale, glm::vec3 color,
 	bool isAffectedByForces, float mass
 )
@@ -95,13 +95,16 @@ void Interface::addObject(RigidType type, glm::vec3 position,
 	);
 
 	GraphicsComponent graphicsComponent(type, color);
-	
-	scene.addObject(Object(scene.getNumberOfObjects(), graphicsComponent, rigidBody));
+
+	unsigned int ID = scene.getNumberOfObjects();
+	scene.addObject(Object(ID, graphicsComponent, rigidBody));
+
+	return ID;
 }
 
-void Interface::addFloor(glm::vec3 Size)
+unsigned int Interface::addFloor(glm::vec3 Size)
 {
-	addObject(
+	return addObject(
 		RigidCube, 
 		glm::vec3(0.0f, 0.0f, 0.0f), 
 		glm::vec3(0.0f, 0.0f, 0.0f),
@@ -121,14 +124,14 @@ void Interface::Close()
 void Interface::sceneSetup()
 {
 	// floor
-	addFloor(glm::vec3(100.0f, 0.1f, 100.0f));
+	unsigned int floorID = addFloor(glm::vec3(100.0f, 0.1f, 100.0f));
 
 	// moving cubes
 	glm::vec3 ColorBlue = glm::vec3(0.1f, 0.1f, 0.3f);
 	glm::vec3 ColorRed = glm::vec3(0.3f, 0.1f, 0.1f);
 
 
-	addObject(
+	unsigned int cubeID = addObject(
 		RigidCube, 
 		glm::vec3(0.0f, 5.0f, 0.0f),
 		glm::vec3(0.0f, 0.0f, 0.0f), 
