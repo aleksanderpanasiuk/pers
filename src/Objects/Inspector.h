@@ -10,14 +10,14 @@ public:
 	std::string getSelectedObjectData(Object& selectedObject);
 	unsigned int getSelectedObjectID();
 
+	glm::vec3 CalculateCursorVector(GLFWwindow* window, Camera camera);
+
 private:
 	unsigned int SelectedObject = 0;
 
 	void SelectObject(GLFWwindow* window, std::vector<Object>& objects, Camera camera);
 	bool isPointingAtObject(Object& object, glm::vec3 cameraPosition, glm::vec3 cameraNormal);
 	
-	glm::vec3 CalculateCursorVector(GLFWwindow* window, Camera camera);
-
 
 	bool CheckHoverCube(Object& Cube, glm::vec3 cameraPosition, glm::vec3 cameraNormal);
 	bool CheckHoverPlane(std::vector<glm::vec3> Side, glm::vec3 cameraPosition, glm::vec3 cameraNormal);
