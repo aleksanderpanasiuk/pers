@@ -109,11 +109,23 @@ unsigned int Interface::addObject(RigidType type, glm::vec3 position,
 	return ID;
 }
 
+glm::vec3 Interface::newObjectPosition()
+{
+	glm::vec3 CameraPosition = renderer.getCamera().Position;
+	glm::vec3 CursorVector = inspector.CalculateCursorVector(
+		renderer.getWindow(), renderer.getCamera()
+	);
+
+	float distanceFromCamera = 4.0f;
+
+	return CameraPosition + distanceFromCamera*CursorVector;
+}
+
 unsigned int Interface::addObjectToScene()
 {
 	return addObject(
 		RigidCube,
-		glm::vec3(0.0f, 5.0f, 0.0f),
+		newObjectPosition(),
 		glm::vec3(0.0f, 0.0f, 0.0f),
 		glm::vec3(1.0f, 1.0f, 1.0f),
 		glm::vec3(0.1f, 0.1f, 0.3f),

@@ -39,6 +39,7 @@ private:
 		float mass
 	);
 
+	glm::vec3 newObjectPosition();
 	unsigned int addObjectToScene();
 
 	glm::vec3 floorColor = glm::vec3(0.6f, 0.6f, 0.6f);
