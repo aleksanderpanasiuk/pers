@@ -26,10 +26,9 @@ private:
 
 	glm::vec3 Color = glm::vec3(0.0f, 0.0f, 0.0f);
 
-
-	std::vector <glm::vec3> verticesPosition;
-	std::vector <Vertex> Vertices;
-	std::vector <GLuint> Indices;
+	static std::vector <glm::vec3> CubeVerticesPosition;
+	static std::vector <Vertex> CubeVertices;
+	static std::vector <GLuint> CubeIndices;
 
 	void setDataCube();
 };
