@@ -20,7 +20,10 @@ public:
 	void setData(std::vector <Vertex>& vertices, std::vector <GLuint>& indices);
 
 	void setTextures(std::vector <Texture>& textures);
-	void Draw(Shader& shader, Camera& camera, glm::vec3 Position, glm::vec3 Orientation, glm::vec3 Scale);
+	void Draw(Shader& shader, Camera& camera,
+		glm::vec3 Position, glm::vec3 Orientation, glm::vec3 Scale,
+		glm::vec3 Color
+	);
 
 private:
 	void bindTextures(Shader& shader);
