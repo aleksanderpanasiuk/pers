@@ -14,11 +14,14 @@ uniform mat4 camMatrix;
 uniform mat4 model;
 uniform mat4 rotation;
 
+uniform vec3 inColor;
+
 void main()
 {
 	Normal = vec3(rotation * vec4(aNormal, 1.0));
 	// Normal = aNormal;
-	color = aColor;
+	// color = aColor;
+	color = inColor;
 	
 	gl_Position = camMatrix * model * vec4(aPos, 1.0);
 }
