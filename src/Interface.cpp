@@ -60,10 +60,17 @@ void Interface::handleEvents(float deltaTime)
 {
 	glfwPollEvents();
 
-	// exit input
+	// exit program on ESC
 	if (glfwGetKey(renderer.getWindow(), GLFW_KEY_ESCAPE) == GLFW_PRESS)
 	{
 		renderer.Close();
+	}
+
+	// add object on CTR + LMB
+	if (glfwGetMouseButton(renderer.getWindow(), GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS and
+		glfwGetKey(renderer.getWindow(), GLFW_KEY_LEFT_CONTROL) == GLFW_PRESS)
+	{
+		addObjectToScene();
 	}
 
 	renderer.moveCamera(deltaTime);
@@ -100,6 +107,19 @@ unsigned int Interface::addObject(RigidType type, glm::vec3 position,
 	scene.addObject(Object(ID, graphicsComponent, rigidBody));
 
 	return ID;
+}
+
+unsigned int Interface::addObjectToScene()
+{
+	return addObject(
+		RigidCube,
+		glm::vec3(0.0f, 5.0f, 0.0f),
+		glm::vec3(0.0f, 0.0f, 0.0f),
+		glm::vec3(1.0f, 1.0f, 1.0f),
+		glm::vec3(0.1f, 0.1f, 0.3f),
+		true,
+		1.0f
+	);
 }
 
 unsigned int Interface::addFloor(glm::vec3 Size)
