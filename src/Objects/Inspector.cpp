@@ -92,11 +92,11 @@ glm::vec3 Inspector::CalculateCursorVector(GLFWwindow* window, Camera camera)
 	float width = (float)widthI;
 	float height = (float)heightI;
 
-	float rotateY = camera.fieldOfView * (mouseY - (height / 2)) / height;
+	float rotateY = -camera.fieldOfView * (mouseY - (height / 2)) / height;
 	float rotateX = -camera.fieldOfView * (mouseX - (width / 2)) / height;
 
-	glm::vec3 cursorNormal = glm::rotate(camera.Orientation, glm::radians(rotateY), glm::normalize(glm::cross(-camera.Orientation, glm::vec3(0.0f, 1.0f, 0.0f))));
-	cursorNormal = glm::rotate(cursorNormal, glm::radians(rotateX), glm::normalize(glm::cross(-camera.Orientation, glm::vec3(1.0f, 0.0f, 0.0f))));
+	glm::vec3 cursorNormal = glm::rotate(camera.Orientation, glm::radians(rotateY), glm::normalize(glm::cross(camera.Orientation, glm::vec3(0.0f, 1.0f, 0.0f))));
+	cursorNormal = glm::rotate(cursorNormal, glm::radians(rotateX), glm::vec3(0.0f, 1.0f, 0.0));
 
 	return cursorNormal;
 }
