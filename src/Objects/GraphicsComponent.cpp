@@ -30,7 +30,8 @@ void GraphicsComponent::Draw(
 		mesh.Draw(shader, camera, 
 			Position,
 			Orientation,
-			Scale
+			Scale,
+			Color
 		);
 	}
 }
@@ -81,36 +82,36 @@ void GraphicsComponent::setDataCube()
 	};
 
 	Vertices =
-	{ //     COORDINATES          //   COLORS   //         NORMALS           // TEXTURE COORDINATES
-		Vertex{verticesPosition[0],    Color, glm::vec3(0.0f, 0.0f, -1.0f), glm::vec2(0.0f, 0.0f)}, // 0 front
-		Vertex{verticesPosition[1],    Color, glm::vec3(0.0f, 0.0f, -1.0f), glm::vec2(0.0f, 0.0f)},
-		Vertex{verticesPosition[2],    Color, glm::vec3(0.0f, 0.0f, -1.0f), glm::vec2(0.0f, 0.0f)},
-		Vertex{verticesPosition[3],    Color, glm::vec3(0.0f, 0.0f, -1.0f), glm::vec2(0.0f, 0.0f)},
+	{ //     COORDINATES          //         NORMALS          
+		Vertex{verticesPosition[0], glm::vec3(0.0f, 0.0f, -1.0f)},   // 0 front
+		Vertex{verticesPosition[1], glm::vec3(0.0f, 0.0f, -1.0f)},
+		Vertex{verticesPosition[2], glm::vec3(0.0f, 0.0f, -1.0f)},
+		Vertex{verticesPosition[3], glm::vec3(0.0f, 0.0f, -1.0f)},
 
-		Vertex{verticesPosition[4],    Color, glm::vec3(0.0f, 0.0f, 1.0f), glm::vec2(0.0f, 0.0f)}, // 4 back
-		Vertex{verticesPosition[5],    Color, glm::vec3(0.0f, 0.0f, 1.0f), glm::vec2(0.0f, 0.0f)},
-		Vertex{verticesPosition[6],    Color, glm::vec3(0.0f, 0.0f, 1.0f), glm::vec2(0.0f, 0.0f)},
-		Vertex{verticesPosition[7],    Color, glm::vec3(0.0f, 0.0f, 1.0f), glm::vec2(0.0f, 0.0f)},
+		Vertex{verticesPosition[4], glm::vec3(0.0f, 0.0f, 1.0f)},   // 4 back
+		Vertex{verticesPosition[5], glm::vec3(0.0f, 0.0f, 1.0f)},
+		Vertex{verticesPosition[6], glm::vec3(0.0f, 0.0f, 1.0f)},
+		Vertex{verticesPosition[7], glm::vec3(0.0f, 0.0f, 1.0f)},
 
-		Vertex{verticesPosition[0],    Color, glm::vec3(0.0f, -1.0f, 0.0f), glm::vec2(0.0f, 0.0f)}, // 8 bottom
-		Vertex{verticesPosition[1],    Color, glm::vec3(0.0f, -1.0f, 0.0f), glm::vec2(0.0f, 0.0f)},
-		Vertex{verticesPosition[4],    Color, glm::vec3(0.0f, -1.0f, 0.0f), glm::vec2(0.0f, 0.0f)},
-		Vertex{verticesPosition[5],    Color, glm::vec3(0.0f, -1.0f, 0.0f), glm::vec2(0.0f, 0.0f)},
+		Vertex{verticesPosition[0], glm::vec3(0.0f, -1.0f, 0.0f)},   // 8 bottom
+		Vertex{verticesPosition[1], glm::vec3(0.0f, -1.0f, 0.0f)},
+		Vertex{verticesPosition[4], glm::vec3(0.0f, -1.0f, 0.0f)},
+		Vertex{verticesPosition[5], glm::vec3(0.0f, -1.0f, 0.0f)},
 
-		Vertex{verticesPosition[2],    Color, glm::vec3(0.0f, 1.0f, 0.0f), glm::vec2(0.0f, 0.0f)}, // 12 top
-		Vertex{verticesPosition[3],    Color, glm::vec3(0.0f, 1.0f, 0.0f), glm::vec2(0.0f, 0.0f)},
-		Vertex{verticesPosition[6],    Color, glm::vec3(0.0f, 1.0f, 0.0f), glm::vec2(0.0f, 0.0f)},
-		Vertex{verticesPosition[7],    Color, glm::vec3(0.0f, 1.0f, 0.0f), glm::vec2(0.0f, 0.0f)},
+		Vertex{verticesPosition[2], glm::vec3(0.0f, 1.0f, 0.0f)},   // 12 top
+		Vertex{verticesPosition[3], glm::vec3(0.0f, 1.0f, 0.0f)},
+		Vertex{verticesPosition[6], glm::vec3(0.0f, 1.0f, 0.0f)},
+		Vertex{verticesPosition[7], glm::vec3(0.0f, 1.0f, 0.0f)},
 
-		Vertex{verticesPosition[0],    Color, glm::vec3(-1.0f, 0.0f, 0.0f), glm::vec2(0.0f, 0.0f)}, // 16 left
-		Vertex{verticesPosition[3],    Color, glm::vec3(-1.0f, 0.0f, 0.0f), glm::vec2(0.0f, 0.0f)},
-		Vertex{verticesPosition[4],    Color, glm::vec3(-1.0f, 0.0f, 0.0f), glm::vec2(0.0f, 0.0f)},
-		Vertex{verticesPosition[7],    Color, glm::vec3(-1.0f, 0.0f, 0.0f), glm::vec2(0.0f, 0.0f)},
+		Vertex{verticesPosition[0], glm::vec3(-1.0f, 0.0f, 0.0f)},   // 16 left
+		Vertex{verticesPosition[3], glm::vec3(-1.0f, 0.0f, 0.0f)},
+		Vertex{verticesPosition[4], glm::vec3(-1.0f, 0.0f, 0.0f)},
+		Vertex{verticesPosition[7], glm::vec3(-1.0f, 0.0f, 0.0f)},
 
-		Vertex{verticesPosition[1],    Color, glm::vec3(1.0f, 0.0f, 0.0f), glm::vec2(0.0f, 0.0f)}, // 20 right
-		Vertex{verticesPosition[2],    Color, glm::vec3(1.0f, 0.0f, 0.0f), glm::vec2(0.0f, 0.0f)},
-		Vertex{verticesPosition[5],    Color, glm::vec3(1.0f, 0.0f, 0.0f), glm::vec2(0.0f, 0.0f)},
-		Vertex{verticesPosition[6],    Color, glm::vec3(1.0f, 0.0f, 0.0f), glm::vec2(0.0f, 0.0f)}
+		Vertex{verticesPosition[1], glm::vec3(1.0f, 0.0f, 0.0f)},   // 20 right
+		Vertex{verticesPosition[2], glm::vec3(1.0f, 0.0f, 0.0f)},
+		Vertex{verticesPosition[5], glm::vec3(1.0f, 0.0f, 0.0f)},
+		Vertex{verticesPosition[6], glm::vec3(1.0f, 0.0f, 0.0f)}
 	};
 
 	Indices =
