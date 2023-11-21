@@ -9,19 +9,14 @@ void Inspector::Update(GLFWwindow* window, std::vector<Object>& objects, Camera 
 	}
 }
 
-std::string Inspector::getSelectedObjectData()
+std::string Inspector::getSelectedObjectData(Object& selectedObject)
 {
-	if (SelectedObject == nullptr)
-	{
-		return "Select Object";
-	}
-	
 	std::string ObjectData = "Id: ";
-	ObjectData += std::to_string(SelectedObject->getID()) + "\n";
+	ObjectData += std::to_string(selectedObject.getID()) + "\n";
 
 	ObjectData += "Object type: ";
 
-	switch (SelectedObject->getType())
+	switch (selectedObject.getType())
 	{
 	case RigidCube:
 		ObjectData += "Cube\n";
@@ -32,9 +27,9 @@ std::string Inspector::getSelectedObjectData()
 	}
 
 	ObjectData += "Position: \n";
-	ObjectData += "\tx:" + std::to_string(SelectedObject->getPosition().x) + "\n";
-	ObjectData += "\ty:" + std::to_string(SelectedObject->getPosition().y) + "\n";
-	ObjectData += "\tz:" + std::to_string(SelectedObject->getPosition().z) + "\n";
+	ObjectData += "\tx:" + std::to_string(selectedObject.getPosition().x) + "\n";
+	ObjectData += "\ty:" + std::to_string(selectedObject.getPosition().y) + "\n";
+	ObjectData += "\tz:" + std::to_string(selectedObject.getPosition().z) + "\n";
 
 	return ObjectData;
 }
@@ -54,7 +49,7 @@ void Inspector::SelectObject(GLFWwindow* window, std::vector<Object>& objects, C
 			if (distance < closestObjectDistance)
 			{
 				closestObjectDistance = distance;
-				SelectedObject = std::make_unique<Object>(object);
+				SelectedObject = object.getID();
 			}
 		}
 	}

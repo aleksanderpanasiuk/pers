@@ -7,10 +7,10 @@ class Inspector
 {
 public:
 	void Update(GLFWwindow* window, std::vector<Object>& objects, Camera camera);
-	std::string getSelectedObjectData();
+	std::string getSelectedObjectData(Object& selectedObject);
 
 private:
-	std::unique_ptr<Object> SelectedObject = nullptr;
+	unsigned int SelectedObject = 0;
 
 	void SelectObject(GLFWwindow* window, std::vector<Object>& objects, Camera camera);
 	bool isPointingAtObject(Object& object, glm::vec3 cameraPosition, glm::vec3 cameraNormal);
