@@ -44,9 +44,7 @@ void Mesh::Draw(
 	camera.Matrix(shader, "camMatrix");
 
 	// update color
-	// Take care of the camera Matrix
 	glUniform3f(glGetUniformLocation(shader.ID, "inColor"), Color.x, Color.y, Color.z);
-
 
 	// creating transofrm model
 	// Model = Translate * Rotate * Scale;
