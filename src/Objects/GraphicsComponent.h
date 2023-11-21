@@ -15,6 +15,8 @@ public:
 		glm::vec3 Scale
 	);
 
+	void ChangeColor(glm::vec3 Color);
+
 	bool isVisible = true;
 
 

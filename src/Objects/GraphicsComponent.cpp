@@ -36,6 +36,11 @@ void GraphicsComponent::Draw(
 	}
 }
 
+void GraphicsComponent::ChangeColor(glm::vec3 Color)
+{
+	GraphicsComponent::Color = Color;
+}
+
 void GraphicsComponent::setDataCube()
 {
 	glm::vec3 Size = glm::vec3(1.0f, 1.0f, 1.0f);
