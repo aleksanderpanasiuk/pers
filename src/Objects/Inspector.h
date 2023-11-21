@@ -8,6 +8,7 @@ class Inspector
 public:
 	void Update(GLFWwindow* window, std::vector<Object>& objects, Camera camera);
 	std::string getSelectedObjectData(Object& selectedObject);
+	unsigned int getSelectedObjectID();
 
 private:
 	unsigned int SelectedObject = 0;

@@ -77,7 +77,9 @@ void Interface::DrawFrame(float& previousTimeFPS, float deltaTime, float current
 	previousTimeFPS = currentTimeFPS;
 
 	renderer.Draw(scene.getObjects());
-	userInterface.Display(deltaTime, FrameDelta, inspector.getSelectedObjectData());
+	userInterface.Display(
+		deltaTime, FrameDelta, inspector.getSelectedObjectData(scene.getObjectByID(inspector.))
+	);
 
 	renderer.Swap();
 }

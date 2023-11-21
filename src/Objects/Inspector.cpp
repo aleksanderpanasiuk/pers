@@ -34,6 +34,11 @@ std::string Inspector::getSelectedObjectData(Object& selectedObject)
 	return ObjectData;
 }
 
+unsigned int Inspector::getSelectedObjectID()
+{
+	return SelectedObject;
+}
+
 void Inspector::SelectObject(GLFWwindow* window, std::vector<Object>& objects, Camera camera)
 {
 	glm::vec3 cameraNormal = CalculateCursorVector(window, camera);
