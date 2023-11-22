@@ -80,7 +80,7 @@ glm::vec3 Inspector::CalculateCursorVector(GLFWwindow* window, Camera camera)
 {
 	// Stores the coordinates of the cursor
 	double mouseX;
-	double mouseY;
+	double mouseY;	
 	// Fetches the coordinates of the cursor
 	glfwGetCursorPos(window, &mouseX, &mouseY);
 
@@ -92,13 +92,29 @@ glm::vec3 Inspector::CalculateCursorVector(GLFWwindow* window, Camera camera)
 	float width = (float)widthI;
 	float height = (float)heightI;
 
-	float rotateY = -camera.fieldOfView * (mouseY - (height / 2)) / height;
-	float rotateX = -camera.fieldOfView * (mouseX - (width / 2)) / height;
+	glm::vec3 vy = glm::vec3(0.0f, -1.0f, 0.0f);
+	glm::vec3 vx = glm::vec3(width/height, 0.0f, 0.0f);
+	glm::vec3 vc = glm::vec3(0.0f, 0.0f, -1.0f);
 
-	glm::vec3 cursorNormal = glm::rotate(camera.Orientation, glm::radians(rotateY), glm::normalize(glm::cross(camera.Orientation, glm::vec3(0.0f, 1.0f, 0.0f))));
-	cursorNormal = glm::rotate(cursorNormal, glm::radians(rotateX), glm::vec3(0.0f, 1.0f, 0.0));
+	vx = vx * (float)(mouseX - (width/ 2)) / width;
+	vy = vy * (float)(mouseY - (height / 2)) / height;
 
-	return cursorNormal;
+	glm::vec3 v = glm::normalize(vc + 2.0f * (vx + vy));
+
+	// calculate x rotation
+	glm::vec2 a = glm::vec2(camera.Orientation.y, camera.Orientation.z);
+	glm::vec2 b = glm::vec2(1.0f, 0.0f);
+	float rotationX = glm::acos(glm::dot(a, b) / (glm::length(a)*glm::length(b))) - glm::half_pi<float>();
+
+	// calculate y rotation
+	glm::vec2 c = glm::vec2(camera.Orientation.x, camera.Orientation.z);
+	glm::vec2 d = glm::vec2(1.0f, 0.0f);
+	float rotationY = glm::acos(glm::dot(c, d) / (glm::length(c) * glm::length(d))) - glm::half_pi<float>();
+
+	glm::vec3 vr = glm::rotate(v, -rotationX, glm::vec3(1.0f, 0.0f, 0.0f));
+	vr = glm::rotate(vr, rotationY, glm::vec3(0.0f, 1.0f, 0.0f));
+
+	return vr;
 }
 
 bool Inspector::CheckHoverCube(Object& Cube, glm::vec3 cameraPosition, glm::vec3 cameraNormal)

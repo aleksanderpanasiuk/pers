@@ -116,7 +116,7 @@ glm::vec3 Interface::newObjectPosition()
 		renderer.getWindow(), renderer.getCamera()
 	);
 
-	float distanceFromCamera = 4.0f;
+	float distanceFromCamera = 6.0f;
 
 	return CameraPosition + distanceFromCamera*CursorVector;
 }
