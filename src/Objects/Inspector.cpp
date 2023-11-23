@@ -106,12 +106,15 @@ glm::vec3 Inspector::CalculateCursorVector(GLFWwindow* window, Camera camera)
 	glm::vec2 b = glm::vec2(1.0f, 0.0f);
 	float rotationX = glm::atan(glm::dot(a, b), a.x * b.y - a.y * b.x);
 
+	// ERROR WITH ROTATION X
+	// somehow considers rotation in both axis
+
 	// calculate y rotation
 	glm::vec2 c = glm::vec2(camera.Orientation.x, camera.Orientation.z);
 	glm::vec2 d = glm::vec2(1.0f, 0.0f);
 	float rotationY = glm::atan(glm::dot(c, d), c.x * d.y - c.y * d.x);
 
-	std::cout << glm::degrees(rotationX) << "\n";
+	std::cout << glm::degrees(rotationY) << "\n";
 
 	glm::vec3 xAxisRotated = glm::rotate(glm::vec3(1.0f, 0.0f, 0.0f), rotationY, glm::vec3(0.0f, 1.0f, 0.0f));
 	glm::vec3 yAxisRotated = glm::rotate(glm::vec3(0.0f, 1.0f, 0.0f), rotationX, glm::vec3(1.0f, 0.0f, 0.0f));
