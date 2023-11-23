@@ -104,15 +104,20 @@ glm::vec3 Inspector::CalculateCursorVector(GLFWwindow* window, Camera camera)
 	// calculate x rotation
 	glm::vec2 a = glm::vec2(camera.Orientation.y, camera.Orientation.z);
 	glm::vec2 b = glm::vec2(1.0f, 0.0f);
-	float rotationX = glm::acos(glm::dot(a, b) / (glm::length(a)*glm::length(b))) - glm::half_pi<float>();
+	float rotationX = glm::atan(glm::dot(a, b), a.x * b.y - a.y * b.x);
 
 	// calculate y rotation
 	glm::vec2 c = glm::vec2(camera.Orientation.x, camera.Orientation.z);
 	glm::vec2 d = glm::vec2(1.0f, 0.0f);
-	float rotationY = glm::acos(glm::dot(c, d) / (glm::length(c) * glm::length(d))) - glm::half_pi<float>();
+	float rotationY = glm::atan(glm::dot(c, d), c.x * d.y - c.y * d.x);
 
-	glm::vec3 vr = glm::rotate(v, -rotationX, glm::vec3(1.0f, 0.0f, 0.0f));
-	vr = glm::rotate(vr, rotationY, glm::vec3(0.0f, 1.0f, 0.0f));
+	std::cout << glm::degrees(rotationX) << "\n";
+
+	glm::vec3 xAxisRotated = glm::rotate(glm::vec3(1.0f, 0.0f, 0.0f), rotationY, glm::vec3(0.0f, 1.0f, 0.0f));
+	glm::vec3 yAxisRotated = glm::rotate(glm::vec3(0.0f, 1.0f, 0.0f), rotationX, glm::vec3(1.0f, 0.0f, 0.0f));
+
+	glm::vec3 vr = glm::rotate(v, rotationX, xAxisRotated);
+	vr = glm::rotate(vr, -rotationY, yAxisRotated);
 
 	return vr;
 }
