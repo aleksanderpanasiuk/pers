@@ -82,8 +82,8 @@ void Camera::Inputs(float deltaTime, GLFWwindow* window)
 
 		// Normalizes and shifts the coordinates of the cursor such that they begin in the middle of the screen
 		// and then "transforms" them into degrees 
-		float rotX = sensitivity * (float)(mouseY - (height / 2)) / height * deltaTime;
-		float rotY = sensitivity * (float)(mouseX - (width / 2)) / width * deltaTime;
+		float rotX = sensitivity * (float)(mouseY - (height / 2)) * deltaTime / height;
+		float rotY = sensitivity * (float)(mouseX - (width / 2)) * deltaTime / width;
 
 		// Calculates upcoming vertical change in the Orientation
 		glm::vec3 newOrientation = glm::rotate(Orientation, glm::radians(-rotX), glm::normalize(glm::cross(Orientation, Up)));

@@ -27,7 +27,7 @@ public:
 	int height;
 	float fieldOfView = 90.0f;
 	float speed = 2.0f;
-	float sensitivity = 700000.0f;
+	float sensitivity = 7000.0f;
 
 	void setDimensions(int width, int height, glm::vec3 position);
 
