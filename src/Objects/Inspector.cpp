@@ -102,19 +102,28 @@ glm::vec3 Inspector::CalculateCursorVector(GLFWwindow* window, Camera camera)
 	glm::vec3 v = glm::normalize(vc + 2.0f * (vx + vy));
 
 	// calculate x rotation
-	glm::vec2 a = glm::vec2(camera.Orientation.y, camera.Orientation.z);
-	glm::vec2 b = glm::vec2(1.0f, 0.0f);
-	float rotationX = glm::atan(glm::dot(a, b), a.x * b.y - a.y * b.x);
+	// glm::vec2 a = glm::vec2(camera.Orientation.y, camera.Orientation.z);
+	// glm::vec2 b = glm::vec2(1.0f, 0.0f);
+	// float rotationX = glm::atan(glm::dot(a, b), a.x * b.y - a.y * b.x);
 
 	// ERROR WITH ROTATION X
 	// somehow considers rotation in both axis
+
+	// project camera vector on XZ plane and calculate angle between tham
+	glm::vec3 projectedVector = glm::vec3(camera.Orientation.x, 0.0f, camera.Orientation.z);
+	float angle = glm::acos(glm::dot(camera.Orientation, projectedVector) / (glm::length(camera.Orientation)*glm::length(projectedVector)));
+	
+	// check if camera vector is above or below XZ plane
+	float rotationX = angle * (camera.Orientation.y >= 0 ? 1 : -1);
+
+	std::cout << glm::degrees(angle) << "\n";
 
 	// calculate y rotation
 	glm::vec2 c = glm::vec2(camera.Orientation.x, camera.Orientation.z);
 	glm::vec2 d = glm::vec2(1.0f, 0.0f);
 	float rotationY = glm::atan(glm::dot(c, d), c.x * d.y - c.y * d.x);
 
-	std::cout << glm::degrees(rotationY) << "\n";
+	// std::cout << "rotation: " << glm::degrees(rotationY) << "\n";
 
 	glm::vec3 xAxisRotated = glm::rotate(glm::vec3(1.0f, 0.0f, 0.0f), rotationY, glm::vec3(0.0f, 1.0f, 0.0f));
 	glm::vec3 yAxisRotated = glm::rotate(glm::vec3(0.0f, 1.0f, 0.0f), rotationX, glm::vec3(1.0f, 0.0f, 0.0f));
