@@ -92,6 +92,8 @@ glm::vec3 Inspector::CalculateCursorVector(GLFWwindow* window, Camera camera)
 	float width = (float)widthI;
 	float height = (float)heightI;
 
+	// calculate cursor vector
+
 	glm::vec3 vy = glm::vec3(0.0f, -1.0f, 0.0f);
 	glm::vec3 vx = glm::vec3(width/height, 0.0f, 0.0f);
 	glm::vec3 vc = glm::vec3(0.0f, 0.0f, -1.0f);
@@ -101,14 +103,14 @@ glm::vec3 Inspector::CalculateCursorVector(GLFWwindow* window, Camera camera)
 
 	glm::vec3 v = glm::normalize(vc + 2.0f * (vx + vy));
 
+	// rotate cursor vector
+
 	// project camera vector on XZ plane and calculate angle between tham
 	glm::vec3 projectedVector = glm::vec3(camera.Orientation.x, 0.0f, camera.Orientation.z);
 	float angle = glm::acos(glm::dot(camera.Orientation, projectedVector) / (glm::length(camera.Orientation)*glm::length(projectedVector)));
 	
 	// check if camera vector is above or below XZ plane
 	float rotationX = angle * (camera.Orientation.y >= 0 ? 1 : -1);
-
-	std::cout << glm::degrees(angle) << "\n";
 
 	// calculate y rotation
 	glm::vec2 c = glm::vec2(camera.Orientation.x, camera.Orientation.z);
