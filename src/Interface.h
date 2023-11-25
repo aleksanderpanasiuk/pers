@@ -33,6 +33,8 @@ private:
 	void DrawFrame(float& previousTimeFPS, float deltaTime, float currentTimeFPS);
 	void handleEvents(float deltaTime);
 	
+	double lastAddObjectTime = 0.0f;
+	double addObjectCooldown = 0.2f;
 	unsigned int addObject(RigidType type, glm::vec3 position,
 		glm::vec3 orientation, glm::vec3 scale,
 		glm::vec3 color, bool isAffectedByForces,

@@ -59,6 +59,7 @@ void Interface::Run()
 void Interface::handleEvents(float deltaTime)
 {
 	glfwPollEvents();
+	double timeNow = glfwGetTime();
 
 	// exit program on ESC
 	if (glfwGetKey(renderer.getWindow(), GLFW_KEY_ESCAPE) == GLFW_PRESS)
@@ -68,9 +69,11 @@ void Interface::handleEvents(float deltaTime)
 
 	// add object on CTR + LMB
 	if (glfwGetMouseButton(renderer.getWindow(), GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS and
-		glfwGetKey(renderer.getWindow(), GLFW_KEY_LEFT_CONTROL) == GLFW_PRESS)
+		glfwGetKey(renderer.getWindow(), GLFW_KEY_LEFT_CONTROL) == GLFW_PRESS and
+		lastAddObjectTime + addObjectCooldown <= timeNow)
 	{
 		addObjectToScene();
+		lastAddObjectTime = timeNow;
 	}
 
 	inspector.Update(renderer.getWindow(), scene.getObjects(), renderer.getCamera());
