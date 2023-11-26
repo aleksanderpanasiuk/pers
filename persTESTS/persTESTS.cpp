@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "CppUnitTest.h"
-#include "../src/Objects/RigidBody.h"
 #include "../src/Objects/RigidBody.cpp"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
