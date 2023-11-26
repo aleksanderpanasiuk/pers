@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.34114.132
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34302.85
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pers", "pers.vcxproj", "{951B8D91-0694-4F08-8DD3-7D64AC3DE0B4}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "persTESTS", "persTESTS\persTESTS.vcxproj", "{E1B6B419-5ECC-450F-8924-7BD11F2DE116}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,14 @@ Global
 		{951B8D91-0694-4F08-8DD3-7D64AC3DE0B4}.Release|x64.Build.0 = Release|x64
 		{951B8D91-0694-4F08-8DD3-7D64AC3DE0B4}.Release|x86.ActiveCfg = Release|Win32
 		{951B8D91-0694-4F08-8DD3-7D64AC3DE0B4}.Release|x86.Build.0 = Release|Win32
+		{E1B6B419-5ECC-450F-8924-7BD11F2DE116}.Debug|x64.ActiveCfg = Debug|x64
+		{E1B6B419-5ECC-450F-8924-7BD11F2DE116}.Debug|x64.Build.0 = Debug|x64
+		{E1B6B419-5ECC-450F-8924-7BD11F2DE116}.Debug|x86.ActiveCfg = Debug|Win32
+		{E1B6B419-5ECC-450F-8924-7BD11F2DE116}.Debug|x86.Build.0 = Debug|Win32
+		{E1B6B419-5ECC-450F-8924-7BD11F2DE116}.Release|x64.ActiveCfg = Release|x64
+		{E1B6B419-5ECC-450F-8924-7BD11F2DE116}.Release|x64.Build.0 = Release|x64
+		{E1B6B419-5ECC-450F-8924-7BD11F2DE116}.Release|x86.ActiveCfg = Release|Win32
+		{E1B6B419-5ECC-450F-8924-7BD11F2DE116}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
