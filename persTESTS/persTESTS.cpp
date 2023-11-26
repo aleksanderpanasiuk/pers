@@ -11,6 +11,11 @@ namespace persTESTS
 	{
 	public:
 		
+		
+	};
+
+	TEST_CLASS(RigidBodyTest)
+	{
 		TEST_METHOD(RigidBodyInitTest)
 		{
 			RigidBody rigidBody(
@@ -20,7 +25,7 @@ namespace persTESTS
 				glm::vec3(0.0f, 0.0f, 0.0f),
 				true, 1.0f
 			);
-			
+
 			Assert::AreEqual(rigidBody.isAffectedByForces, true);
 		}
 	};
