@@ -140,6 +140,7 @@
     <None Include="Config\config.toml">
       <Filter>Config</Filter>
     </None>
+    <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\EBO.h">

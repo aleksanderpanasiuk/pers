@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Config\config.toml" />
+    <None Include="README.md" />
     <None Include="Resources\Shaders\default.frag" />
     <None Include="Resources\Shaders\default.vert" />
     <None Include="Resources\Shaders\light.frag" />
