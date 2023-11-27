@@ -1,7 +1,11 @@
 #include "pch.h"
 #include "CppUnitTest.h"
+
 #include "../src/Objects/RigidBody.cpp"
+#include "../src/Objects/Object.cpp"
+
 #include <glm/gtx/string_cast.hpp>
+
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
