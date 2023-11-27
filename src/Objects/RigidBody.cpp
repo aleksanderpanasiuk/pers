@@ -78,3 +78,8 @@ RigidType RigidBody::getType()
 {
 	return type;
 }
+
+float RigidBody::getMass()
+{
+	return Mass;
+}

@@ -31,6 +31,7 @@ public:
 	glm::vec3 getOrientation();
 	glm::vec3 getScale();
 	RigidType getType();
+	float getMass();
 
 	bool isAffectedByForces = true;
 
