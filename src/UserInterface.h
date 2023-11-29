@@ -13,6 +13,13 @@ public:
 private:
 	Window DiagnosticWindow;
 	Window InspectorWindow;
+	Window HelpWindow;
+
+	std::string controls = "WASD - camera movement\n"
+		"Shift - Down\n"
+		"Space - Up\n"
+		"RMB+Mouse - camera rotation\n"
+		"LCTRL+LMB - spawn cube\n";
 };
 
 #endif // !USER_INTERFACE_CLASS_H

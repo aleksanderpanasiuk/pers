@@ -11,6 +11,7 @@ void UserInterface::init(GLFWwindow* window)
 
 	DiagnosticWindow.setTitle("Diagnostics");
 	InspectorWindow.setTitle("Inspector Window");
+	HelpWindow.setTitle("Help");
 }
 
 void UserInterface::Display(float deltaTime, float FrameDelta, std::string InspectorData)
@@ -31,6 +32,10 @@ void UserInterface::Display(float deltaTime, float FrameDelta, std::string Inspe
 	// inspector window
 	InspectorWindow.setContent(InspectorData);
 	InspectorWindow.Display();
+
+	// help/controls window
+	HelpWindow.setContent(controls);
+	HelpWindow.Display();
 
 	ImGui::Render();
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
