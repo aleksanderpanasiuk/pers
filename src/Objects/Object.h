@@ -16,6 +16,8 @@ public:
 	
 	glm::vec3 getPosition();
 	void setPosition(glm::vec3 Position);
+	void setVelocity(glm::vec3 Velocity);
+
 	RigidType getType();
 	std::vector<std::vector<glm::vec3>> getSides();
 	unsigned int getID();

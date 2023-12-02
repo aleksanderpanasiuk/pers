@@ -64,6 +64,11 @@ void Object::setPosition(glm::vec3 Position)
 	rigidBody.changePosition(Position);
 }
 
+void Object::setVelocity(glm::vec3 Velocity)
+{
+	rigidBody.setVelocity(Velocity);
+}
+
 RigidType Object::getType()
 {
 	return Object::type;
