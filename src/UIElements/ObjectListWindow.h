@@ -2,7 +2,6 @@
 #define OBJECT_LIST_WINDOW
 
 #include "Window.h"
-#include "../Objects/Object.h"
 
 
 class ObjectListWindow : public Window
