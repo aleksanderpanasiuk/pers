@@ -2,7 +2,7 @@
 
 
 void ObjectListWindow::Display(
-	unsigned int& SelectedobjectID,
+	unsigned int& SelectedObjectID,
 	std::vector<Object>& Objects
 )
 {

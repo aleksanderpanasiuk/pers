@@ -89,7 +89,7 @@ void Interface::DrawFrame(float& previousTimeFPS, float deltaTime, float current
 	renderer.Draw(scene.getObjects());
 	userInterface.Display(
 		deltaTime, FrameDelta, 
-		inspector.getSelectedObjectData(scene.getObjectByID(inspector.getSelectedObjectID())),
+		scene.getObjectByID(inspector.getSelectedObjectID()),
 		inspector.getSelectedObjectID(),
 		scene.getObjects()
 	);

@@ -3,6 +3,7 @@
 
 #include "UIElements/Window.h"
 #include "UIElements/ObjectListWindow.h"
+#include "UIElements/InspectorWindow.h"
 #include "Objects/Object.h"
 
 class UserInterface
@@ -10,10 +11,10 @@ class UserInterface
 public:
 	void init(GLFWwindow* window);
 	void Display(
-		float deltaTime, 
-		float FrameDelta, 
-		std::string InspectorData,
-		unsigned int &Selectedobject,
+		float deltaTime,
+		float FrameDelta,
+		Object& Selectedobject,
+		unsigned int& SelectedobjectId,
 		std::vector<Object> &objectsList
 	);
 
@@ -21,7 +22,7 @@ public:
 
 private:
 	Window DiagnosticWindow;
-	Window InspectorWindow;
+	InspectorWindow inspectorWindow;
 	Window HelpWindow;
 	ObjectListWindow ObjectsList;
 

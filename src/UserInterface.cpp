@@ -10,7 +10,7 @@ void UserInterface::init(GLFWwindow* window)
 	ImGui_ImplOpenGL3_Init("#version 330");
 
 	DiagnosticWindow.setTitle("Diagnostics");
-	InspectorWindow.setTitle("Inspector Window");
+	inspectorWindow.setTitle("Inspector Window");
 	HelpWindow.setTitle("Help");
 	ObjectsList.setTitle("Objects");
 }
@@ -18,9 +18,9 @@ void UserInterface::init(GLFWwindow* window)
 void UserInterface::Display(
 	float deltaTime, 
 	float FrameDelta, 
-	std::string InspectorData,
-	unsigned int& Selectedobject,
-	std::vector<Object> &objectsList
+	Object& SelectedObject,
+	unsigned int& SelectedObjectID,
+	std::vector<Object>& objectsList
 )
 {
 	ImGui_ImplOpenGL3_NewFrame();
@@ -37,15 +37,14 @@ void UserInterface::Display(
 	DiagnosticWindow.Display();
 
 	// inspector window
-	InspectorWindow.setContent(InspectorData);
-	InspectorWindow.Display();
+	inspectorWindow.Display(SelectedObject);
 
 	// help/controls window
 	HelpWindow.setContent(controls);
 	HelpWindow.Display();
 
 	// Object list window
-	ObjectsList.Display(Selectedobject, objectsList);
+	ObjectsList.Display(SelectedObjectID, objectsList);
 
 	ImGui::Render();
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());

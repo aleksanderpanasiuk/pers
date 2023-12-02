@@ -8,7 +8,7 @@
 class ObjectListWindow : public Window
 {
 public:
-	void Display(unsigned int& SelectedobjectID, std::vector<Object> &Objects);
+	void Display(unsigned int& SelectedObjectID, std::vector<Object> &Objects);
 };
 
 #endif // !OBJECT_LIST_WINDOW
