@@ -34,7 +34,7 @@ std::string Inspector::getSelectedObjectData(Object& selectedObject)
 	return ObjectData;
 }
 
-unsigned int Inspector::getSelectedObjectID()
+unsigned int &Inspector::getSelectedObjectID()
 {
 	return SelectedObject;
 }
