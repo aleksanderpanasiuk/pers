@@ -98,6 +98,16 @@ void Object::setName(std::string name)
 	Object::Name = name;
 }
 
+glm::vec3 Object::getColor()
+{
+	return graphicsComponent.getColor();
+}
+
+void Object::changeColor(glm::vec3 Color)
+{
+	graphicsComponent.ChangeColor(Color);
+}
+
 std::vector<std::vector<glm::vec3>> Object::calculateSidesCube()
 {
 	glm::vec3 Size = rigidBody.getScale();

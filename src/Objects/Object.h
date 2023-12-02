@@ -21,6 +21,9 @@ public:
 	std::string getName();
 	void setName(std::string name);
 
+	glm::vec3 getColor();
+	void changeColor(glm::vec3 Color);
+
 private:
 	unsigned int ID;
 	std::string Name = "";
