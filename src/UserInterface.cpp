@@ -12,9 +12,15 @@ void UserInterface::init(GLFWwindow* window)
 	DiagnosticWindow.setTitle("Diagnostics");
 	InspectorWindow.setTitle("Inspector Window");
 	HelpWindow.setTitle("Help");
+	ObjectsList.setTitle("Objects");
 }
 
-void UserInterface::Display(float deltaTime, float FrameDelta, std::string InspectorData)
+void UserInterface::Display(
+	float deltaTime, 
+	float FrameDelta, 
+	std::string InspectorData,
+	std::vector<Object> &objectsList
+)
 {
 	ImGui_ImplOpenGL3_NewFrame();
 	ImGui_ImplGlfw_NewFrame();
