@@ -81,6 +81,7 @@
     <ClInclude Include="src\Renderer.h" />
     <ClInclude Include="src\Shader.h" />
     <ClInclude Include="src\Texture.h" />
+    <ClInclude Include="src\UIElements\InspectorWindow.h" />
     <ClInclude Include="src\UIElements\ObjectListWindow.h" />
     <ClInclude Include="src\UIElements\Window.h" />
     <ClInclude Include="src\UserInterface.h" />

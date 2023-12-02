@@ -233,6 +233,9 @@
     <ClInclude Include="src\UIElements\ObjectListWindow.h">
       <Filter>Header Files\UIElements</Filter>
     </ClInclude>
+    <ClInclude Include="src\UIElements\InspectorWindow.h">
+      <Filter>Header Files\UIElements</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\Textures\grid.png">
