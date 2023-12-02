@@ -5,7 +5,7 @@
 #include "../Objects/Object.h"
 
 
-class ObjectListWindow : Window
+class ObjectListWindow : public Window
 {
 public:
 	void Display(std::vector<Object> &Objects);
