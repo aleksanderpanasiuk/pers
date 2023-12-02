@@ -47,5 +47,7 @@ void InspectorWindow::Display(Object& SelectedObject)
 		SelectedObject.changeColor(newColor);
 	}
 
+	ImGui::Checkbox("Is affected by forces", &SelectedObject.getRigidBody().isAffectedByForces);
+
 	ImGui::End();
 }
