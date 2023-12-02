@@ -9,32 +9,6 @@ void Inspector::Update(GLFWwindow* window, std::vector<Object>& objects, Camera 
 	}
 }
 
-std::string Inspector::getSelectedObjectData(Object& selectedObject)
-{
-	std::string ObjectData = "Name: " + selectedObject.getName() + "\n";
-	
-	ObjectData += "ID: " + std::to_string(selectedObject.getID()) + "\n";
-
-	ObjectData += "Object type: ";
-
-	switch (selectedObject.getType())
-	{
-	case RigidCube:
-		ObjectData += "Cube\n";
-		break;
-	default:
-		ObjectData += "Unknown\n";
-		break;
-	}
-
-	ObjectData += "Position: \n";
-	ObjectData += "\tx:" + std::to_string(selectedObject.getPosition().x) + "\n";
-	ObjectData += "\ty:" + std::to_string(selectedObject.getPosition().y) + "\n";
-	ObjectData += "\tz:" + std::to_string(selectedObject.getPosition().z) + "\n";
-
-	return ObjectData;
-}
-
 unsigned int &Inspector::getSelectedObjectID()
 {
 	return SelectedObject;
