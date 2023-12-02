@@ -59,6 +59,11 @@ glm::vec3 Object::getPosition()
 	return rigidBody.getPosition();
 }
 
+void Object::setPosition(glm::vec3 Position)
+{
+	rigidBody.changePosition(Position);
+}
+
 RigidType Object::getType()
 {
 	return Object::type;
