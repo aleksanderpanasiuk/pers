@@ -2,7 +2,7 @@
 
 
 void ObjectListWindow::Display(
-	unsigned int& Selectedobject,
+	unsigned int& SelectedobjectID,
 	std::vector<Object>& Objects
 )
 {
@@ -12,7 +12,7 @@ void ObjectListWindow::Display(
 	{
 		if (ImGui::Button(object.getName().c_str()))
 		{
-			Selectedobject = object.getID();
+			SelectedobjectID = object.getID();
 		}
 	}
 
