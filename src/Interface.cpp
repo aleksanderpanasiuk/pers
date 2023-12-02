@@ -163,6 +163,8 @@ void Interface::sceneSetup()
 	// floor
 	unsigned int floorID = addFloor(glm::vec3(100.0f, 0.1f, 100.0f));
 
+	scene.getObjectByID(floorID).setName("Floor");
+
 	// moving cubes
 	glm::vec3 ColorBlue = glm::vec3(0.1f, 0.1f, 0.3f);
 	glm::vec3 ColorRed = glm::vec3(0.3f, 0.1f, 0.1f);
