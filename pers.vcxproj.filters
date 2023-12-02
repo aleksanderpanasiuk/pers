@@ -239,6 +239,9 @@
     <ClInclude Include="src\UIElements\InspectorWindow.h">
       <Filter>Header Files\UIElements</Filter>
     </ClInclude>
+    <ClInclude Include="imgui\misc\cpp\imgui_stdlib.h">
+      <Filter>Header Files\imgui</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\Textures\grid.png">
