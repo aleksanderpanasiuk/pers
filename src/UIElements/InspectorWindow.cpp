@@ -23,22 +23,18 @@ void InspectorWindow::Display(Object& SelectedObject)
 	ImGui::Text(ObjectData.c_str());
 
 
-	ImGui::Text("Position:\n");
-
 	glm::vec3 glmPosition = SelectedObject.getPosition();
 	float position[3] = { glmPosition.x, glmPosition.y, glmPosition.z };
-	if (ImGui::InputFloat3("(x, y, z) pos", position))
+	if (ImGui::InputFloat3("Position", position))
 	{
 		SelectedObject.setPosition(glm::vec3(position[0], position[1], position[2]));
 		SelectedObject.setVelocity(glm::vec3(0.0f, 0.0f, 0.0f));
 	}
 
 
-	ImGui::Text("Orientation:\n");
-
 	glm::vec3 glmOrientation = SelectedObject.getRigidBody().getOrientation();
 	float orientation[3] = { glmOrientation.x, glmOrientation.y, glmOrientation.z };
-	if (ImGui::InputFloat3("(x, y, z) rot", orientation))
+	if (ImGui::InputFloat3("Orientation", orientation))
 	{
 		for (float& orientationAxis : orientation)
 		{
@@ -49,11 +45,9 @@ void InspectorWindow::Display(Object& SelectedObject)
 	}
 
 
-	ImGui::Text("Scale:\n");
-
 	glm::vec3 glmScale = SelectedObject.getRigidBody().getScale();
 	float scale[3] = { glmScale.x, glmScale.y, glmScale.z };
-	if (ImGui::InputFloat3("(x, y, z) scale", scale))
+	if (ImGui::InputFloat3("Scale", scale))
 	{
 		SelectedObject.getRigidBody().Rescale(glm::vec3(scale[0], scale[1], scale[2]));
 	}
