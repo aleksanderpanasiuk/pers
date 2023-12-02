@@ -68,6 +68,16 @@ unsigned int Object::getID()
 	return Object::ID;
 }
 
+std::string Object::getName()
+{
+	return Name;
+}
+
+void Object::setName(std::string name)
+{
+	Object::Name = name;
+}
+
 std::vector<std::vector<glm::vec3>> Object::calculateSidesCube()
 {
 	glm::vec3 Size = rigidBody.getScale();

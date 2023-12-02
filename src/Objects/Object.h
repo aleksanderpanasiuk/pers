@@ -18,9 +18,12 @@ public:
 	RigidType getType();
 	std::vector<std::vector<glm::vec3>> getSides();
 	unsigned int getID();
+	std::string getName();
+	void setName(std::string name);
 
 private:
 	unsigned int ID;
+	std::string Name = "";
 	GraphicsComponent graphicsComponent;
 	RigidBody rigidBody;
 	RigidType type;
