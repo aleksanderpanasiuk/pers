@@ -41,6 +41,11 @@ void GraphicsComponent::ChangeColor(glm::vec3 Color)
 	GraphicsComponent::Color = Color;
 }
 
+glm::vec3 GraphicsComponent::getColor()
+{
+	return Color;
+}
+
 void GraphicsComponent::setDataCube()
 {
 	mesh.setData(CubeVertices, CubeIndices);
