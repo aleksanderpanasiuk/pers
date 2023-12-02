@@ -34,6 +34,12 @@
     <Filter Include="Config">
       <UniqueIdentifier>{87363efc-3384-4f41-a85f-083ab41bce5c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\UIElements">
+      <UniqueIdentifier>{6d9a9a04-3030-41c4-bc52-166f4f4aa20b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\UIElements">
+      <UniqueIdentifier>{80d995f6-a327-4141-a77b-f88a17b7ee7f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\glad.c">
@@ -96,9 +102,6 @@
     <ClCompile Include="src\UserInterface.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Window.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\Objects\RigidBody.cpp">
       <Filter>Source Files\Objects</Filter>
     </ClCompile>
@@ -116,6 +119,9 @@
     </ClCompile>
     <ClCompile Include="src\Objects\Inspector.cpp">
       <Filter>Source Files\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UIElements\Window.cpp">
+      <Filter>Source Files\UIElements</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -200,9 +206,6 @@
     <ClInclude Include="src\Renderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Window.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\Objects\RigidBody.h">
       <Filter>Header Files\Objects</Filter>
     </ClInclude>
@@ -220,6 +223,9 @@
     </ClInclude>
     <ClInclude Include="src\Objects\Inspector.h">
       <Filter>Header Files\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UIElements\Window.h">
+      <Filter>Header Files\UIElements</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

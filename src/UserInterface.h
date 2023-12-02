@@ -1,7 +1,7 @@
 #ifndef USER_INTERFACE_CLASS_H
 #define USER_INTERFACE_CLASS_H
 
-#include "Window.h"
+#include "UIElements/Window.h"
 #include "Objects/Object.h"
 
 class UserInterface
