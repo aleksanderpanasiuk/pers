@@ -26,7 +26,7 @@ Object::Object(unsigned int ID, GraphicsComponent& graphicsComponent, RigidBody&
 		break;
 	}
 
-	Object::Name += std::to_string(ID);
+	Object::Name += " " + std::to_string(ID);
 }
 
 void Object::Update(float deltaTime)
