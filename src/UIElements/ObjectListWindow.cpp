@@ -10,9 +10,7 @@ void ObjectListWindow::Display(
 
 	for (Object& object : Objects)
 	{
-		std::string NameDisplayed = object.getName();
-
-		if (ImGui::Button(NameDisplayed.c_str()))
+		if (ImGui::Button(object.getName().c_str()))
 		{
 			Selectedobject = object.getID();
 		}
