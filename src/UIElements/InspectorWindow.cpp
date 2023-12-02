@@ -40,6 +40,11 @@ void InspectorWindow::Display(Object& SelectedObject)
 	float orientation[3] = { glmOrientation.x, glmOrientation.y, glmOrientation.z };
 	if (ImGui::InputFloat3("(x, y, z) rot", orientation))
 	{
+		for (float& orientationAxis : orientation)
+		{
+			orientationAxis -= 360 * ((int)orientationAxis/360);
+		}
+
 		SelectedObject.getRigidBody().changeOrientation(glm::vec3(orientation[0], orientation[1], orientation[2]));
 	}
 
