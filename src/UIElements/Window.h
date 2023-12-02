@@ -15,9 +15,9 @@ public:
 	std::string getTitle();
 	void setContent(std::string content);
 	std::string getContent();
-	void Display();
+	virtual void Display();
 
-private:
+protected:
 	std::string title = "";
 	std::string content = "";
 };
