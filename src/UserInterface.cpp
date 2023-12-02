@@ -19,6 +19,7 @@ void UserInterface::Display(
 	float deltaTime, 
 	float FrameDelta, 
 	std::string InspectorData,
+	unsigned int& Selectedobject,
 	std::vector<Object> &objectsList
 )
 {
@@ -44,7 +45,7 @@ void UserInterface::Display(
 	HelpWindow.Display();
 
 	// Object list window
-	ObjectsList.Display(objectsList);
+	ObjectsList.Display(Selectedobject, objectsList);
 
 	ImGui::Render();
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());

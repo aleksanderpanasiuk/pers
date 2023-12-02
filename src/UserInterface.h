@@ -13,6 +13,7 @@ public:
 		float deltaTime, 
 		float FrameDelta, 
 		std::string InspectorData,
+		unsigned int &Selectedobject,
 		std::vector<Object> &objectsList
 	);
 
