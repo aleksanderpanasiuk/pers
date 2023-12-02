@@ -20,12 +20,17 @@ void InspectorWindow::Display(Object& SelectedObject)
 		break;
 	}
 
-	ObjectData += "Position: \n";
-	ObjectData += "\tx:" + std::to_string(SelectedObject.getPosition().x) + "\n";
-	ObjectData += "\ty:" + std::to_string(SelectedObject.getPosition().y) + "\n";
-	ObjectData += "\tz:" + std::to_string(SelectedObject.getPosition().z) + "\n";
-
 	ImGui::Text(ObjectData.c_str());
+
+	ImGui::Text("Position:\n");
+
+	glm::vec3 glmPosition = SelectedObject.getPosition();
+	float position[3] = { glmPosition.x, glmPosition.y, glmPosition.z };
+	if (ImGui::InputFloat3("x / y / z", position))
+	{
+		SelectedObject.setPosition(glm::vec3(position[0], position[1], position[2]));
+		SelectedObject.setVelocity(glm::vec3(0.0f, 0.0f, 0.0f));
+	}
 
 	glm::vec3 glmColor = SelectedObject.getColor();
 
