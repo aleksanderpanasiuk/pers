@@ -126,6 +126,9 @@
     <ClCompile Include="src\UIElements\ObjectListWindow.cpp">
       <Filter>Source Files\UIElements</Filter>
     </ClCompile>
+    <ClCompile Include="src\UIElements\InspectorWindow.cpp">
+      <Filter>Source Files\UIElements</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Shaders\default.frag">

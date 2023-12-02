@@ -42,6 +42,7 @@
     <ClCompile Include="src\Shader.cpp" />
     <ClCompile Include="src\stb.cpp" />
     <ClCompile Include="src\Texture.cpp" />
+    <ClCompile Include="src\UIElements\InspectorWindow.cpp" />
     <ClCompile Include="src\UIElements\ObjectListWindow.cpp" />
     <ClCompile Include="src\UIElements\Window.cpp" />
     <ClCompile Include="src\UserInterface.cpp" />
