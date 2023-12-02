@@ -35,6 +35,11 @@ void RigidBody::changePosition(glm::vec3 newPosition)
 	Position = newPosition;
 }
 
+void RigidBody::changeOrientation(glm::vec3 newOrientation)
+{
+	RigidBody::Orientation = newOrientation;
+}
+
 void RigidBody::Rotate(float deltaTime, glm::vec3 rotationChange)
 {
 	Orientation += rotationChange * deltaTime;

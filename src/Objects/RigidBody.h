@@ -20,6 +20,7 @@ public:
 	);
 
 	void changePosition(glm::vec3 newPosition);
+	void changeOrientation(glm::vec3 newOrientation);
 	void Move(float deltaTime);
 	void Rotate(float deltaTime, glm::vec3 rotationChange);
 	void Rescale(glm::vec3 newScale);
