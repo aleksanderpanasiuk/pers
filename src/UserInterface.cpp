@@ -43,6 +43,9 @@ void UserInterface::Display(
 	HelpWindow.setContent(controls);
 	HelpWindow.Display();
 
+	// Object list window
+	ObjectsList.Display(objectsList);
+
 	ImGui::Render();
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 }

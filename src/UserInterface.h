@@ -2,6 +2,7 @@
 #define USER_INTERFACE_CLASS_H
 
 #include "UIElements/Window.h"
+#include "UIElements/ObjectListWindow.h"
 #include "Objects/Object.h"
 
 class UserInterface
@@ -21,7 +22,7 @@ private:
 	Window DiagnosticWindow;
 	Window InspectorWindow;
 	Window HelpWindow;
-	Window ObjectsList;
+	ObjectListWindow ObjectsList;
 
 	std::string controls = "WASD - camera movement\n"
 		"Shift - Down\n"
