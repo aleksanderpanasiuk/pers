@@ -12,7 +12,7 @@ void ObjectListWindow::Display(
 	{
 		if (ImGui::Button(object.getName().c_str()))
 		{
-			SelectedobjectID = object.getID();
+			SelectedObjectID = object.getID();
 		}
 	}
 
