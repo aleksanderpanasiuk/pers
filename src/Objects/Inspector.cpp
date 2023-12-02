@@ -11,8 +11,9 @@ void Inspector::Update(GLFWwindow* window, std::vector<Object>& objects, Camera 
 
 std::string Inspector::getSelectedObjectData(Object& selectedObject)
 {
-	std::string ObjectData = "Id: ";
-	ObjectData += std::to_string(selectedObject.getID()) + "\n";
+	std::string ObjectData = "Name: " + selectedObject.getName() + "\n";
+	
+	ObjectData += "ID: " + std::to_string(selectedObject.getID()) + "\n";
 
 	ObjectData += "Object type: ";
 
