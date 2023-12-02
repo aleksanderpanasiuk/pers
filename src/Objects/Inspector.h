@@ -8,7 +8,7 @@ class Inspector
 public:
 	void Update(GLFWwindow* window, std::vector<Object>& objects, Camera camera);
 	std::string getSelectedObjectData(Object& selectedObject);
-	unsigned int getSelectedObjectID();
+	unsigned int &getSelectedObjectID();
 
 	glm::vec3 CalculateCursorVector(GLFWwindow* window, Camera camera);
 
