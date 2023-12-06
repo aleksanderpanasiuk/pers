@@ -133,7 +133,7 @@ unsigned int Interface::addObjectToScene()
 		newObjectPosition(),
 		glm::vec3(0.0f, 0.0f, 0.0f),
 		glm::vec3(1.0f, 1.0f, 1.0f),
-		glm::vec3(0.1f, 0.1f, 0.3f),
+		defaultObjectColor,
 		true,
 		1.0f
 	);

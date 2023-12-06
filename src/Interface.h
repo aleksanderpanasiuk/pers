@@ -42,6 +42,7 @@ private:
 	);
 
 	glm::vec3 newObjectPosition();
+	glm::vec3 defaultObjectColor = glm::vec3(0.1f, 0.1f, 0.3f);
 	unsigned int addObjectToScene();
 
 	glm::vec3 floorColor = glm::vec3(0.6f, 0.6f, 0.6f);
