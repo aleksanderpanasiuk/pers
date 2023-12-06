@@ -40,6 +40,8 @@ std::string InspectorWindow::formatObjectInfo(Object& SelectedObject)
 		break;
 	}
 
+	ObjectData += "Mass: " + std::to_string(SelectedObject.getRigidBody().getMass()) + " kg\n";
+
 	return ObjectData;
 }
 
