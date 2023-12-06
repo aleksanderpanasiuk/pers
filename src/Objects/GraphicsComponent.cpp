@@ -145,3 +145,9 @@ std::vector <GLuint> GraphicsComponent::CubeIndices =
 	20, 21, 23, // right
 	20, 22, 23
 };
+
+GLfloat GraphicsComponent::CubeEdges[] =
+{
+	-0.5f,  -0.5f,   -0.5f,
+	 0.5f,  -0.5f,   -0.5f
+};

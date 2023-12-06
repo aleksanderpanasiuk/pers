@@ -30,6 +30,7 @@ private:
 	static std::vector <glm::vec3> CubeVerticesPosition;
 	static std::vector <Vertex> CubeVertices;
 	static std::vector <GLuint> CubeIndices;
+	static GLfloat CubeEdges[];
 
 	void setDataCube();
 };
