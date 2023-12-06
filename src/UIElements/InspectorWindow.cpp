@@ -70,5 +70,7 @@ void InspectorWindow::Display(Object& SelectedObject)
 
 	ImGui::Checkbox("Is affected by forces", &SelectedObject.getRigidBody().isAffectedByForces);
 
+	ImGui::Checkbox("Is visible", &SelectedObject.getGraphicsComponent().isVisible);
+
 	ImGui::End();
 }
