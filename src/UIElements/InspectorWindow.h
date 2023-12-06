@@ -7,6 +7,17 @@ class InspectorWindow : public Window
 {
 public:
 	void Display(Object& SelectedObject);
+
+private:
+	void DisplayObjectInfo(Object& SelectedObject);
+	std::string formatObjectInfo(Object& SelectedObject);
+
+	void DisplayObjectPosition(Object& SelectedObject);
+	void DisplayObjectOrientation(Object& SelectedObject);
+	void DisplayObjectScale(Object& SelectedObject);
+	void DisplayObjectColor(Object& SelectedObject);
+	void DisplayObjectForcesCheckBox(Object& SelectedObject);
+	void DisplayObjectVisibilityCheckBox(Object& SelectedObject);
 };
 
 
