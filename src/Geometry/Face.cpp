@@ -16,6 +16,18 @@ void Face::Move(glm::vec3 PositionChange)
 	}
 }
 
+void Face::Scale(glm::vec3 scale)
+{
+	plane.Scale(scale);
+
+	for (glm::vec3& vertex : Vertices)
+	{
+		vertex.x *= scale.x;
+		vertex.y *= scale.y;
+		vertex.z *= scale.z;
+	}
+}
+
 void Face::ChangePosition(glm::vec3 newPosition)
 {
 	glm::vec3 positionChangeVector = newPosition - plane.getPoint();
