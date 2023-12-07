@@ -1,5 +1,5 @@
-#ifndef OBJECT_LIST_WINDOW
-#define OBJECT_LIST_WINDOW
+#ifndef OBJECT_LIST_WINDOW_CLASS_H
+#define OBJECT_LIST_WINDOW_CLASS_H
 
 #include "Window.h"
 
@@ -10,4 +10,4 @@ public:
 	void Display(unsigned int& SelectedObjectID, std::vector<Object> &Objects);
 };
 
-#endif // !OBJECT_LIST_WINDOW
+#endif // !OBJECT_LIST_WINDOW_CLASS_H
