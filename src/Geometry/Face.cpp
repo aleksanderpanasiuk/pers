@@ -41,7 +41,7 @@ void Face::ChangePosition(glm::vec3 newPosition)
 
 void Face::Rotate(glm::vec3 rotationPoint, glm::vec3 Rotation)
 {
-	plane.Rotate(Rotation);
+	plane.Rotate(rotationPoint, Rotation);
 
 	for (glm::vec3& vertex : Vertices)
 	{
