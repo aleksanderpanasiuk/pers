@@ -100,11 +100,12 @@ glm::vec3 Inspector::CalculateCursorVector(GLFWwindow* window, Camera camera)
 
 bool Inspector::CheckHoverCube(Object& Cube, glm::vec3 cameraPosition, glm::vec3 cameraNormal)
 {
-	std::vector<std::vector<glm::vec3>> Sides = Cube.getSides();
+	std::vector<Face> Faces = Cube.getRigidBody().getFaces();
 
-	for (std::vector<glm::vec3> side : Sides)
+	for (Face face : Faces)
 	{
-		bool check = CheckHoverPlane(side, cameraPosition, cameraNormal);
+		bool check = CheckHoverFace(face, cameraPosition, cameraNormal);
+
 		if (check)
 			return true;
 	}
@@ -112,11 +113,11 @@ bool Inspector::CheckHoverCube(Object& Cube, glm::vec3 cameraPosition, glm::vec3
 	return false;
 }
 
-bool Inspector::CheckHoverPlane(std::vector<glm::vec3> Side, glm::vec3 cameraPosition, glm::vec3 cameraNormal)
+bool Inspector::CheckHoverFace(Face face, glm::vec3 cameraPosition, glm::vec3 cameraNormal)
 {
 	// calculate plane and point lying on it
-	glm::vec4 Plane = calculatePlane(Side);
-	std::pair<bool, glm::vec3> PointData = calculatePoint(Plane, cameraPosition, cameraNormal);
+	glm::vec4 planeData = calculatePlane(face);
+	std::pair<bool, glm::vec3> PointData = calculatePoint(planeData, cameraPosition, cameraNormal);
 
 	// check if camera is facing the object
 	if (not PointData.first)
@@ -124,19 +125,18 @@ bool Inspector::CheckHoverPlane(std::vector<glm::vec3> Side, glm::vec3 cameraPos
 
 	// check if the point is within side(square)
 
-	return CheckIfPointInSquare(Side, PointData.second);
+	return CheckIfPointInSquare(face, PointData.second);
 }
 
-glm::vec4 Inspector::calculatePlane(std::vector<glm::vec3> Side)
+glm::vec4 Inspector::calculatePlane(Face face)
 {
-	glm::vec3 S1 = Side[0];
-	glm::vec3 S2 = Side[1];
-	glm::vec3 S3 = Side[2];
+	glm::vec3 planeNormal = face.getPlane().getNormal();
+	glm::vec3 planePoint = face.getPlane().getPoint();
 
-	float A = (S2.y - S1.y) * (S3.z - S1.z) - (S2.z - S1.z) * (S3.y - S1.y);
-	float B = (S2.z - S1.z) * (S3.x - S1.x) - (S2.x - S1.x) * (S3.z - S1.z);
-	float C = (S2.x - S1.x) * (S3.y - S1.y) - (S2.y - S1.y) * (S3.x - S1.x);
-	float D = -(A * S1.x + B * S1.y + C * S1.z);
+	float A = planeNormal.x;
+	float B = planeNormal.y;
+	float C = planeNormal.z;
+	float D = -(A * planePoint.x + B * planePoint.y + C * planePoint.z);
 
 	return glm::vec4(A, B, C, D);
 }
@@ -155,13 +155,14 @@ std::pair<bool, glm::vec3> Inspector::calculatePoint(glm::vec4 Plane, glm::vec3 
 	));
 }
 
-bool Inspector::CheckIfPointInSquare(std::vector<glm::vec3> Side, glm::vec3 Point)
+bool Inspector::CheckIfPointInSquare(Face face, glm::vec3 Point)
 {
-	// provided that Side[0] and Side[1] create opposite side to Side[2] and Side[3]
-	// and Side[1] creates side with Side[2]
-	glm::vec3 S1 = Side[0];
-	glm::vec3 S2 = Side[1];
-	glm::vec3 S3 = Side[2];
+	std::vector<glm::vec3> Vertices = face.getVertices();
+	// provided that Vertices[0] and Vertices[1] create opposite side to Vertices[2] and Vertices[3]
+	// and Vertices[1] creates side with Vertices[2]
+	glm::vec3 S1 = Vertices[0];
+	glm::vec3 S2 = Vertices[1];
+	glm::vec3 S3 = Vertices[2];
 
 	return CheckIfPointWithinBoundries(Point, S1, S2) and CheckIfPointWithinBoundries(Point, S2, S3);
 }
