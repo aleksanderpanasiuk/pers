@@ -13,6 +13,13 @@ namespace persTESTS
 {
 	const float FLOAT_ERROR = 0.00001f;
 
+	void compareVectors3(glm::vec3 a, glm::vec3 b)
+	{
+		Assert::AreEqual(a.x, b.x, FLOAT_ERROR);
+		Assert::AreEqual(a.y, b.y, FLOAT_ERROR);
+		Assert::AreEqual(a.z, b.z, FLOAT_ERROR);
+	}
+
 	void comparePlanes(std::vector<Plane> P1, std::vector<Plane> P2)
 	{
 		for (int i = 0; i < P1.size(); i++)
@@ -23,13 +30,8 @@ namespace persTESTS
 			glm::vec3 actualPlaneNormal = P1[i].getNormal();
 			glm::vec3 actualPlanePoint = P1[i].getPoint();
 
-			Assert::AreEqual(expectedPlaneNormal.x, actualPlaneNormal.x, FLOAT_ERROR);
-			Assert::AreEqual(expectedPlaneNormal.y, actualPlaneNormal.y, FLOAT_ERROR);
-			Assert::AreEqual(expectedPlaneNormal.z, actualPlaneNormal.z, FLOAT_ERROR);
-
-			Assert::AreEqual(expectedPlanePoint.x, actualPlanePoint.x, FLOAT_ERROR);
-			Assert::AreEqual(expectedPlanePoint.y, actualPlanePoint.y, FLOAT_ERROR);
-			Assert::AreEqual(expectedPlanePoint.z, actualPlanePoint.z, FLOAT_ERROR);
+			compareVectors3(expectedPlaneNormal, actualPlaneNormal);
+			compareVectors3(expectedPlanePoint, actualPlanePoint);
 		}
 	}
 
@@ -48,9 +50,10 @@ namespace persTESTS
 			Assert::IsTrue(rigidBody.isAffectedByForces);
 			Assert::AreEqual(rigidBody.getMass(), 1.0f);
 			Assert::AreEqual((int)rigidBody.getType(), (int)RigidCube);
-			Assert::AreEqual(glm::to_string(rigidBody.getOrientation()).c_str(), "vec3(0.000000, 0.000000, 0.000000)");
-			Assert::AreEqual(glm::to_string(rigidBody.getPosition()).c_str(), "vec3(0.000000, 0.000000, 0.000000)");
-			Assert::AreEqual(glm::to_string(rigidBody.getScale()).c_str(), "vec3(1.000000, 1.000000, 1.000000)");
+
+			compareVectors3(rigidBody.getOrientation(), glm::vec3(0.0f, 0.0f, 0.0f));
+			compareVectors3(rigidBody.getPosition(), glm::vec3(0.0f, 0.0f, 0.0f));
+			compareVectors3(rigidBody.getScale(), glm::vec3(1.0f, 1.0f, 1.0f));
 		}
 
 		TEST_METHOD(RigidBodyGetPlanesTest)
@@ -89,13 +92,8 @@ namespace persTESTS
 
 			Plane plane(NormalVector, PointZero);
 
-			Assert::AreEqual(plane.getNormal().x, NormalVector.x);
-			Assert::AreEqual(plane.getNormal().y, NormalVector.y);
-			Assert::AreEqual(plane.getNormal().z, NormalVector.z);
-
-			Assert::AreEqual(plane.getPoint().x, PointZero.x);
-			Assert::AreEqual(plane.getPoint().y, PointZero.y);
-			Assert::AreEqual(plane.getPoint().z, PointZero.z);
+			compareVectors3(plane.getNormal(), NormalVector);
+			compareVectors3(plane.getPoint(), PointZero);
 		}
 
 		TEST_METHOD(PlaneChangingPositionTest)
@@ -108,9 +106,7 @@ namespace persTESTS
 		
 			plane.ChangePosition(newPosition);
 
-			Assert::AreEqual(plane.getPoint().x, newPosition.x);
-			Assert::AreEqual(plane.getPoint().y, newPosition.y);
-			Assert::AreEqual(plane.getPoint().z, newPosition.z);
+			compareVectors3(plane.getPoint(), newPosition);
 		}
 
 		TEST_METHOD(PlaneRotationOneAxisSimplePointTest)
@@ -127,13 +123,8 @@ namespace persTESTS
 			glm::vec3 expectedPoint = glm::vec3(0.0f, 1.0f, 0.0f);
 			glm::vec3 expectedNormal = glm::vec3(0.0f, 1.0f, 0.0f);
 
-			Assert::AreEqual(plane.getPoint().x, expectedPoint.x, FLOAT_ERROR);
-			Assert::AreEqual(plane.getPoint().y, expectedPoint.y, FLOAT_ERROR);
-			Assert::AreEqual(plane.getPoint().z, expectedPoint.z, FLOAT_ERROR);
-
-			Assert::AreEqual(plane.getNormal().x, expectedNormal.x, FLOAT_ERROR);
-			Assert::AreEqual(plane.getNormal().y, expectedNormal.y, FLOAT_ERROR);
-			Assert::AreEqual(plane.getNormal().z, expectedNormal.z, FLOAT_ERROR);
+			compareVectors3(plane.getPoint(), expectedPoint);
+			compareVectors3(plane.getNormal(), expectedNormal);
 		}
 
 		TEST_METHOD(PlaneRotationSameAxisNothingChangesTest)
@@ -146,15 +137,9 @@ namespace persTESTS
 			glm::vec3 rotation = glm::vec3(90.0f, 0.0f, 0.0f);
 
 			plane.Rotate(rotationPoint, rotation);
-			
 
-			Assert::AreEqual(plane.getPoint().x, PointZero.x, FLOAT_ERROR);
-			Assert::AreEqual(plane.getPoint().y, PointZero.y, FLOAT_ERROR);
-			Assert::AreEqual(plane.getPoint().z, PointZero.z, FLOAT_ERROR);
-
-			Assert::AreEqual(plane.getNormal().x, NormalVector.x, FLOAT_ERROR);
-			Assert::AreEqual(plane.getNormal().y, NormalVector.y, FLOAT_ERROR);
-			Assert::AreEqual(plane.getNormal().z, NormalVector.z, FLOAT_ERROR);
+			compareVectors3(plane.getPoint(), PointZero);
+			compareVectors3(plane.getNormal(), NormalVector);
 		}
 
 		TEST_METHOD(PlaneRotationOneAxisNonZeroPointTest)
@@ -171,13 +156,8 @@ namespace persTESTS
 			glm::vec3 expectedPoint = glm::vec3(1.0f, 1.0f, 0.0f);
 			glm::vec3 expectedNormal = glm::vec3(0.0f, 1.0f, 0.0f);
 
-			Assert::AreEqual(plane.getPoint().x, expectedPoint.x, FLOAT_ERROR);
-			Assert::AreEqual(plane.getPoint().y, expectedPoint.y, FLOAT_ERROR);
-			Assert::AreEqual(plane.getPoint().z, expectedPoint.z, FLOAT_ERROR);
-
-			Assert::AreEqual(plane.getNormal().x, expectedNormal.x, FLOAT_ERROR);
-			Assert::AreEqual(plane.getNormal().y, expectedNormal.y, FLOAT_ERROR);
-			Assert::AreEqual(plane.getNormal().z, expectedNormal.z, FLOAT_ERROR);
+			compareVectors3(plane.getPoint(), expectedPoint);
+			compareVectors3(plane.getNormal(), expectedNormal);
 		}
 
 		TEST_METHOD(PlaneRotationTwoAxesSimplePointTest)
@@ -194,13 +174,8 @@ namespace persTESTS
 			glm::vec3 expectedPoint = glm::vec3(0.0f, 0.0f, -1.0f);
 			glm::vec3 expectedNormal = glm::vec3(0.0f, 0.0f, -1.0f);
 
-			Assert::AreEqual(plane.getPoint().x, expectedPoint.x, FLOAT_ERROR);
-			Assert::AreEqual(plane.getPoint().y, expectedPoint.y, FLOAT_ERROR);
-			Assert::AreEqual(plane.getPoint().z, expectedPoint.z, FLOAT_ERROR);
-
-			Assert::AreEqual(plane.getNormal().x, expectedNormal.x, FLOAT_ERROR);
-			Assert::AreEqual(plane.getNormal().y, expectedNormal.y, FLOAT_ERROR);
-			Assert::AreEqual(plane.getNormal().z, expectedNormal.z, FLOAT_ERROR);
+			compareVectors3(plane.getPoint(), expectedPoint);
+			compareVectors3(plane.getNormal(), expectedNormal);
 		}
 
 		TEST_METHOD(PlaneRotationTwoAxesNonZeroPointTest)
@@ -217,13 +192,8 @@ namespace persTESTS
 			glm::vec3 expectedPoint = glm::vec3(1.0f, 2.0f, 0.0f);
 			glm::vec3 expectedNormal = glm::vec3(0.0f, 1.0f, 0.0f);
 
-			Assert::AreEqual(plane.getPoint().x, expectedPoint.x, FLOAT_ERROR);
-			Assert::AreEqual(plane.getPoint().y, expectedPoint.y, FLOAT_ERROR);
-			Assert::AreEqual(plane.getPoint().z, expectedPoint.z, FLOAT_ERROR);
-
-			Assert::AreEqual(plane.getNormal().x, expectedNormal.x, FLOAT_ERROR);
-			Assert::AreEqual(plane.getNormal().y, expectedNormal.y, FLOAT_ERROR);
-			Assert::AreEqual(plane.getNormal().z, expectedNormal.z, FLOAT_ERROR);
+			compareVectors3(plane.getPoint(), expectedPoint);
+			compareVectors3(plane.getNormal(), expectedNormal);
 		}
 
 		TEST_METHOD(PlaneRotationThreeAxesSimplePointTest)
@@ -240,13 +210,8 @@ namespace persTESTS
 			glm::vec3 expectedPoint = glm::vec3(0.0f, 1.0f, -1.0f);
 			glm::vec3 expectedNormal = glm::vec3(0.0f, 0.0f, -1.0f);
 
-			Assert::AreEqual(plane.getPoint().x, expectedPoint.x, FLOAT_ERROR);
-			Assert::AreEqual(plane.getPoint().y, expectedPoint.y, FLOAT_ERROR);
-			Assert::AreEqual(plane.getPoint().z, expectedPoint.z, FLOAT_ERROR);
-
-			Assert::AreEqual(plane.getNormal().x, expectedNormal.x, FLOAT_ERROR);
-			Assert::AreEqual(plane.getNormal().y, expectedNormal.y, FLOAT_ERROR);
-			Assert::AreEqual(plane.getNormal().z, expectedNormal.z, FLOAT_ERROR);
+			compareVectors3(plane.getPoint(), expectedPoint);
+			compareVectors3(plane.getNormal(), expectedNormal);
 		}
 
 		TEST_METHOD(PlaneRotationThreeAxesNonZeroPointTest)
@@ -263,13 +228,8 @@ namespace persTESTS
 			glm::vec3 expectedPoint = glm::vec3(0.0f, 1.0f, 0.0f);
 			glm::vec3 expectedNormal = glm::vec3(-1.0f, 0.0f, 0.0f);
 
-			Assert::AreEqual(plane.getPoint().x, expectedPoint.x, FLOAT_ERROR);
-			Assert::AreEqual(plane.getPoint().y, expectedPoint.y, FLOAT_ERROR);
-			Assert::AreEqual(plane.getPoint().z, expectedPoint.z, FLOAT_ERROR);
-
-			Assert::AreEqual(plane.getNormal().x, expectedNormal.x, FLOAT_ERROR);
-			Assert::AreEqual(plane.getNormal().y, expectedNormal.y, FLOAT_ERROR);
-			Assert::AreEqual(plane.getNormal().z, expectedNormal.z, FLOAT_ERROR);
+			compareVectors3(plane.getPoint(), expectedPoint);
+			compareVectors3(plane.getNormal(), expectedNormal);
 		}
 	};
 }
