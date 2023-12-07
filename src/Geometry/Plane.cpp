@@ -26,6 +26,13 @@ void Plane::Move(glm::vec3 PositionChange)
 	Plane::Point += PositionChange;
 }
 
+void Plane::Scale(glm::vec3 scale)
+{
+	Point.x *= scale.x;
+	Point.y *= scale.y;
+	Point.z *= scale.z;
+}
+
 void Plane::ChangePosition(glm::vec3 newPosition)
 {
 	Plane::Point = newPosition;
