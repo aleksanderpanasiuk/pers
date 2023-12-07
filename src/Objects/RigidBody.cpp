@@ -148,6 +148,9 @@ float RigidBody::getMass()
 	#----- > x
 */
 
+// order of vertices in planes mustn't change
+// adjacent vertices create edges
+
 std::vector<Plane> RigidBody::CubePlanes = {
 	// x planes
 	Plane(glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.5f, 0.0f, 0.0f)), // (1, 2, 6, 5)
