@@ -60,6 +60,38 @@ void RigidBody::applyForce(glm::vec3 Force)
 	NetForce += Force;
 }
 
+std::vector<Plane> RigidBody::getPlanes()
+{
+	switch (type)
+	{
+	case RigidCube:
+		return getCubePlanes();
+	default:
+		return std::vector<Plane>();
+	}
+}
+
+std::vector<Plane> RigidBody::getCubePlanes()
+{
+	std::vector<Plane> transformedPlanes;
+	
+	for (Plane rawPlane : CubePlanes)
+	{
+		glm::vec3 scaledPoint = rawPlane.getPoint();
+		scaledPoint.x *= Scale.x;
+		scaledPoint.y *= Scale.y;
+		scaledPoint.z *= Scale.z;
+		rawPlane.setPoint(scaledPoint);
+
+		rawPlane.Rotate(glm::vec3(0.0f, 0.0f, 0.0f), Orientation);
+		rawPlane.Move(Position);
+
+		transformedPlanes.push_back(rawPlane);
+	}
+
+	return transformedPlanes;
+}
+
 glm::vec3 RigidBody::getVelocity()
 {
 	return Velocity;

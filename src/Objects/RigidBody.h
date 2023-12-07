@@ -35,6 +35,7 @@ public:
 	glm::vec3 getScale();
 	RigidType getType();
 	float getMass();
+	std::vector<Plane> getPlanes();
 
 	bool isAffectedByForces = true;
 
@@ -52,6 +53,7 @@ private:
 	glm::vec3 Scale = glm::vec3(1.0f, 1.0f, 1.0f);
 
 	static std::vector<Plane> CubePlanes;
+	std::vector<Plane> getCubePlanes();
 };
 
 #endif // !RIGID_BODY_CLASS_H
