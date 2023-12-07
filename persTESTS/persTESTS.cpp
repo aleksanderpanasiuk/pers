@@ -11,12 +11,27 @@ using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace persTESTS
 {
-	TEST_CLASS(persTESTS)
+	const float FLOAT_ERROR = 0.00001f;
+
+	void comparePlanes(std::vector<Plane> P1, std::vector<Plane> P2)
 	{
-	public:
-		
-		
-	};
+		for (int i = 0; i < P1.size(); i++)
+		{
+			glm::vec3 expectedPlaneNormal = P2[i].getNormal();
+			glm::vec3 expectedPlanePoint = P2[i].getPoint();
+
+			glm::vec3 actualPlaneNormal = P1[i].getNormal();
+			glm::vec3 actualPlanePoint = P1[i].getPoint();
+
+			Assert::AreEqual(expectedPlaneNormal.x, actualPlaneNormal.x, FLOAT_ERROR);
+			Assert::AreEqual(expectedPlaneNormal.y, actualPlaneNormal.y, FLOAT_ERROR);
+			Assert::AreEqual(expectedPlaneNormal.z, actualPlaneNormal.z, FLOAT_ERROR);
+
+			Assert::AreEqual(expectedPlanePoint.x, actualPlanePoint.x, FLOAT_ERROR);
+			Assert::AreEqual(expectedPlanePoint.y, actualPlanePoint.y, FLOAT_ERROR);
+			Assert::AreEqual(expectedPlanePoint.z, actualPlanePoint.z, FLOAT_ERROR);
+		}
+	}
 
 	TEST_CLASS(RigidBodyTest)
 	{
@@ -26,7 +41,7 @@ namespace persTESTS
 				RigidCube,
 				glm::vec3(0.0f, 0.0f, 0.0f),
 				glm::vec3(0.0f, 0.0f, 0.0f),
-				glm::vec3(0.0f, 0.0f, 0.0f),
+				glm::vec3(1.0f, 1.0f, 1.0f),
 				true, 1.0f
 			);
 
@@ -35,13 +50,37 @@ namespace persTESTS
 			Assert::AreEqual((int)rigidBody.getType(), (int)RigidCube);
 			Assert::AreEqual(glm::to_string(rigidBody.getOrientation()).c_str(), "vec3(0.000000, 0.000000, 0.000000)");
 			Assert::AreEqual(glm::to_string(rigidBody.getPosition()).c_str(), "vec3(0.000000, 0.000000, 0.000000)");
-			Assert::AreEqual(glm::to_string(rigidBody.getScale()).c_str(), "vec3(0.000000, 0.000000, 0.000000)");
+			Assert::AreEqual(glm::to_string(rigidBody.getScale()).c_str(), "vec3(1.000000, 1.000000, 1.000000)");
+		}
+
+		TEST_METHOD(RigidBodyGetPlanesTest)
+		{
+			RigidBody rigidBody(
+				RigidCube,
+				glm::vec3(0.0f, 0.0f, 0.0f),
+				glm::vec3(0.0f, 0.0f, 0.0f),
+				glm::vec3(1.0f, 1.0f, 1.0f),
+				true, 1.0f
+			);
+
+			std::vector<Plane> ExpectedPlanes = {
+				Plane(glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.5f, 0.0f, 0.0f)),
+				Plane(glm::vec3(-1.0f, 0.0f, 0.0f), glm::vec3(-0.5f, 0.0f, 0.0f)), 
+				Plane(glm::vec3(0.0f, -1.0f, 0.0f), glm::vec3(0.0f, -0.5f, 0.0f)), 
+				Plane(glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0.0f, 0.5f, 0.0f)),
+				Plane(glm::vec3(0.0f, 0.0f, -1.0f), glm::vec3(0.0f, 0.0f, -0.5f)),
+				Plane(glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(0.0f, 0.0f, 0.5f)),
+			};
+
+			std::vector<Plane> planes = rigidBody.getPlanes();
+
+			comparePlanes(planes, ExpectedPlanes);
 		}
 	};
 
 	TEST_CLASS(PlaneTest)
 	{
-		const float FLOAT_ERROR = 0.00001f;
+		
 
 		TEST_METHOD(PlaneInitTest)
 		{
