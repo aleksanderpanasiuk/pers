@@ -60,36 +60,32 @@ void RigidBody::applyForce(glm::vec3 Force)
 	NetForce += Force;
 }
 
-std::vector<Plane> RigidBody::getPlanes()
+std::vector<Face> RigidBody::getFaces()
 {
 	switch (type)
 	{
 	case RigidCube:
-		return getCubePlanes();
+		return getCubeFaces();
 	default:
-		return std::vector<Plane>();
+		return std::vector<Face>();
 	}
 }
 
-std::vector<Plane> RigidBody::getCubePlanes()
+std::vector<Face> RigidBody::getCubeFaces()
 {
-	std::vector<Plane> transformedPlanes;
+	std::vector<Face> transformedFaces;
 	
-	for (Plane rawPlane : CubePlanes)
+	for (Face rawFace: CubeFaces)
 	{
-		glm::vec3 scaledPoint = rawPlane.getPoint();
-		scaledPoint.x *= Scale.x;
-		scaledPoint.y *= Scale.y;
-		scaledPoint.z *= Scale.z;
-		rawPlane.setPoint(scaledPoint);
+		rawFace.Scale(Scale);
 
-		rawPlane.Rotate(glm::vec3(0.0f, 0.0f, 0.0f), Orientation);
-		rawPlane.Move(Position);
+		rawFace.Rotate(glm::vec3(0.0f, 0.0f, 0.0f), Orientation);
+		rawFace.Move(Position);
 
-		transformedPlanes.push_back(rawPlane);
+		transformedFaces.push_back(rawFace);
 	}
 
-	return transformedPlanes;
+	return transformedFaces;
 }
 
 glm::vec3 RigidBody::getVelocity()
@@ -164,4 +160,24 @@ std::vector<Plane> RigidBody::CubePlanes = {
 	// z planes
 	Plane(glm::vec3(0.0f, 0.0f, -1.0f), glm::vec3(0.0f, 0.0f, -0.5f)), // (0, 1, 2, 3)
 	Plane(glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(0.0f, 0.0f, 0.5f)), // (4, 5, 6, 7)
+};
+
+std::vector <glm::vec3> RigidBody::CubeVertices = {
+		glm::vec3(-0.5f,  -0.5f,   -0.5f),
+		glm::vec3( 0.5f,  -0.5f,   -0.5f),
+		glm::vec3( 0.5f,   0.5f,   -0.5f),
+		glm::vec3(-0.5f,   0.5f,   -0.5f),
+		glm::vec3(-0.5f,  -0.5f,    0.5f),
+		glm::vec3( 0.5f,  -0.5f,    0.5f),
+		glm::vec3( 0.5f,   0.5f,    0.5f),
+		glm::vec3(-0.5f,   0.5f,    0.5f)
+};
+
+std::vector<Face> RigidBody::CubeFaces = {
+	Face(CubePlanes[0], {CubeVertices[1], CubeVertices[2], CubeVertices[5], CubeVertices[6]}),
+	Face(CubePlanes[1], {CubeVertices[0], CubeVertices[3], CubeVertices[4], CubeVertices[7]}),
+	Face(CubePlanes[2], {CubeVertices[0], CubeVertices[1], CubeVertices[4], CubeVertices[5]}),
+	Face(CubePlanes[3], {CubeVertices[2], CubeVertices[3], CubeVertices[6], CubeVertices[7]}),
+	Face(CubePlanes[4], {CubeVertices[0], CubeVertices[1], CubeVertices[2], CubeVertices[3]}),
+	Face(CubePlanes[5], {CubeVertices[4], CubeVertices[5], CubeVertices[6], CubeVertices[7]}),
 };

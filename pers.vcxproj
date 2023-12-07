@@ -27,6 +27,7 @@
     <ClCompile Include="imgui\imgui_tables.cpp" />
     <ClCompile Include="imgui\imgui_widgets.cpp" />
     <ClCompile Include="src\EBO.cpp" />
+    <ClCompile Include="src\Geometry\Face.cpp" />
     <ClCompile Include="src\Geometry\Plane.cpp" />
     <ClCompile Include="src\glad.c" />
     <ClCompile Include="src\Interface.cpp" />
@@ -72,6 +73,7 @@
     <ClInclude Include="imgui\imstb_truetype.h" />
     <ClInclude Include="imgui\misc\cpp\imgui_stdlib.h" />
     <ClInclude Include="src\EBO.h" />
+    <ClInclude Include="src\Geometry\Face.h" />
     <ClInclude Include="src\Geometry\Plane.h" />
     <ClInclude Include="src\Interface.h" />
     <ClInclude Include="src\Mesh.h" />

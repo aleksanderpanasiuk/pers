@@ -2,7 +2,7 @@
 #define RIGID_BODY_CLASS_H
 
 
-#include "../Geometry/Plane.h"
+#include "../Geometry/Face.h"
 #include <vector>
 
 
@@ -35,7 +35,7 @@ public:
 	glm::vec3 getScale();
 	RigidType getType();
 	float getMass();
-	std::vector<Plane> getPlanes();
+	std::vector<Face> getFaces();
 
 	bool isAffectedByForces = true;
 
@@ -53,7 +53,10 @@ private:
 	glm::vec3 Scale = glm::vec3(1.0f, 1.0f, 1.0f);
 
 	static std::vector<Plane> CubePlanes;
-	std::vector<Plane> getCubePlanes();
+	static std::vector<glm::vec3> CubeVertices;
+	static std::vector<Face> CubeFaces;
+
+	std::vector<Face> getCubeFaces();
 };
 
 #endif // !RIGID_BODY_CLASS_H
