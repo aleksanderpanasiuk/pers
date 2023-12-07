@@ -56,5 +56,20 @@ namespace persTESTS
 			Assert::AreEqual(plane.getPoint().y, PointZero.y);
 			Assert::AreEqual(plane.getPoint().z, PointZero.z);
 		}
+
+		TEST_METHOD(PlaneChangingPositionTest)
+		{
+			glm::vec3 PointZero = glm::vec3(0.0f, 1.0f, 2.0f);
+			glm::vec3 NormalVector = glm::vec3(1.0f, 0.0f, 0.0f);
+			glm::vec3 newPosition = glm::vec3(1.0f, 21.0f, -10.0f);
+			
+			Plane plane(NormalVector, PointZero);
+		
+			plane.ChangePosition(newPosition);
+
+			Assert::AreEqual(plane.getPoint().x, newPosition.x);
+			Assert::AreEqual(plane.getPoint().y, newPosition.y);
+			Assert::AreEqual(plane.getPoint().z, newPosition.z);
+		}
 	};
 }
