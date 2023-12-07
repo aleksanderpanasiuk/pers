@@ -131,5 +131,5 @@ std::vector<Plane> RigidBody::CubePlanes = {
 
 	// z planes
 	Plane(glm::vec3(0.0f, 0.0f, -1.0f), glm::vec3(0.0f, 0.0f, -0.5f)), // (0, 1, 2, 3)
-	Plane(glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(0.0f, 0.0f, 0.5f)), // (2, 3, 6, 7)
+	Plane(glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(0.0f, 0.0f, 0.5f)), // (4, 5, 6, 7)
 };
