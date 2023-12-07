@@ -12,6 +12,7 @@ public:
 	Face(Plane plane, std::vector<glm::vec3> Vertices);
 
 	Plane getPlane();
+	std::vector<glm::vec3> getVertices();
 
 	void Move(glm::vec3 PositionChange);
 	void Scale(glm::vec3 scale);

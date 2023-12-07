@@ -11,6 +11,11 @@ Plane Face::getPlane()
 	return plane;
 }
 
+std::vector<glm::vec3> Face::getVertices()
+{
+	return Vertices;
+}
+
 void Face::Move(glm::vec3 PositionChange)
 {
 	plane.Move(PositionChange);
