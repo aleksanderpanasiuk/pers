@@ -12,6 +12,9 @@ public:
 	glm::vec3 getNormal();
 	glm::vec3 getPoint();
 
+	void setPoint(glm::vec3 newPoint);
+
+	void Move(glm::vec3 PositionChange);
 	void ChangePosition(glm::vec3 newPosition);
 	void Rotate(glm::vec3 rotationPoint, glm::vec3 Rotation);
 

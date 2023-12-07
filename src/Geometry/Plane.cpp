@@ -16,6 +16,16 @@ glm::vec3 Plane::getPoint()
 	return Point;
 }
 
+void Plane::setPoint(glm::vec3 newPoint)
+{
+	Plane::Point = newPoint;
+}
+
+void Plane::Move(glm::vec3 PositionChange)
+{
+	Plane::Point += PositionChange;
+}
+
 void Plane::ChangePosition(glm::vec3 newPosition)
 {
 	Plane::Point = newPosition;
