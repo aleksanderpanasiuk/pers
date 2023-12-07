@@ -11,10 +11,7 @@ void DiagnosticWindow::Display(float deltaTime, float FrameDelta)
 
 	ImGui::Text(diagnosticData.c_str());
 
-	deltaTimesamples.push(deltaTime);
-
-	if (deltaTimesamples.size() > numberOfSamples)
-		deltaTimesamples.pop();
+	UpdateQueue(deltaTime);
 
 	std::queue<float> deltaTimesamplesCopy = deltaTimesamples;
 	float deltaTimesamplesArray[numberOfSamples];
@@ -30,4 +27,12 @@ void DiagnosticWindow::Display(float deltaTime, float FrameDelta)
 	ImGui::PlotLines("DeltaTime change", deltaTimesamplesArray, numberOfSamples);
 
 	ImGui::End();
+}
+
+void DiagnosticWindow::UpdateQueue(float deltaTime)
+{
+	deltaTimesamples.push(deltaTime);
+
+	if (deltaTimesamples.size() > numberOfSamples)
+		deltaTimesamples.pop();
 }

@@ -13,6 +13,8 @@ public:
 private:
 	std::queue<float> deltaTimesamples;
 	static const int numberOfSamples = 100;
+
+	void UpdateQueue(float deltaTime);
 };
 
 #endif // !DIAGNOSTIC_WINDOW_CLASS_H
