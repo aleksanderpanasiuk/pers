@@ -150,12 +150,12 @@ float RigidBody::getMass()
 
 std::vector<Plane> RigidBody::CubePlanes = {
 	// x planes
-	Plane(glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.5f, 0.0f, 0.0f)), // (1, 2, 5, 6)
-	Plane(glm::vec3(-1.0f, 0.0f, 0.0f), glm::vec3(-0.5f, 0.0f, 0.0f)), // (0, 3, 4, 7)
+	Plane(glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.5f, 0.0f, 0.0f)), // (1, 2, 6, 5)
+	Plane(glm::vec3(-1.0f, 0.0f, 0.0f), glm::vec3(-0.5f, 0.0f, 0.0f)), // (0, 3, 7, 4)
 
 	// y planes
-	Plane(glm::vec3(0.0f, -1.0f, 0.0f), glm::vec3(0.0f, -0.5f, 0.0f)), // (0, 1, 4, 5)
-	Plane(glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0.0f, 0.5f, 0.0f)), // (2, 3, 6, 7)
+	Plane(glm::vec3(0.0f, -1.0f, 0.0f), glm::vec3(0.0f, -0.5f, 0.0f)), // (0, 1, 5, 4)
+	Plane(glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0.0f, 0.5f, 0.0f)), // (2, 3, 7, 6)
 
 	// z planes
 	Plane(glm::vec3(0.0f, 0.0f, -1.0f), glm::vec3(0.0f, 0.0f, -0.5f)), // (0, 1, 2, 3)
@@ -174,10 +174,10 @@ std::vector <glm::vec3> RigidBody::CubeVertices = {
 };
 
 std::vector<Face> RigidBody::CubeFaces = {
-	Face(CubePlanes[0], {CubeVertices[1], CubeVertices[2], CubeVertices[5], CubeVertices[6]}),
-	Face(CubePlanes[1], {CubeVertices[0], CubeVertices[3], CubeVertices[4], CubeVertices[7]}),
-	Face(CubePlanes[2], {CubeVertices[0], CubeVertices[1], CubeVertices[4], CubeVertices[5]}),
-	Face(CubePlanes[3], {CubeVertices[2], CubeVertices[3], CubeVertices[6], CubeVertices[7]}),
+	Face(CubePlanes[0], {CubeVertices[1], CubeVertices[2], CubeVertices[6], CubeVertices[5]}),
+	Face(CubePlanes[1], {CubeVertices[0], CubeVertices[3], CubeVertices[7], CubeVertices[4]}),
+	Face(CubePlanes[2], {CubeVertices[0], CubeVertices[1], CubeVertices[5], CubeVertices[4]}),
+	Face(CubePlanes[3], {CubeVertices[2], CubeVertices[3], CubeVertices[7], CubeVertices[6]}),
 	Face(CubePlanes[4], {CubeVertices[0], CubeVertices[1], CubeVertices[2], CubeVertices[3]}),
 	Face(CubePlanes[5], {CubeVertices[4], CubeVertices[5], CubeVertices[6], CubeVertices[7]}),
 };
