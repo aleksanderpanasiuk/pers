@@ -29,4 +29,14 @@ void Face::ChangePosition(glm::vec3 newPosition)
 
 void Face::Rotate(glm::vec3 rotationPoint, glm::vec3 Rotation)
 {
+	for (glm::vec3& vertex : Vertices)
+	{
+		glm::vec3 vectorFromBeginning = vertex - rotationPoint;
+
+		vectorFromBeginning = glm::rotateX(vectorFromBeginning, glm::radians(Rotation.x));
+		vectorFromBeginning = glm::rotateY(vectorFromBeginning, glm::radians(Rotation.y));
+		vectorFromBeginning = glm::rotateZ(vectorFromBeginning, glm::radians(Rotation.z));
+
+		vertex = rotationPoint + vectorFromBeginning;
+	}
 }
