@@ -13,18 +13,7 @@ void DiagnosticWindow::Display(float deltaTime, float FrameDelta)
 
 	UpdateQueue(deltaTime);
 
-	std::queue<float> deltaTimesamplesCopy = deltaTimesamples;
-	float deltaTimesamplesArray[numberOfSamples];
-	int i = 0;
-
-	while (not deltaTimesamplesCopy.empty())
-	{
-		deltaTimesamplesArray[i] = deltaTimesamplesCopy.front();
-		deltaTimesamplesCopy.pop();
-		i++;
-	}
-
-	ImGui::PlotLines("DeltaTime change", deltaTimesamplesArray, numberOfSamples);
+	ImGui::PlotLines("DeltaTime change", getDeltaTimeSamples().data(), numberOfSamples);
 
 	ImGui::End();
 }
@@ -35,4 +24,18 @@ void DiagnosticWindow::UpdateQueue(float deltaTime)
 
 	if (deltaTimesamples.size() > numberOfSamples)
 		deltaTimesamples.pop();
+}
+
+std::vector<float> DiagnosticWindow::getDeltaTimeSamples()
+{
+	std::queue<float> deltaTimesamplesCopy = deltaTimesamples;
+	std::vector<float> deltaTimesamplesArray;
+
+	while (not deltaTimesamplesCopy.empty())
+	{
+		deltaTimesamplesArray.push_back(deltaTimesamplesCopy.front());
+		deltaTimesamplesCopy.pop();
+	}
+
+	return deltaTimesamplesArray;
 }

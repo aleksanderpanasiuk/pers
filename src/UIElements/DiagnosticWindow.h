@@ -15,6 +15,8 @@ private:
 	static const int numberOfSamples = 100;
 
 	void UpdateQueue(float deltaTime);
+
+	std::vector<float> getDeltaTimeSamples();
 };
 
 #endif // !DIAGNOSTIC_WINDOW_CLASS_H
