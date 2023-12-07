@@ -141,6 +141,9 @@
     <ClCompile Include="src\Geometry\Face.cpp">
       <Filter>Source Files\Geometry</Filter>
     </ClCompile>
+    <ClCompile Include="src\UIElements\DiagnosticWindow.cpp">
+      <Filter>Source Files\UIElements</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Shaders\default.frag">
@@ -259,6 +262,9 @@
     </ClInclude>
     <ClInclude Include="src\Geometry\Face.h">
       <Filter>Header Files\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UIElements\DiagnosticWindow.h">
+      <Filter>Header Files\UIElements</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

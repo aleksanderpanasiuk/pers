@@ -4,6 +4,7 @@
 #include "UIElements/Window.h"
 #include "UIElements/ObjectListWindow.h"
 #include "UIElements/InspectorWindow.h"
+#include "UIElements/DiagnosticWindow.h"
 #include "Objects/Object.h"
 
 class UserInterface
@@ -21,7 +22,7 @@ public:
 	void close();
 
 private:
-	Window DiagnosticWindow;
+	DiagnosticWindow diagnosticWindow;
 	InspectorWindow inspectorWindow;
 	Window HelpWindow;
 	ObjectListWindow ObjectsList;

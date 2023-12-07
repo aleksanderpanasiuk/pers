@@ -44,6 +44,7 @@
     <ClCompile Include="src\Shader.cpp" />
     <ClCompile Include="src\stb.cpp" />
     <ClCompile Include="src\Texture.cpp" />
+    <ClCompile Include="src\UIElements\DiagnosticWindow.cpp" />
     <ClCompile Include="src\UIElements\InspectorWindow.cpp" />
     <ClCompile Include="src\UIElements\ObjectListWindow.cpp" />
     <ClCompile Include="src\UIElements\Window.cpp" />
@@ -87,6 +88,7 @@
     <ClInclude Include="src\Renderer.h" />
     <ClInclude Include="src\Shader.h" />
     <ClInclude Include="src\Texture.h" />
+    <ClInclude Include="src\UIElements\DiagnosticWindow.h" />
     <ClInclude Include="src\UIElements\InspectorWindow.h" />
     <ClInclude Include="src\UIElements\ObjectListWindow.h" />
     <ClInclude Include="src\UIElements\Window.h" />
