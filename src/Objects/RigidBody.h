@@ -3,6 +3,7 @@
 
 
 #include "../Geometry/Plane.h"
+#include <vector>
 
 
 enum RigidType { RigidCube, RigidSphere, RigidPlane };
@@ -49,6 +50,8 @@ private:
 	glm::vec3 Position = glm::vec3(0.0f, 0.0f, 0.0f);
 	glm::vec3 Orientation = glm::vec3(0.0f, 0.0f, 0.0f);
 	glm::vec3 Scale = glm::vec3(1.0f, 1.0f, 1.0f);
+
+	static std::vector<Plane> CubePlanes;
 };
 
 #endif // !RIGID_BODY_CLASS_H
