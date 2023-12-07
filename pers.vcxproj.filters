@@ -40,6 +40,12 @@
     <Filter Include="Source Files\UIElements">
       <UniqueIdentifier>{80d995f6-a327-4141-a77b-f88a17b7ee7f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Geometry">
+      <UniqueIdentifier>{fb906a59-73dd-4da2-b6c1-0a4601c53414}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Geometry">
+      <UniqueIdentifier>{04e5a8a8-4673-4117-8d4e-abab37f634c2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\glad.c">
@@ -128,6 +134,9 @@
     </ClCompile>
     <ClCompile Include="src\UIElements\InspectorWindow.cpp">
       <Filter>Source Files\UIElements</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Geometry\Plane.cpp">
+      <Filter>Source Files\Geometry</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -241,6 +250,9 @@
     </ClInclude>
     <ClInclude Include="imgui\misc\cpp\imgui_stdlib.h">
       <Filter>Header Files\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Geometry\Plane.h">
+      <Filter>Header Files\Geometry</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
