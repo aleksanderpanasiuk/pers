@@ -19,7 +19,6 @@ public:
 	void setVelocity(glm::vec3 Velocity);
 
 	RigidType getType();
-	std::vector<std::vector<glm::vec3>> getSides();
 	unsigned int getID();
 	std::string getName();
 	void setName(std::string name);
@@ -33,8 +32,6 @@ private:
 	GraphicsComponent graphicsComponent;
 	RigidBody rigidBody;
 	RigidType type;
-
-	std::vector<std::vector<glm::vec3>> calculateSidesCube();
 };
 
 #endif // !OBJECT_CLASS_H
