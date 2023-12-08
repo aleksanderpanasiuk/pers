@@ -78,7 +78,7 @@ float RigidBody::getBoundingSphereRadiusCube()
 {
 	float diameter = glm::sqrt(Scale.x * Scale.x + Scale.t * Scale.y + Scale.z * Scale.z);
 
-	return diameter * boundingSphereSizeMultiplier;
+	return diameter/2 * boundingSphereSizeMultiplier;
 }
 
 std::vector<Face> RigidBody::getFaces()
