@@ -1,5 +1,7 @@
 #include "RigidBody.h"
 
+const float RigidBody::boundingSphereSizeMultiplier = 1.2f;
+
 RigidBody::RigidBody(
 	RigidType type,
 	glm::vec3 Position,
@@ -58,6 +60,25 @@ void RigidBody::setVelocity(glm::vec3 Velocity)
 void RigidBody::applyForce(glm::vec3 Force)
 {
 	NetForce += Force;
+}
+
+float RigidBody::getBoundingSphereRadius()
+{
+	switch (type)
+	{
+	case RigidCube:
+		return getBoundingSphereRadiusCube();
+	default:
+		return 0.0f;
+	}
+	return 0.0f;
+}
+
+float RigidBody::getBoundingSphereRadiusCube()
+{
+	float diameter = glm::sqrt(Scale.x * Scale.x + Scale.t * Scale.y + Scale.z * Scale.z);
+
+	return diameter * boundingSphereSizeMultiplier;
 }
 
 std::vector<Face> RigidBody::getFaces()

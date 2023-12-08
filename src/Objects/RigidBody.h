@@ -36,6 +36,7 @@ public:
 	RigidType getType();
 	float getMass();
 	std::vector<Face> getFaces();
+	float getBoundingSphereRadius();
 
 	bool isAffectedByForces = true;
 
@@ -57,6 +58,9 @@ private:
 	static std::vector<Face> CubeFaces;
 
 	std::vector<Face> getCubeFaces();
+
+	float getBoundingSphereRadiusCube();
+	static const float boundingSphereSizeMultiplier;
 };
 
 #endif // !RIGID_BODY_CLASS_H
