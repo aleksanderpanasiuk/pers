@@ -12,7 +12,9 @@ public:
 
 private:
 	void HandleCollisions(float deltaTime, std::vector<Object>& Objects);
+	bool checkCollision(Object& objectA, Object& objectB);
 	bool checkPrimitiveCollision(Object& objectA, Object& objectB);
+	bool checkPreciseCollision(Object& objectA, Object& objectB);
 };
 
 #endif // !PHYSICS_SIMULATION_CLASS_H

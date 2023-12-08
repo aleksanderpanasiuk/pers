@@ -24,12 +24,25 @@ void PhysicsSimulation::HandleCollisions(float deltaTime, std::vector<Object>& O
 			Object& objectA = Objects[i];
 			Object& objectB = Objects[j];
 
-			if (checkPrimitiveCollision(objectA, objectB))
+			if (checkCollision(objectA, objectB))
 			{
 				std::cout << "!Collision!: " << objectA.getName() << " <> " << objectB.getName() << "\n";
 			}
 		}
 	}
+}
+
+bool PhysicsSimulation::checkCollision(Object& objectA, Object& objectB)
+{
+	if (checkPrimitiveCollision(objectA, objectB))
+		return checkPreciseCollision(objectA, objectB);
+
+	return false;
+}
+
+bool PhysicsSimulation::checkPreciseCollision(Object& objectA, Object& objectB)
+{
+	return true;
 }
 
 bool PhysicsSimulation::checkPrimitiveCollision(Object& objectA, Object& objectB)
