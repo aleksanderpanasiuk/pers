@@ -16,6 +16,11 @@ std::vector<glm::vec3> Face::getVertices()
 	return Vertices;
 }
 
+glm::vec3 Face::getMiddlePoint()
+{
+	return plane.getPoint();
+}
+
 void Face::Move(glm::vec3 PositionChange)
 {
 	plane.Move(PositionChange);

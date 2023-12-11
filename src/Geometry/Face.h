@@ -13,6 +13,7 @@ public:
 
 	Plane getPlane();
 	std::vector<glm::vec3> getVertices();
+	glm::vec3 getMiddlePoint();
 
 	void Move(glm::vec3 PositionChange);
 	void Scale(glm::vec3 scale);
