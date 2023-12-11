@@ -19,14 +19,15 @@ void PhysicsSimulation::HandleCollisions(float deltaTime, std::vector<Object>& O
 
 	for (int i = 0; i < numberOfObjects; i++)
 	{
-		for (int j = i + 1; j < numberOfObjects; j++)
+		for (int j = i+1; j < numberOfObjects; j++)
 		{
 			Object& objectA = Objects[i];
 			Object& objectB = Objects[j];
 
 			if (checkCollision(objectA, objectB))
 			{
-				std::cout << "!Collision!: " << objectA.getName() << " <> " << objectB.getName() << "\n";
+				std::cout << objectA.getName() << " " << objectB.getName() << "\n";
+				HandleCollision(objectA, objectB);
 			}
 		}
 	}
@@ -57,7 +58,7 @@ bool PhysicsSimulation::checkCollisionCubeCube(Object& cubeA, Object& cubeB)
 			closestFaces.second.getPlane().getNormal()
 		);
 
-	return true;
+	return false;
 }
 
 std::pair<Face, Face> PhysicsSimulation::getClosestFaces(Object& cubeA, Object& cubeB)
@@ -106,4 +107,19 @@ bool PhysicsSimulation::checkPrimitiveCollision(Object& objectA, Object& objectB
 		objectB.getRigidBody().getBoundingSphereRadius();
 
 	return radiiSum >= distanceBetweenObjects;
+}
+
+void PhysicsSimulation::HandleCollision(Object& objectA, Object& objectB)
+{
+	if (not objectA.getRigidBody().isAffectedByForces)
+	{
+		objectB.setVelocity(-objectB.getVelocity());
+		return;
+	}
+
+	if (not objectB.getRigidBody().isAffectedByForces)
+	{
+		objectA.setVelocity(-objectA.getVelocity());
+		return;
+	}
 }
