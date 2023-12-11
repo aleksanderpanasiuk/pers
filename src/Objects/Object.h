@@ -15,6 +15,7 @@ public:
 	RigidBody& getRigidBody();
 	
 	glm::vec3 getPosition();
+	glm::vec3 getVelocity();
 	void setPosition(glm::vec3 Position);
 	void setVelocity(glm::vec3 Velocity);
 
