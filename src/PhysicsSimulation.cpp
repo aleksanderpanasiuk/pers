@@ -42,7 +42,13 @@ bool PhysicsSimulation::checkCollision(Object& objectA, Object& objectB)
 
 bool PhysicsSimulation::checkCollisionCubeCube(Object& cubeA, Object& cubeB)
 {
-	
+	std::pair<Face, Face> closestFaces = getClosestFaces(cubeA, cubeB);
+
+	glm::vec3 lineOnPlanesIntersection =
+		glm::cross(
+			closestFaces.first.getPlane().getNormal(),
+			closestFaces.first.getPlane().getNormal()
+		);
 }
 
 std::pair<Face, Face> PhysicsSimulation::getClosestFaces(Object& cubeA, Object& cubeB)

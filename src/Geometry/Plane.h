@@ -19,9 +19,13 @@ public:
 	void ChangePosition(glm::vec3 newPosition);
 	void Rotate(glm::vec3 rotationPoint, glm::vec3 Rotation);
 
+	bool operator||(const Plane& planeB);
+
 private:
 	glm::vec3 NormalVector;
 	glm::vec3 Point;
+
+	static const float comparisonEpsilon;
 };
 
 #endif // !PLANE_CLASS_H
