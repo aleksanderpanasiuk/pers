@@ -61,15 +61,15 @@ bool Plane::operator||(const Plane& planeB)
 {
 	if (NormalVector.x < planeB.NormalVector.x + comparisonEpsilon and
 		NormalVector.x > planeB.NormalVector.x - comparisonEpsilon)
-		return true;
-
-	if (NormalVector.y < planeB.NormalVector.y + comparisonEpsilon and
-		NormalVector.y > planeB.NormalVector.y - comparisonEpsilon)
-		return true;
-
-	if (NormalVector.z < planeB.NormalVector.z + comparisonEpsilon and
-		NormalVector.z > planeB.NormalVector.z - comparisonEpsilon)
-		return true;
+	{
+		if (NormalVector.y < planeB.NormalVector.y + comparisonEpsilon and
+			NormalVector.y > planeB.NormalVector.y - comparisonEpsilon)
+		{
+			if (NormalVector.z < planeB.NormalVector.z + comparisonEpsilon and
+				NormalVector.z > planeB.NormalVector.z - comparisonEpsilon)
+				return true;
+		}
+	}
 
 	return false;
 }
