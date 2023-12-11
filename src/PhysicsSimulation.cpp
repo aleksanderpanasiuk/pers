@@ -26,7 +26,7 @@ void PhysicsSimulation::HandleCollisions(float deltaTime, std::vector<Object>& O
 
 			if (checkCollision(objectA, objectB))
 			{
-				std::cout << objectA.getName() << " " << objectB.getName() << "\n";
+				// std::cout << objectA.getName() << " " << objectB.getName() << "\n";
 				HandleCollision(objectA, objectB);
 			}
 		}
@@ -44,7 +44,7 @@ bool PhysicsSimulation::checkCollision(Object& objectA, Object& objectB)
 bool PhysicsSimulation::checkCollisionCubeCube(Object& cubeA, Object& cubeB)
 {
 	std::pair<Face, Face> closestFaces = getClosestFaces(cubeA, cubeB);
-	float distanceToFaces = 0.0f;
+	float distanceToFaces = glm::distance(closestFaces.first.getMiddlePoint(), closestFaces.second.getMiddlePoint());
 
 	// check if faces are parallel
 	if (closestFaces.first.getPlane() || closestFaces.second.getPlane())
