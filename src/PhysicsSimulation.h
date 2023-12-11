@@ -15,6 +15,10 @@ private:
 	bool checkCollision(Object& objectA, Object& objectB);
 	bool checkPrimitiveCollision(Object& objectA, Object& objectB);
 	bool checkPreciseCollision(Object& objectA, Object& objectB);
+
+	bool checkCollisionCubeCube(Object& cubeA, Object& cubeB);
+
+	std::pair<Face, Face> getClosestFaces(Object& cubeA, Object& cubeB);
 };
 
 #endif // !PHYSICS_SIMULATION_CLASS_H
