@@ -17,6 +17,16 @@ glm::vec3 Plane::getPoint()
 	return Point;
 }
 
+glm::vec4 Plane::getFactors()
+{
+	return glm::vec4(
+		NormalVector.x,
+		NormalVector.y,
+		NormalVector.z,
+		-(NormalVector.x * Point.x + NormalVector.y * Point.y + NormalVector.z * Point.z)
+	);
+}
+
 void Plane::setPoint(glm::vec3 newPoint)
 {
 	Plane::Point = newPoint;

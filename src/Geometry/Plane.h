@@ -13,6 +13,7 @@ public:
 
 	glm::vec3 getNormal();
 	glm::vec3 getPoint();
+	glm::vec4 getFactors();
 
 	void setPoint(glm::vec3 newPoint);
 
