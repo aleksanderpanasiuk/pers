@@ -46,6 +46,9 @@
     <Filter Include="Source Files\Geometry">
       <UniqueIdentifier>{04e5a8a8-4673-4117-8d4e-abab37f634c2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Utils">
+      <UniqueIdentifier>{388fa652-6c98-4a0e-a054-219d3a8ed539}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\glad.c">
@@ -271,6 +274,9 @@
     </ClInclude>
     <ClInclude Include="src\Geometry\GeometryUtils.h">
       <Filter>Header Files\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utils\Constants.h">
+      <Filter>Header Files\Utils</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

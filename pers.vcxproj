@@ -95,6 +95,7 @@
     <ClInclude Include="src\UIElements\ObjectListWindow.h" />
     <ClInclude Include="src\UIElements\Window.h" />
     <ClInclude Include="src\UserInterface.h" />
+    <ClInclude Include="src\Utils\Constants.h" />
     <ClInclude Include="src\VAO.h" />
     <ClInclude Include="src\VBO.h" />
   </ItemGroup>
