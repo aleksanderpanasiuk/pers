@@ -2,6 +2,7 @@
 #define INSPECTOR_CLASS_H
 
 #include "Object.h"
+#include "../Geometry/GeometryUtils.h"
 
 class Inspector
 {
@@ -22,8 +23,6 @@ private:
 	bool CheckHoverFace(Face face, glm::vec3 cameraPosition, glm::vec3 cameraNormal);
 	glm::vec4 calculatePlane(Face face);
 	std::pair<bool, glm::vec3> calculatePoint(glm::vec4 Plane, glm::vec3 cameraPosition, glm::vec3 cameraNormal);
-	bool CheckIfPointInSquare(Face face, glm::vec3 Point);
-	bool CheckIfPointWithinBoundries(glm::vec3 Point, glm::vec3 S1, glm::vec3 S2);
 };
 
 #endif // !INSPECTOR_CLASS_H
