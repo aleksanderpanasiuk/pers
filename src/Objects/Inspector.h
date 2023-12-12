@@ -22,7 +22,6 @@ private:
 	bool CheckHoverCube(Object& Cube, glm::vec3 cameraPosition, glm::vec3 cameraNormal);
 	bool CheckHoverFace(Face face, glm::vec3 cameraPosition, glm::vec3 cameraNormal);
 	glm::vec4 calculatePlane(Face face);
-	std::pair<bool, glm::vec3> calculatePoint(glm::vec4 Plane, glm::vec3 cameraPosition, glm::vec3 cameraNormal);
 };
 
 #endif // !INSPECTOR_CLASS_H

@@ -117,7 +117,7 @@ bool Inspector::CheckHoverFace(Face face, glm::vec3 cameraPosition, glm::vec3 ca
 {
 	// calculate plane and point lying on it
 	glm::vec4 planeData = calculatePlane(face);
-	std::pair<bool, glm::vec3> PointData = calculatePoint(planeData, cameraPosition, cameraNormal);
+	std::pair<bool, glm::vec3> PointData = Geometry::projectPoint(face.getPlane(), cameraPosition, cameraNormal);
 
 	// check if camera is facing the object
 	if (not PointData.first)
@@ -141,17 +141,4 @@ glm::vec4 Inspector::calculatePlane(Face face)
 	return glm::vec4(A, B, C, D);
 }
 
-std::pair<bool, glm::vec3> Inspector::calculatePoint(glm::vec4 Plane, glm::vec3 cameraPosition, glm::vec3 cameraNormal)
-{
-	float t = (-Plane.x * cameraPosition.x - Plane.y * cameraPosition.y - Plane.z * cameraPosition.z - Plane.w) /
-		(Plane.x * cameraNormal.x + Plane.y * cameraNormal.y + Plane.z * cameraNormal.z);
-
-	// check if camera is facing the object
-
-	return std::make_pair(t > 0, glm::vec3(
-		cameraPosition[0] + t * cameraNormal[0],
-		cameraPosition[1] + t * cameraNormal[1],
-		cameraPosition[2] + t * cameraNormal[2]
-	));
-}
 

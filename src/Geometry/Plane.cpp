@@ -66,11 +66,11 @@ void Plane::Rotate(glm::vec3 rotationPoint, glm::vec3 Rotation)
 
 bool Plane::operator||(const Plane& planeB)
 {
-	if (abs(NormalVector.x - planeB.NormalVector.x) < Geometry::floatError)
+	if (abs(NormalVector.x - planeB.NormalVector.x) < Constants::floatError)
 	{
-		if (abs(NormalVector.y - planeB.NormalVector.y) < Geometry::floatError)
+		if (abs(NormalVector.y - planeB.NormalVector.y) < Constants::floatError)
 		{
-			if (abs(NormalVector.z - planeB.NormalVector.z) < Geometry::floatError)
+			if (abs(NormalVector.z - planeB.NormalVector.z) < Constants::floatError)
 				return true;
 		}
 	}

@@ -32,7 +32,7 @@ bool Geometry::CheckIfPointWithinBoundries(glm::vec3 Point, glm::vec3 S1, glm::v
 	float sideLength = glm::length(S2 - S1);
 	float vectorsLength = glm::length(u1) + glm::length(u2);
 
-	return sideLength + Geometry::floatError >= vectorsLength;
+	return sideLength + Constants::floatError >= vectorsLength;
 }
 
 bool Geometry::CheckIfPointInSquare(std::vector<glm::vec3> Vertices, glm::vec3 Point)
@@ -49,4 +49,19 @@ bool Geometry::CheckIfPointInSquare(std::vector<glm::vec3> Vertices, glm::vec3 P
 	glm::vec3 S3 = Vertices[2];
 
 	return Geometry::CheckIfPointWithinBoundries(Point, S1, S2) and Geometry::CheckIfPointWithinBoundries(Point, S2, S3);
+}
+
+std::pair<bool, glm::vec3> Geometry::projectPoint(Plane plane, glm::vec3 point, glm::vec3 projectionVector)
+{
+	glm::vec4 planeFactors = plane.getFactors();
+	float t = (-planeFactors.x * point.x - planeFactors.y * point.y - planeFactors.z * point.z - planeFactors.w) /
+		(planeFactors.x * projectionVector.x + planeFactors.y * projectionVector.y + planeFactors.z * projectionVector.z);
+
+	// check if camera is facing the object
+
+	return std::make_pair(t > 0, glm::vec3(
+		point[0] + t * projectionVector[0],
+		point[1] + t * projectionVector[1],
+		point[2] + t * projectionVector[2]
+	));
 }

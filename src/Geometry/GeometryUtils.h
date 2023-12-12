@@ -6,11 +6,15 @@
 #include <vector>
 #include <stdexcept>
 
+#include "Plane.h"
+#include "../Utils/Constants.h"
+
 namespace Geometry
 {
-	const float floatError = 0.001f;
 	bool CheckIfPointWithinBoundries(glm::vec3 Point, glm::vec3 S1, glm::vec3 S2);
 	bool CheckIfPointInSquare(std::vector<glm::vec3> Vertices, glm::vec3 Point);
+
+	std::pair<bool, glm::vec3> projectPoint(Plane plane, glm::vec3 point, glm::vec3 projectionVector);
 }
 
 
