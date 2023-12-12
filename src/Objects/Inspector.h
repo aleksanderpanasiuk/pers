@@ -21,7 +21,6 @@ private:
 
 	bool CheckHoverCube(Object& Cube, glm::vec3 cameraPosition, glm::vec3 cameraNormal);
 	bool CheckHoverFace(Face face, glm::vec3 cameraPosition, glm::vec3 cameraNormal);
-	glm::vec4 calculatePlane(Face face);
 };
 
 #endif // !INSPECTOR_CLASS_H

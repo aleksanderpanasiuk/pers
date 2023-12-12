@@ -115,8 +115,7 @@ bool Inspector::CheckHoverCube(Object& Cube, glm::vec3 cameraPosition, glm::vec3
 
 bool Inspector::CheckHoverFace(Face face, glm::vec3 cameraPosition, glm::vec3 cameraNormal)
 {
-	// calculate plane and point lying on it
-	glm::vec4 planeData = calculatePlane(face);
+	// point lying on faces' plane
 	std::pair<bool, glm::vec3> PointData = Geometry::projectPoint(face.getPlane(), cameraPosition, cameraNormal);
 
 	// check if camera is facing the object
@@ -127,18 +126,3 @@ bool Inspector::CheckHoverFace(Face face, glm::vec3 cameraPosition, glm::vec3 ca
 
 	return Geometry::CheckIfPointInSquare(face.getVertices(), PointData.second);
 }
-
-glm::vec4 Inspector::calculatePlane(Face face)
-{
-	glm::vec3 planeNormal = face.getPlane().getNormal();
-	glm::vec3 planePoint = face.getPlane().getPoint();
-
-	float A = planeNormal.x;
-	float B = planeNormal.y;
-	float C = planeNormal.z;
-	float D = -(A * planePoint.x + B * planePoint.y + C * planePoint.z);
-
-	return glm::vec4(A, B, C, D);
-}
-
-
