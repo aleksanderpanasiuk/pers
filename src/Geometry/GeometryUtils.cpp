@@ -37,6 +37,11 @@ bool Geometry::CheckIfPointWithinBoundries(glm::vec3 Point, glm::vec3 S1, glm::v
 
 bool Geometry::CheckIfPointInSquare(std::vector<glm::vec3> Vertices, glm::vec3 Point)
 {
+	if (Vertices.size() != 3 and Vertices.size() != 4)
+	{
+		throw std::invalid_argument("Must provide 3 or 4 vertices");
+	}
+
 	// provided that Vertices[0] and Vertices[1] create opposite side to Vertices[2] and Vertices[3]
 	// and Vertices[1] creates side with Vertices[2]
 	glm::vec3 S1 = Vertices[0];

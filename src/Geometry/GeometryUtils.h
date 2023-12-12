@@ -4,6 +4,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtx/rotate_vector.hpp>
 #include <vector>
+#include <stdexcept>
 
 namespace Geometry
 {
