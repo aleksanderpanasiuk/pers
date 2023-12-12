@@ -70,3 +70,8 @@ std::pair<bool, glm::vec3> Geometry::projectPoint(Plane plane, glm::vec3 point, 
 		point[2] + t * projectionVector[2]
 	));
 }
+
+glm::vec3 Geometry::projectPoint(Plane plane, glm::vec3 point)
+{
+	return Geometry::projectPoint(plane, point, plane.getNormal()).second;
+}

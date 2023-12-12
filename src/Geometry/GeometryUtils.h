@@ -15,6 +15,7 @@ namespace Geometry
 	bool CheckIfPointInSquare(std::vector<glm::vec3> Vertices, glm::vec3 Point);
 
 	std::pair<bool, glm::vec3> projectPoint(Plane plane, glm::vec3 point, glm::vec3 projectionVector);
+	glm::vec3 projectPoint(Plane plane, glm::vec3 point);
 }
 
 
