@@ -44,7 +44,12 @@ bool PhysicsSimulation::checkCollision(Object& objectA, Object& objectB)
 bool PhysicsSimulation::checkCollisionCubeCube(Object& cubeA, Object& cubeB)
 {
 	std::pair<Face, Face> closestFaces = getClosestFaces(cubeA, cubeB);
-	float distanceToFaces = glm::distance(closestFaces.first.getMiddlePoint(), closestFaces.second.getMiddlePoint());
+	float distanceToFaces = 0.0f;
+	
+	for (glm::vec3 vertex : closestFaces.second.getVertices())
+	{
+		distanceToFaces = glm::distance(closestFaces.first.getMiddlePoint(), vertex);
+	}
 
 	// check if faces are parallel
 	if (closestFaces.first.getPlane() || closestFaces.second.getPlane())
