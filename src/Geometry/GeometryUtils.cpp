@@ -53,11 +53,15 @@ bool Geometry::CheckIfPointInSquare(std::vector<glm::vec3> Vertices, glm::vec3 P
 
 std::pair<bool, glm::vec3> Geometry::projectPoint(Plane plane, glm::vec3 point, glm::vec3 projectionVector)
 {
+	// projects point on plane in vector direction
+	// returns: first: true if vector is facing plane
+	//			second: projected point
+
 	glm::vec4 planeFactors = plane.getFactors();
 	float t = (-planeFactors.x * point.x - planeFactors.y * point.y - planeFactors.z * point.z - planeFactors.w) /
 		(planeFactors.x * projectionVector.x + planeFactors.y * projectionVector.y + planeFactors.z * projectionVector.z);
 
-	// check if camera is facing the object
+	// check if point is facing the object
 
 	return std::make_pair(t > 0, glm::vec3(
 		point[0] + t * projectionVector[0],
