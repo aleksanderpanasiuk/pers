@@ -29,6 +29,7 @@
     <ClCompile Include="src\EBO.cpp" />
     <ClCompile Include="src\Geometry\Face.cpp" />
     <ClCompile Include="src\Geometry\Plane.cpp" />
+    <ClCompile Include="src\Geometry\GeometryUtils.cpp" />
     <ClCompile Include="src\glad.c" />
     <ClCompile Include="src\Interface.cpp" />
     <ClCompile Include="src\main.cpp" />
@@ -76,6 +77,7 @@
     <ClInclude Include="src\EBO.h" />
     <ClInclude Include="src\Geometry\Face.h" />
     <ClInclude Include="src\Geometry\Plane.h" />
+    <ClInclude Include="src\Geometry\GeometryUtils.h" />
     <ClInclude Include="src\Interface.h" />
     <ClInclude Include="src\Mesh.h" />
     <ClInclude Include="src\Objects\Camera.h" />

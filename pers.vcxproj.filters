@@ -144,6 +144,9 @@
     <ClCompile Include="src\UIElements\DiagnosticWindow.cpp">
       <Filter>Source Files\UIElements</Filter>
     </ClCompile>
+    <ClCompile Include="src\Geometry\GeometryUtils.cpp">
+      <Filter>Source Files\Geometry</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Shaders\default.frag">
@@ -265,6 +268,9 @@
     </ClInclude>
     <ClInclude Include="src\UIElements\DiagnosticWindow.h">
       <Filter>Header Files\UIElements</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Geometry\GeometryUtils.h">
+      <Filter>Header Files\Geometry</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
