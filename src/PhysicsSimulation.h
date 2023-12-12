@@ -8,8 +8,6 @@ class PhysicsSimulation
 public:
 	void simulate(float deltaTime, std::vector<Object>& Objects);
 
-	static const glm::vec3 Gravity;
-
 private:
 	void HandleCollisions(float deltaTime, std::vector<Object>& Objects);
 	bool checkCollision(Object& objectA, Object& objectB);

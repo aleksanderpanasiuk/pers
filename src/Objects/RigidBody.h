@@ -1,10 +1,9 @@
 #ifndef RIGID_BODY_CLASS_H
 #define RIGID_BODY_CLASS_H
 
-
-#include "../Geometry/Face.h"
 #include <vector>
-
+#include "../Geometry/Face.h"
+#include "../Utils/Constants.h"
 
 enum RigidType { RigidCube, RigidSphere, RigidPlane };
 

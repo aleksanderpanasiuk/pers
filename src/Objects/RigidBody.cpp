@@ -19,7 +19,7 @@ RigidBody::RigidBody(
 	RigidBody::Mass = (mass == 0.0f ? Scale.x* Scale.y* Scale.z : mass);
 
 	// apply standard gravity
-	applyForce(mass * glm::vec3(0.0f, -9.81f, 0.0f));
+	applyForce(mass * Constants::Gravity);
 }
 
 void RigidBody::Move(float deltaTime)
