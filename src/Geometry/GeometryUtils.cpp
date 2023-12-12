@@ -56,8 +56,9 @@ std::pair<bool, glm::vec3> Geometry::projectPoint(Plane plane, glm::vec3 point, 
 	// projects point on plane in vector direction
 	// returns: first: true if vector is facing plane
 	//			second: projected point
-
-	glm::vec4 planeFactors = plane.getFactors();
+	
+	// Ax + By + Cz + D = 0
+	glm::vec4 planeFactors = plane.getFactors(); // A, B, C, D
 	float t = (-planeFactors.x * point.x - planeFactors.y * point.y - planeFactors.z * point.z - planeFactors.w) /
 		(planeFactors.x * projectionVector.x + planeFactors.y * projectionVector.y + planeFactors.z * projectionVector.z);
 
