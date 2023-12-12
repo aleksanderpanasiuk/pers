@@ -4,6 +4,8 @@
 #include <glm/glm.hpp>
 #include <glm/gtx/rotate_vector.hpp>
 
+#include "GeometryUtils.h"
+
 class Plane
 {
 public:
@@ -24,8 +26,6 @@ public:
 private:
 	glm::vec3 NormalVector;
 	glm::vec3 Point;
-
-	static const float comparisonEpsilon;
 };
 
 #endif // !PLANE_CLASS_H

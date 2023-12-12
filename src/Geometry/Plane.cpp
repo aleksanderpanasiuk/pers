@@ -1,9 +1,6 @@
 #include "Plane.h"
 
 
-const float Plane::comparisonEpsilon = 0.001f;
-
-
 Plane::Plane(glm::vec3 normalVector, glm::vec3 point)
 {
 	Plane::NormalVector = normalVector;
@@ -59,11 +56,11 @@ void Plane::Rotate(glm::vec3 rotationPoint, glm::vec3 Rotation)
 
 bool Plane::operator||(const Plane& planeB)
 {
-	if (abs(NormalVector.x - planeB.NormalVector.x) < comparisonEpsilon)
+	if (abs(NormalVector.x - planeB.NormalVector.x) < Geometry::floatError)
 	{
-		if (abs(NormalVector.y - planeB.NormalVector.y) < comparisonEpsilon)
+		if (abs(NormalVector.y - planeB.NormalVector.y) < Geometry::floatError)
 		{
-			if (abs(NormalVector.z - planeB.NormalVector.z) < comparisonEpsilon)
+			if (abs(NormalVector.z - planeB.NormalVector.z) < Geometry::floatError)
 				return true;
 		}
 	}

@@ -7,6 +7,7 @@
 
 namespace Geometry
 {
+	const float floatError = 0.001f;
 	bool CheckIfPointWithinBoundries(glm::vec3 Point, glm::vec3 S1, glm::vec3 S2);
 	bool CheckIfPointInSquare(std::vector<glm::vec3> Vertices, glm::vec3 Point);
 }

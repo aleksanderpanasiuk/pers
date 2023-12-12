@@ -31,9 +31,8 @@ bool Geometry::CheckIfPointWithinBoundries(glm::vec3 Point, glm::vec3 S1, glm::v
 	// check if vectors length sum to side length
 	float sideLength = glm::length(S2 - S1);
 	float vectorsLength = glm::length(u1) + glm::length(u2);
-	float epsilon = 0.01f;
 
-	return sideLength + epsilon >= vectorsLength;
+	return sideLength + Geometry::floatError >= vectorsLength;
 }
 
 bool Geometry::CheckIfPointInSquare(std::vector<glm::vec3> Vertices, glm::vec3 Point)
