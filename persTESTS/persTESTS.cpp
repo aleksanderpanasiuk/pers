@@ -285,5 +285,18 @@ namespace persTESTS
 
 			Assert::IsFalse(planeA || planeB);
 		}
+
+		TEST_METHOD(PlaneParallelCheckOppositeDirection2)
+		{
+			glm::vec3 PointZero = glm::vec3(0.0f, 0.0f, 0.0f);
+
+			glm::vec3 NormalVector = glm::vec3(-1.0f, -1.0f, -1.0f);
+			Plane planeA(NormalVector, PointZero);
+
+			glm::vec3 NormalVectorB = glm::vec3(1.0f, 1.0f, 1.0f);
+			Plane planeB(NormalVectorB, PointZero);
+
+			Assert::IsTrue(planeA || planeB);
+		}
 	};
 }
