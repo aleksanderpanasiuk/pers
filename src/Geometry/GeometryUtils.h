@@ -16,6 +16,8 @@ namespace Geometry
 
 	std::pair<bool, glm::vec3> projectPoint(Plane plane, glm::vec3 point, glm::vec3 projectionVector);
 	glm::vec3 projectPoint(Plane plane, glm::vec3 point);
+
+	float distancePointToPlane(Plane plane, glm::vec3 point);
 }
 
 

@@ -75,3 +75,14 @@ glm::vec3 Geometry::projectPoint(Plane plane, glm::vec3 point)
 {
 	return Geometry::projectPoint(plane, point, plane.getNormal()).second;
 }
+
+float Geometry::distancePointToPlane(Plane plane, glm::vec3 point)
+{
+	glm::vec4 factors = plane.getFactors();
+	float A = factors.x;
+	float B = factors.y;
+	float C = factors.z;
+	float D = factors.w;
+	
+	return abs(A * point.x + B * point.y + C * point.z + D) / glm::sqrt(A*A + B*B + C*C);
+}
