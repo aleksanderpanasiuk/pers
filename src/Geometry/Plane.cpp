@@ -66,14 +66,25 @@ void Plane::Rotate(glm::vec3 rotationPoint, glm::vec3 Rotation)
 
 bool Plane::operator||(const Plane& planeB)
 {
-	if (abs(NormalVector.x - planeB.NormalVector.x) < Constants::floatError)
+	float k[3] = { 0.0f, 0.0f, 0.0f };
+
+	for (int i = 0; i < 3; i++)
 	{
-		if (abs(NormalVector.y - planeB.NormalVector.y) < Constants::floatError)
+		if (NormalVector[i] == 0 or planeB.NormalVector[i] == 0)
+			k[i] = 0.0f;
+		else
 		{
-			if (abs(NormalVector.z - planeB.NormalVector.z) < Constants::floatError)
-				return true;
+			k[i] = NormalVector[i] / planeB.NormalVector[i];
 		}
 	}
 
-	return false;
+	for (int i = 1; i < 3; i++)
+	{
+		if (not (abs(k[i] - k[i - 1]) < Constants::floatError or
+			(abs(k[i]) < Constants::floatError or abs(k[i - 1]) < Constants::floatError)))
+			return false;
+	}
+
+
+	return true;
 }
