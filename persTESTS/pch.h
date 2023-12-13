@@ -9,4 +9,6 @@
 
 // add headers that you want to pre-compile here
 
+#include <glm/gtx/string_cast.hpp>
+
 #endif //PCH_H
