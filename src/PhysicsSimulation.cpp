@@ -1,5 +1,8 @@
 #include "PhysicsSimulation.h"
 
+const float PhysicsSimulation::COLLISION_PRECISSION = 0.001f;
+
+
 void PhysicsSimulation::simulate(float deltaTime, std::vector<Object>& Objects)
 {
 	HandleCollisions(deltaTime, Objects);
@@ -42,17 +45,17 @@ bool PhysicsSimulation::checkCollision(Object& objectA, Object& objectB)
 bool PhysicsSimulation::checkCollisionCubeCube(Object& cubeA, Object& cubeB)
 {
 	std::pair<Face, Face> closestFaces = getClosestFaces(cubeA, cubeB);
-	float distanceToFaces = 0.0f;
-	
-	for (glm::vec3 vertex : closestFaces.second.getVertices())
-	{
-		distanceToFaces = glm::distance(closestFaces.first.getMiddlePoint(), vertex);
-	}
+	float distanceToFaces = 2 * glm::distance(closestFaces.first.getMiddlePoint(), closestFaces.second.getMiddlePoint());
 
 	// check if faces are parallel
 	if (closestFaces.first.getPlane() || closestFaces.second.getPlane())
 	{
-		return abs(distanceToFaces) < 0.01f;
+		for (glm::vec3 vertex : closestFaces.second.getVertices())
+		{
+			distanceToFaces = std::min(distanceToFaces, Geometry::distancePointToPlane(closestFaces.first.getPlane(), vertex));
+		}
+
+		return abs(distanceToFaces) < COLLISION_PRECISSION;
 	}
 
 	glm::vec3 lineOnPlanesIntersection =

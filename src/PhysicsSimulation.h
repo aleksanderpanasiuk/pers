@@ -2,6 +2,7 @@
 #define PHYSICS_SIMULATION_CLASS_H
 
 #include "Objects/Object.h"
+#include "Geometry/GeometryUtils.h"
 
 class PhysicsSimulation
 {
@@ -19,6 +20,8 @@ private:
 	std::pair<Face, Face> getClosestFaces(Object& cubeA, Object& cubeB);
 
 	void HandleCollision(Object& objectA, Object& objectB);
+
+	static const float COLLISION_PRECISSION;
 };
 
 #endif // !PHYSICS_SIMULATION_CLASS_H
