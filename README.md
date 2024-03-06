@@ -24,6 +24,3 @@ There are future plans to migrate to CMAKE.
  - [GLM](https://github.com/g-truc/glm)
  - [ImGui](https://github.com/ocornut/imgui/tree/docking)
  - [TOML](https://toml.io/en/)
-
-# License
-This project is licensed under the MIT License.
